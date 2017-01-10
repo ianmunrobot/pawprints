@@ -71,8 +71,8 @@ describe('Product', () => {
       .then(result => {
         expect(result).to.be.null
       })
-      .catch(result => {
-        expect(result).to.not.be.null
+      .catch(err => {
+        expect(err.message).to.be.equal('notNull Violation: inventory cannot be null')
       })
     })
 
