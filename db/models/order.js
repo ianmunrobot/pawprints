@@ -33,7 +33,17 @@ const Order = db.define('orders', {
 {
   instanceMethods: {
     addToOrder: (product) => {
+      if (this.status === 'in cart') {
+        let currentProducts = this.products.map(singleProduct => {
+          return JSON.parse(singleProduct)
+        })
+        currentProducts.push(product)
+        this.products = currentProducts.map(singleProduct => {
+          return JSON.stringify(singleProduct)
+        })
+      }
 
+      return this
     }
   }
 })

@@ -39,17 +39,26 @@ describe('Order', () => {
   })
 
   describe('Instance Methods', () => {
+    var order;
+    beforeEach(() => {
+      order = Order.build()
+    })
 
     describe('addToOrder', () => {
       var testProduct;
       beforeEach(() => {
-        testProduct = Product.build(
-
-        )
+        testProduct = Product.build({
+          title: 'A testing product',
+          description: 'a very cool product',
+          price: 2.50,
+          inventory: 3,
+          category: ['cat'],
+        })
       })
 
       it(`should fail if status is not 'in cart'`, () => {
-
+        let updatedOrder = order.addToOrder(testProduct)
+        expect(updatedOrder).to.deep.equal(order)
       })
 
       it(`adds the correct item and current price to the order`, () => {
