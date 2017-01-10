@@ -5,9 +5,12 @@ const seedProducts = require('./seeds/product-seed')
 
 db.didSync
   .then(() => db.sync({force: true}))
+  // repeat these two lines to seed and log new rows
   .then(seedUsers)
   .then(users => console.log(`Seeded ${users.length} users OK`))
+
   .then(seedProducts)
   .then(products => console.log(`Seeded ${products.length} products OK`))
+
   .catch(error => console.error(error))
   .finally(() => db.close())
