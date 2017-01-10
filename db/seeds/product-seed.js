@@ -47,9 +47,17 @@ const seedProducts = () => db.Promise.map([
     inventory: 3,
   }, 'rodent'],
 ], singleItem => {
-  return db.model('product').create(singleItem[0])
+  return db.model('products').create(singleItem[0])
   .then(product => {
-    product.addCategory(singleItem[1])
+    return db.model('categories').findOne({
+      where: {
+        name: singleItem[1]
+      }
+    })
+    .then(foundCategory => {
+      console.log(foundCategory.id);
+      return product.addCategory(foundCategory.id)
+    })
   })
 });
 
