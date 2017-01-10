@@ -11,7 +11,7 @@ const Product = db.define('product', {
   },
   imgUrl: {
     type: Sequelize.STRING,
-    defaultValue: 'http://lorempixel.com/100/100/'
+    defaultValue: 'http://placekitten.com/g/300/200/'
   },
   price: {
     type: Sequelize.FLOAT,
@@ -36,6 +36,7 @@ const Product = db.define('product', {
   },
   category: {
     type: Sequelize.ARRAY(Sequelize.STRING),
+    allowNull: false,
     validate: {
       len: [1, 10]
     },
@@ -52,6 +53,7 @@ const Product = db.define('product', {
   },
 })
 
+// associate multiple rows as size options for each product
 Product.belongsToMany(Product, {through: 'options', as: 'options'})
 
 module.exports = Product

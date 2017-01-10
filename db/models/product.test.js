@@ -1,6 +1,6 @@
 const {expect} = require('chai')
 const db = require('APP/db')
-const Product = require('./product');
+const Product = require('./product')
 
 describe('Product', () => {
   before('wait for the db', () => db.didSync)
@@ -18,49 +18,61 @@ describe('Product', () => {
       })
     })
 
+    it('has the correct title (sanity check)', () => {
+      expect(product.title).to.be.equal('A testing product')
+    })
 
     it('requires at least one category', () => {
       product.category = null
       product.save()
+        // does it disallow null?
         .then(result => {
           expect(result).to.be.null
         })
-        .catch(result => {
-          expect(result).to.not.be.null;
+        .catch(err => {
+          expect(err.message).to.be.equal('notNull Violation: category cannot be null')
+        })
+        .then(() => {
+          product.category = []
+          return product.save()
+        })
+        // does it require that length is at least one?
+        .then(result => {
+          expect(result).to.be.null
+        })
+        .catch(err => {
+          expect(err.message).to.be.equal('Validation error: Validation len failed')
         })
     })
 
-    it('has the correct title', () => {
-      expect(product.title).to.be.equal('A testing product');
-    })
 
     it('requires a non-empty description', () => {
-      product.description = '';
+      product.description = ''
       product.save()
       .then(result => {
         expect(result).to.be.null
       })
-      .catch(result => {
-        expect(result).to.not.be.null;
+      .catch(err => {
+        expect(err.message).to.be.equal('notNull Violation: description cannot be null')
       })
-      product.description = null;
+      product.description = null
       product.save()
       .then(result => {
         expect(result).to.be.null
       })
-      .catch(result => {
-        expect(result).to.not.be.null;
+      .catch(err => {
+        expect(err.message).to.be.equal('notNull Violation: description cannot be null')
       })
     })
 
     it('requires an inventory level', () => {
-      product.inventory = null;
+      product.inventory = null
       product.save()
       .then(result => {
         expect(result).to.be.null
       })
       .catch(result => {
-        expect(result).to.not.be.null;
+        expect(result).to.not.be.null
       })
     })
 
@@ -74,7 +86,7 @@ describe('Product', () => {
   }),
 
   describe('hasMany relationship', () => {
-    var option1, option2, option3
+    var option1, option2, option3, testId
     beforeEach(() => {
       option1 = Product.build({
         title: 'A testing product',
@@ -98,21 +110,22 @@ describe('Product', () => {
         category: ['cat'],
       })
 
-      // console.log(option1);
-      Promise.all([option1.save(), option2.save(), option3.save()])
+      // instances must be saved to add associations
+      return Promise.all([option1.save(), option2.save(), option3.save()])
       .then(values => {
+        testId = values[0].id
         return values[0].setOptions([option2, option3])
       })
-      .then(result => {
-        console.log(result);
-      })
-
-
 
     })
 
-    it('has options associations', () => {
-
+    it('has correct options associations', () => {
+      Product.findById(testId,{
+        include: [{all: true}]
+      })
+      .then(result => {
+        expect(result.options).to.have.length(2)
+      })
     })
 
   })
