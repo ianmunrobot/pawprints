@@ -21,12 +21,25 @@ const Order = db.define('orders', {
   },
   shippingType: {
     type: Sequelize.ENUM('')
+  },
+  date: {
+    // will store # of milliseconds in js Date() style
+    type: Sequelize.INTEGER
+  },
+  isGift: {
+    type: Sequelize.BOOLEAN
   }
+},
+{
+  instanceMethods: {
+    addToOrder: (product) => {
 
+    }
+  }
 })
 
 // associate with a shipping and building address from DB
-Order.belongsTo('address', {as: 'shippingAddress'})
-Order.belongsTo('address', {as: 'billingAddress'})
+// Order.belongsTo('address', {as: 'shippingAddress'})
+// Order.belongsTo('address', {as: 'billingAddress'})
 
 module.exports = Order
