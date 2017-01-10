@@ -9,7 +9,7 @@ db.didSync
   // repeat these two lines to seed and log new rows
   .then(seedUsers)
   .then(users => console.log(`Seeded ${users.length} users OK`))
-
+  // categories must be seeded before products
   .then(seedCategories)
   .then(categories => console.log(`Seeded ${categories.length} categories OK`))
 
