@@ -3,7 +3,7 @@ const db = require('APP/db')
 const Product = require('./product')
 
 
-  //Validations have to be put inside routes
+//Validations have to be put inside routes
 
 describe('Product', () => {
   before('wait for the db', () => db.didSync)
@@ -17,7 +17,6 @@ describe('Product', () => {
         description: 'a very cool product',
         price: 2.50,
         inventory: 3,
-        category: ['cat'],
       })
     })
 
@@ -25,85 +24,71 @@ describe('Product', () => {
       expect(product.title).to.be.equal('A testing product')
     })
 
-
-
-    it('requires category to not be null', (done) => {
-      product.category = null
-      product.save()
-        // does it disallow null?
+    it('rejects a null title', () => {
+      product.title = null;
+      return product.save()
         .then(result => {
-          console.log('AAAAA')
-          done(new Error())
-        })
-        .catch(err => {
-          try {
-            expect(err.message).to.be.equal('notNull Violation: category cannot be null')
-            done()
-          } catch ( err ) {
-            done(err)
-          }
-        })
-    // .then(() => {
-    //   product.category = []
-    //   return product.save()
-    // })
-    // // does it require that length is at least one?
-    // .then(result => {
-    //   console.log('BBBB')
-    //   done(new Error())
-    // })
-    // .catch(err => {
-    //   expect(err.message).to.be.equal('Validation error: Validation len failed')
-    // })
-    // .then(() => {
-    //   console.log('CCCCC')
-    //
-    //   done();})
-    // .catch(err => {
-    //   console.log('DDDD')
-    //
-    //   done(err)})
-    })
+          throw new Error('Accepted incorrect input')
+        },
+          err => expect(err.message).to.be.equal('notNull Violation: title cannot be null')
+      );
+    });
 
-
-
-    it('requires a non-empty description', () => {
-      product.description = ''
-      product.save()
+    it('rejects an empty title', () => {
+      product.title = '';
+      return product.save()
         .then(result => {
-          expect(result).to.be.null
-        })
-        .catch(err => {
-          expect(err.message).to.be.equal('notNull Violation: description cannot be null')
-        })
-      product.description = null
-      product.save()
-        .then(result => {
-          expect(result).to.be.null
-        })
-        .catch(err => {
-          expect(err.message).to.be.equal('notNull Violation: description cannot be null')
-        })
-    })
+          throw new Error('Accepted incorrect input')
+        },
+          err => expect(err.message).to.be.equal('Validation error: Validation notEmpty failed')
+      );
+    });
 
-    it('requires an inventory level', () => {
-      product.inventory = null
-      product.save()
+    it('rejects a null price', () => {
+      product.price = null;
+      return product.save()
         .then(result => {
-          expect(result).to.be.null
-        })
-        .catch(err => {
-          expect(err.message).to.be.equal('notNull Violation: inventory cannot be null')
-        })
-    })
+          throw new Error('Accepted incorrect input')
+        },
+          err => expect(err.message).to.be.equal('notNull Violation: price cannot be null')
+      );
+    });
 
-    it('has a default image', () => {
-      product.save()
+    it('rejects a null description', () => {
+      product.description = null;
+      return product.save()
         .then(result => {
-          expect(result.imgUrl).to.be.ok
-        })
-        .catch(console.error)
-    })
+          throw new Error('Accepted incorrect input')
+        },
+          err => expect(err.message).to.be.equal('notNull Violation: description cannot be null')
+      );
+    });
+
+    it('rejects an empty description', () => {
+      product.description = '';
+      return product.save()
+        .then(result => {
+          throw new Error('Accepted incorrect input')
+        },
+          err => expect(err.message).to.be.equal('Validation error: Validation notEmpty failed')
+      );
+    });
+
+    it('rejects a null inventory level', () => {
+      product.inventory = null;
+      return product.save()
+        .then(result => {
+          throw new Error('Accepted incorrect input')
+        },
+          err => expect(err.message).to.be.equal('notNull Violation: inventory cannot be null')
+      );
+    });
+
+    it('has a default image', () => product.save()
+      .then(result => {
+        expect(result.imgUrl).to.be.ok
+      })
+    )
   }),
 
   describe('hasMany relationship', () => {
