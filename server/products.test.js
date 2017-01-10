@@ -12,6 +12,7 @@ describe('/api/products', () => {
     return Product.destroy({
         truncate: true,
         cascade: true,
+        restartIdentity: true,
       })
     .then(() => {
       option1 = Product.build({
@@ -45,6 +46,7 @@ describe('/api/products', () => {
       {
         truncate: true,
         cascade: true,
+        restartIdentity: true,
       })
   })
 
