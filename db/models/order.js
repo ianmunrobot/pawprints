@@ -90,7 +90,7 @@ const Order = db.define('orders', {
 })
 
 // associate with a shipping and building address from DB
-// Order.belongsTo(Address, {as: 'shippingAddress'})
-// Order.belongsTo(Address, {as: 'billingAddress'})
+Order.belongsTo(Address, {as: 'shippingAddress'})
+Order.belongsTo(Address, {as: 'billingAddress'})
 
 module.exports = Order
