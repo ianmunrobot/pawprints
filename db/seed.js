@@ -1,13 +1,13 @@
 const db = require('APP/db')
 
-const seedUsers = () => db.Promise.map([
-  {name: 'so many', email: 'god@example.com', password: '1234'},
-  {name: 'Barack Obama', email: 'barack@example.gov', password: '1234'},
-], user => db.model('users').create(user))
+const seedUsers = require('./seeds/user-seed')
+const seedProducts = require('./seeds/product-seed')
 
 db.didSync
   .then(() => db.sync({force: true}))
   .then(seedUsers)
   .then(users => console.log(`Seeded ${users.length} users OK`))
-  .catch(error => console.error(error))    
+  .then(seedProducts)
+  .then(products => console.log(`Seeded ${products.length} products OK`))
+  .catch(error => console.error(error))
   .finally(() => db.close())
