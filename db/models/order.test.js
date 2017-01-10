@@ -40,32 +40,68 @@ describe('Order', () => {
 
   describe('Instance Methods', () => {
     var order;
+    var testProduct;
     beforeEach(() => {
-      order = Order.build()
-    })
-
-    describe('addToOrder', () => {
-      var testProduct;
-      beforeEach(() => {
-        testProduct = Product.build({
-          title: 'A testing product',
+      return Order.create()
+      .then(createdOrder => {
+        order = createdOrder
+      })
+      .then(() => {
+        return Product.create({
+          title: 'order model testing product',
           description: 'a very cool product',
           price: 2.50,
           inventory: 3,
           category: ['cat'],
         })
+        .then(created => {
+          testProduct = created
+        })
       })
 
+    })
+
+    describe('addToOrder', () => {
+
       it(`should fail if status is not 'in cart'`, () => {
+        order.status='placed'
         let updatedOrder = order.addToOrder(testProduct)
-        expect(updatedOrder).to.deep.equal(order)
+        expect(updatedOrder.products).to.deep.equal([])
       })
 
       it(`adds the correct item and current price to the order`, () => {
+        let updatedOrder = order.addToOrder(testProduct).save()
+        .then(result => {
+          return result.products[0]
+        })
+        return expect(updatedOrder).to.eventually.haveOwnProperty('price')
+      })
+    })
 
+    describe('placeOrder', () => {
+      beforeEach('invoke the function', () => {
+        order.placeOrder()
       })
 
+      it('changes order status once placed', () => {
+        expect(order.status).to.equal('placed')
+      })
+
+      it('sets the current date', () => {
+        let testDate = Date.now();
+        // ensure that order.date happened before this test
+        expect(order.date).to.be.at.most(testDate)
+      })
+    })
+
+    describe('calculateTax', () => {
+      it('calculates the right tax', () => {
+        order.addToOrder(testProduct)
+        order.calculateTax()
+        expect(order.tax).to.be.equal(0.22);
+      })
 
     })
+
   })
 })
