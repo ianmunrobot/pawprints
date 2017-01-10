@@ -1,3 +1,4 @@
+
 'use strict';
 
 const db = require('APP/db');
@@ -143,3 +144,4 @@ describe('Address', () => {
     });
   });
 });
+

@@ -2,6 +2,9 @@ const {expect} = require('chai')
 const db = require('APP/db')
 const Product = require('./product')
 
+
+  //Validations have to be put inside routes
+
 describe('Product', () => {
   before('wait for the db', () => db.didSync)
 
@@ -21,6 +24,8 @@ describe('Product', () => {
     it('has the correct title (sanity check)', () => {
       expect(product.title).to.be.equal('A testing product')
     })
+
+
 
     it('requires category to not be null', (done) => {
       product.category = null
@@ -59,6 +64,7 @@ describe('Product', () => {
     //
     //   done(err)})
     })
+
 
 
     it('requires a non-empty description', () => {

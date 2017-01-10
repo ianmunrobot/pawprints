@@ -1,7 +1,8 @@
 const Sequelize = require('sequelize')
 const db = require('APP/db')
+const Category = require(('./categories'))
 
-const Product = db.define('product', {
+const Product = db.define('products', {
   title: {
     type: Sequelize.STRING,
     allowNull: false,
@@ -42,6 +43,8 @@ const Product = db.define('product', {
       if (product.title) {
         product.urlTitle = product.title.replace(/\s+/g, '_').replace(/\W/g, '');
       }
+
+
     }
   },
 })
@@ -50,3 +53,4 @@ const Product = db.define('product', {
 Product.belongsToMany(Product, {through: 'options', as: 'options'})
 
 module.exports = Product
+
