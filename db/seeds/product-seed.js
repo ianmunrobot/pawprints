@@ -9,7 +9,6 @@ const seedProducts = () => db.Promise.map([
     size: '12" x 16"',
     tags: ['cute', 'dog', 'puppy'],
     inventory: 10,
-    category: ['dog'],
   },
   {
     title: 'Pug Puppy Print',
