@@ -2,6 +2,9 @@ const {expect} = require('chai')
 const db = require('APP/db')
 const Product = require('./product')
 
+
+  //Validations have to be put inside routes
+
 describe('Product', () => {
   before('wait for the db', () => db.didSync)
 
@@ -20,29 +23,6 @@ describe('Product', () => {
 
     it('has the correct title (sanity check)', () => {
       expect(product.title).to.be.equal('A testing product')
-    })
-
-    it('requires at least one category', () => {
-      product.category = null
-      product.save()
-        // does it disallow null?
-        .then(result => {
-          expect(result).to.be.null
-        })
-        .catch(err => {
-          expect(err.message).to.be.equal('notNull Violation: category cannot be null')
-        })
-        .then(() => {
-          product.category = []
-          return product.save()
-        })
-        // does it require that length is at least one?
-        .then(result => {
-          expect(result).to.be.null
-        })
-        .catch(err => {
-          expect(err.message).to.be.equal('Validation error: Validation len failed')
-        })
     })
 
 
