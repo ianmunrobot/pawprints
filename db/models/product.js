@@ -36,7 +36,7 @@ const Product = db.define('product', {
   },
   category: {
     type: Sequelize.ARRAY(Sequelize.STRING),
-    allowNull: false,
+    // allowNull: false,
     validate: {
       len: [1, 10]
     },

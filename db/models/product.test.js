@@ -22,27 +22,40 @@ describe('Product', () => {
       expect(product.title).to.be.equal('A testing product')
     })
 
-    it('requires at least one category', () => {
+    it('requires category to not be null', (done) => {
       product.category = null
       product.save()
         // does it disallow null?
         .then(result => {
-          expect(result).to.be.null
+          console.log('AAAAA')
+          done(new Error())
         })
         .catch(err => {
-          expect(err.message).to.be.equal('notNull Violation: category cannot be null')
+          try{
+            expect(err.message).to.be.equal('notNull Violation: category cannot be null')
+            done()
+          }catch(err){done(err)}
         })
-        .then(() => {
-          product.category = []
-          return product.save()
-        })
-        // does it require that length is at least one?
-        .then(result => {
-          expect(result).to.be.null
-        })
-        .catch(err => {
-          expect(err.message).to.be.equal('Validation error: Validation len failed')
-        })
+        // .then(() => {
+        //   product.category = []
+        //   return product.save()
+        // })
+        // // does it require that length is at least one?
+        // .then(result => {
+        //   console.log('BBBB')
+        //   done(new Error())
+        // })
+        // .catch(err => {
+        //   expect(err.message).to.be.equal('Validation error: Validation len failed')
+        // })
+        // .then(() => {
+        //   console.log('CCCCC')
+        //
+        //   done();})
+        // .catch(err => {
+        //   console.log('DDDD')
+        //
+        //   done(err)})
     })
 
 
