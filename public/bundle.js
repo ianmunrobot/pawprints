@@ -64,11 +64,11 @@
 	
 	var _App2 = _interopRequireDefault(_App);
 	
-	var _Login = __webpack_require__(298);
+	var _Login = __webpack_require__(299);
 	
 	var _Login2 = _interopRequireDefault(_Login);
 	
-	var _WhoAmI = __webpack_require__(299);
+	var _WhoAmI = __webpack_require__(300);
 	
 	var _WhoAmI2 = _interopRequireDefault(_WhoAmI);
 	
@@ -30589,6 +30589,10 @@
 	
 	var _Header2 = _interopRequireDefault(_Header);
 	
+	var _NavBar = __webpack_require__(298);
+	
+	var _NavBar2 = _interopRequireDefault(_NavBar);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function app(props) {
@@ -30658,258 +30662,7 @@
 				)
 			),
 			_react2.default.createElement(_Header2.default, null),
-			_react2.default.createElement(
-				'ul',
-				{ className: 'megamenu skyblue' },
-				_react2.default.createElement(
-					'li',
-					{ className: 'active grid' },
-					_react2.default.createElement(
-						'a',
-						{ className: 'color1', href: 'index.html' },
-						'Home'
-					)
-				),
-				_react2.default.createElement(
-					'li',
-					{ className: 'grid' },
-					_react2.default.createElement(
-						'a',
-						{ className: 'color2', href: '#' },
-						'new arrivals'
-					),
-					_react2.default.createElement(
-						'div',
-						{ className: 'megapanel' },
-						_react2.default.createElement(
-							'div',
-							{ className: 'row' },
-							_react2.default.createElement(
-								'div',
-								{ className: 'col1' },
-								_react2.default.createElement(
-									'div',
-									{ className: 'h_nav' },
-									_react2.default.createElement(
-										'h4',
-										null,
-										'Clothing'
-									),
-									_react2.default.createElement(
-										'ul',
-										null,
-										_react2.default.createElement(
-											'li',
-											null,
-											_react2.default.createElement(
-												'a',
-												{ href: 'product.html' },
-												'new arrivals'
-											)
-										),
-										_react2.default.createElement(
-											'li',
-											null,
-											_react2.default.createElement(
-												'a',
-												{ href: 'product.html' },
-												'men'
-											)
-										),
-										_react2.default.createElement(
-											'li',
-											null,
-											_react2.default.createElement(
-												'a',
-												{ href: 'product.html' },
-												'women'
-											)
-										),
-										_react2.default.createElement(
-											'li',
-											null,
-											_react2.default.createElement(
-												'a',
-												{ href: 'product.html' },
-												'accessories'
-											)
-										),
-										_react2.default.createElement(
-											'li',
-											null,
-											_react2.default.createElement(
-												'a',
-												{ href: 'product.html' },
-												'kids'
-											)
-										),
-										_react2.default.createElement(
-											'li',
-											null,
-											_react2.default.createElement(
-												'a',
-												{ href: 'product.html' },
-												'brands'
-											)
-										)
-									)
-								)
-							),
-							_react2.default.createElement(
-								'div',
-								{ className: 'col1' },
-								_react2.default.createElement(
-									'div',
-									{ className: 'h_nav' },
-									_react2.default.createElement(
-										'h4',
-										null,
-										'kids'
-									),
-									_react2.default.createElement(
-										'ul',
-										null,
-										_react2.default.createElement(
-											'li',
-											null,
-											_react2.default.createElement(
-												'a',
-												{ href: 'product.html' },
-												'Pools & Tees'
-											)
-										),
-										_react2.default.createElement(
-											'li',
-											null,
-											_react2.default.createElement(
-												'a',
-												{ href: 'product.html' },
-												'shirts'
-											)
-										),
-										_react2.default.createElement(
-											'li',
-											null,
-											_react2.default.createElement(
-												'a',
-												{ href: 'product.html' },
-												'shorts'
-											)
-										),
-										_react2.default.createElement(
-											'li',
-											null,
-											_react2.default.createElement(
-												'a',
-												{ href: 'product.html' },
-												'twinsets'
-											)
-										),
-										_react2.default.createElement(
-											'li',
-											null,
-											_react2.default.createElement(
-												'a',
-												{ href: 'product.html' },
-												'kurts'
-											)
-										),
-										_react2.default.createElement(
-											'li',
-											null,
-											_react2.default.createElement(
-												'a',
-												{ href: 'product.html' },
-												'jackets'
-											)
-										)
-									)
-								)
-							),
-							_react2.default.createElement(
-								'div',
-								{ className: 'col1' },
-								_react2.default.createElement(
-									'div',
-									{ className: 'h_nav' },
-									_react2.default.createElement(
-										'h4',
-										null,
-										'Bags'
-									),
-									_react2.default.createElement(
-										'ul',
-										null,
-										_react2.default.createElement(
-											'li',
-											null,
-											_react2.default.createElement(
-												'a',
-												{ href: 'product.html' },
-												'Handbag'
-											)
-										),
-										_react2.default.createElement(
-											'li',
-											null,
-											_react2.default.createElement(
-												'a',
-												{ href: 'product.html' },
-												'Slingbags'
-											)
-										),
-										_react2.default.createElement(
-											'li',
-											null,
-											_react2.default.createElement(
-												'a',
-												{ href: 'product.html' },
-												'Clutches'
-											)
-										),
-										_react2.default.createElement(
-											'li',
-											null,
-											_react2.default.createElement(
-												'a',
-												{ href: 'product.html' },
-												'Totes'
-											)
-										),
-										_react2.default.createElement(
-											'li',
-											null,
-											_react2.default.createElement(
-												'a',
-												{ href: 'product.html' },
-												'Wallets'
-											)
-										),
-										_react2.default.createElement(
-											'li',
-											null,
-											_react2.default.createElement(
-												'a',
-												{ href: 'product.html' },
-												'Laptopbags'
-											)
-										)
-									)
-								)
-							)
-						),
-						_react2.default.createElement(
-							'div',
-							{ className: 'row' },
-							_react2.default.createElement('div', { className: 'col2' }),
-							_react2.default.createElement('div', { className: 'col1' }),
-							_react2.default.createElement('div', { className: 'col1' }),
-							_react2.default.createElement('div', { className: 'col1' }),
-							_react2.default.createElement('div', { className: 'col1' })
-						)
-					)
-				)
-			)
+			_react2.default.createElement(_NavBar2.default, null)
 		);
 	}
 
@@ -31002,6 +30755,278 @@
 	"use strict";
 	
 	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	exports.default = navBar;
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function navBar() {
+		return _react2.default.createElement(
+			"ul",
+			{ className: "megamenu skyblue" },
+			_react2.default.createElement(
+				"li",
+				{ className: "active grid" },
+				_react2.default.createElement(
+					"a",
+					{ className: "color1", href: "index.html" },
+					"Home"
+				)
+			),
+			_react2.default.createElement(
+				"li",
+				{ className: "grid" },
+				_react2.default.createElement(
+					"a",
+					{ className: "color2", href: "#" },
+					"new arrivals"
+				),
+				_react2.default.createElement(
+					"div",
+					{ className: "megapanel" },
+					_react2.default.createElement(
+						"div",
+						{ className: "row" },
+						_react2.default.createElement(
+							"div",
+							{ className: "col1" },
+							_react2.default.createElement(
+								"div",
+								{ className: "h_nav" },
+								_react2.default.createElement(
+									"h4",
+									null,
+									"Clothing"
+								),
+								_react2.default.createElement(
+									"ul",
+									null,
+									_react2.default.createElement(
+										"li",
+										null,
+										_react2.default.createElement(
+											"a",
+											{ href: "product.html" },
+											"new arrivals"
+										)
+									),
+									_react2.default.createElement(
+										"li",
+										null,
+										_react2.default.createElement(
+											"a",
+											{ href: "product.html" },
+											"men"
+										)
+									),
+									_react2.default.createElement(
+										"li",
+										null,
+										_react2.default.createElement(
+											"a",
+											{ href: "product.html" },
+											"women"
+										)
+									),
+									_react2.default.createElement(
+										"li",
+										null,
+										_react2.default.createElement(
+											"a",
+											{ href: "product.html" },
+											"accessories"
+										)
+									),
+									_react2.default.createElement(
+										"li",
+										null,
+										_react2.default.createElement(
+											"a",
+											{ href: "product.html" },
+											"kids"
+										)
+									),
+									_react2.default.createElement(
+										"li",
+										null,
+										_react2.default.createElement(
+											"a",
+											{ href: "product.html" },
+											"brands"
+										)
+									)
+								)
+							)
+						),
+						_react2.default.createElement(
+							"div",
+							{ className: "col1" },
+							_react2.default.createElement(
+								"div",
+								{ className: "h_nav" },
+								_react2.default.createElement(
+									"h4",
+									null,
+									"kids"
+								),
+								_react2.default.createElement(
+									"ul",
+									null,
+									_react2.default.createElement(
+										"li",
+										null,
+										_react2.default.createElement(
+											"a",
+											{ href: "product.html" },
+											"Pools & Tees"
+										)
+									),
+									_react2.default.createElement(
+										"li",
+										null,
+										_react2.default.createElement(
+											"a",
+											{ href: "product.html" },
+											"shirts"
+										)
+									),
+									_react2.default.createElement(
+										"li",
+										null,
+										_react2.default.createElement(
+											"a",
+											{ href: "product.html" },
+											"shorts"
+										)
+									),
+									_react2.default.createElement(
+										"li",
+										null,
+										_react2.default.createElement(
+											"a",
+											{ href: "product.html" },
+											"twinsets"
+										)
+									),
+									_react2.default.createElement(
+										"li",
+										null,
+										_react2.default.createElement(
+											"a",
+											{ href: "product.html" },
+											"kurts"
+										)
+									),
+									_react2.default.createElement(
+										"li",
+										null,
+										_react2.default.createElement(
+											"a",
+											{ href: "product.html" },
+											"jackets"
+										)
+									)
+								)
+							)
+						),
+						_react2.default.createElement(
+							"div",
+							{ className: "col1" },
+							_react2.default.createElement(
+								"div",
+								{ className: "h_nav" },
+								_react2.default.createElement(
+									"h4",
+									null,
+									"Bags"
+								),
+								_react2.default.createElement(
+									"ul",
+									null,
+									_react2.default.createElement(
+										"li",
+										null,
+										_react2.default.createElement(
+											"a",
+											{ href: "product.html" },
+											"Handbag"
+										)
+									),
+									_react2.default.createElement(
+										"li",
+										null,
+										_react2.default.createElement(
+											"a",
+											{ href: "product.html" },
+											"Slingbags"
+										)
+									),
+									_react2.default.createElement(
+										"li",
+										null,
+										_react2.default.createElement(
+											"a",
+											{ href: "product.html" },
+											"Clutches"
+										)
+									),
+									_react2.default.createElement(
+										"li",
+										null,
+										_react2.default.createElement(
+											"a",
+											{ href: "product.html" },
+											"Totes"
+										)
+									),
+									_react2.default.createElement(
+										"li",
+										null,
+										_react2.default.createElement(
+											"a",
+											{ href: "product.html" },
+											"Wallets"
+										)
+									),
+									_react2.default.createElement(
+										"li",
+										null,
+										_react2.default.createElement(
+											"a",
+											{ href: "product.html" },
+											"Laptopbags"
+										)
+									)
+								)
+							)
+						)
+					),
+					_react2.default.createElement(
+						"div",
+						{ className: "row" },
+						_react2.default.createElement("div", { className: "col2" }),
+						_react2.default.createElement("div", { className: "col1" }),
+						_react2.default.createElement("div", { className: "col1" }),
+						_react2.default.createElement("div", { className: "col1" }),
+						_react2.default.createElement("div", { className: "col1" })
+					)
+				)
+			)
+		);
+	}
+
+/***/ },
+/* 299 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
 	exports.Login = undefined;
@@ -31035,7 +31060,7 @@
 	}, { login: _auth.login })(Login);
 
 /***/ },
-/* 299 */
+/* 300 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";

@@ -7,7 +7,7 @@ export default function header() {
 		<div className="header">
 		  <div className="head-t">
 			 <div className="logo">
-				  <a href="index.html"><h1>Nuevo <span>Shop</span></h1> </a>
+				  <a href="index.html"><h1>Paw <span>Prints</span></h1> </a>
 			  </div>
 			  <div className="header_right">
 				<div className="cart box_1">
