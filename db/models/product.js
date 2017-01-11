@@ -5,6 +5,9 @@ const Product = db.define('product', {
   title: {
     type: Sequelize.STRING,
     allowNull: false,
+    validate: {
+      notEmpty: true
+    }
   },
   urlTitle: {
     type: Sequelize.STRING
@@ -34,14 +37,6 @@ const Product = db.define('product', {
     type: Sequelize.INTEGER,
     allowNull: false,
   },
-  category: {
-    type: Sequelize.ARRAY(Sequelize.STRING),
-    allowNull: false,
-    validate: {
-      len: [1, 10]
-    },
-  },
-
 },
 {
   hooks: {
@@ -52,8 +47,5 @@ const Product = db.define('product', {
     }
   },
 })
-
-// associate multiple rows as size options for each product
-Product.belongsToMany(Product, {through: 'options', as: 'options'})
 
 module.exports = Product

@@ -7,7 +7,23 @@
 const User = require('./user')
 const Product = require('./product')
 const Category = require('./categories')
+const Order = require('./order')
+const Address = require('./address')
+const Review = require('./review')
 
+// EI: this is a small thing, but it's have all associations in this one file so it's easy to look them over.
 Product.belongsToMany(Category, {through: 'productsCategories'})
 Category.belongsToMany(Product, {through: 'productsCategories'})
-module.exports = {User, Product, Category}
+
+// associate with a shipping and building address from DB
+Order.belongsTo(Address, {as: 'shippingAddress'})
+Order.belongsTo(Address, {as: 'billingAddress'})
+
+// associate multiple rows as size options for each product
+Product.belongsToMany(Product, {through: 'options', as: 'options'})
+
+// EI: associate Order and Product?
+Review.belongsTo(Product)
+Review.belongsTo(User)
+
+module.exports = {User, Product, Category, Order, Address, Review}
