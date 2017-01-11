@@ -24,6 +24,7 @@ describe('Product', () => {
       expect(product.title).to.be.equal('A testing product')
     })
 
+
     it('rejects a null title', () => {
       product.title = null;
       return product.save()
@@ -89,6 +90,7 @@ describe('Product', () => {
         expect(result.imgUrl).to.be.ok
       })
     )
+
   }),
 
   describe('hasMany relationship', () => {
@@ -126,6 +128,7 @@ describe('Product', () => {
     })
 
     it('has correct options associations', () => {
+
       Product.findById(testId, {
         include: [{
           all: true
@@ -134,8 +137,10 @@ describe('Product', () => {
         .then(result => {
           expect(result.options).to.have.length(2)
         })
+      
     })
 
   })
+
 
 })
