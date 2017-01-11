@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Header from './Header';
 import NavBar from './NavBar';
+import Display from './HomePageDisplay';
 
 export default function app(props) {
 	return (
@@ -24,5 +25,6 @@ export default function app(props) {
 	</div>
 	<Header />
 	<NavBar />
+	<Display />
 </div>);
 }
