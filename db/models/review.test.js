@@ -1,6 +1,8 @@
 const db = require('APP/db')
 const Review = require('./review')
 const {expect} = require('chai')
+const Product = require('./product')
+const User = require('./user')
 
 describe('Review', () => {
   before('wait for the db', () => db.didSync);
@@ -35,6 +37,7 @@ describe('Review', () => {
           expect(err.message).to.be.equal('Validation error: Validation notEmpty failed')
         })
     });
+
     it("rating system can't have a rating less than 1", () => {
       exampleReview.rating = 0;
       return exampleReview.save()
@@ -42,6 +45,7 @@ describe('Review', () => {
         expect(exampleReview.rating).to.equal(1)
       })
     });
+
     it("rating system can't have a rating greter than 5", () => {
       exampleReview.rating = 6;
       return exampleReview.save()
@@ -49,6 +53,7 @@ describe('Review', () => {
           expect(exampleReview.rating).to.equal(5)
         })
     })
+
   })
 
   describe('belongsTo', () => {
@@ -56,24 +61,25 @@ describe('Review', () => {
 
     it('a Product', () => {
       exampleProduct = Product.build({
+        id: 100,
         title: "Rover the test dog",
         description: 'an imaginary friend',
         price: 3.50,
         inventory: 1,
         category: ['dog', 'fake']
       })
-
-      Review.findById()
+      exampleProduct.save()
     })
 
     it('a User', () => {
       exampleUser = User.build({
+        id: 100,
         firstName: 'Fake',
         lastName: 'McFakey',
         email: 'person@realemail.com',
         password: 'notfake'
       })
-
+      exampleUser.save()
     })
   })
 

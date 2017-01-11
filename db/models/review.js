@@ -37,7 +37,4 @@ const Review = db.define('reviews', {
   }
 })
 
-Review.belongsTo(Product, {as: "for"})
-Review.belongsTo(User, {as: "author"})
-
 module.exports = Review
