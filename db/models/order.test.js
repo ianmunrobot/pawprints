@@ -79,6 +79,7 @@ describe('Order', () => {
 
     xdescribe('calculateTax', () => {
       it('calculates the right tax', () => {
+        // TODO: requires update once LineItem associations are complete
         order.calculateTax()
         expect(order.tax).to.be.equal(0.22);
       })
