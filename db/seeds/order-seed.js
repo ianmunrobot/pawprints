@@ -3,7 +3,7 @@ const db = require('APP/db')
 const {productsNum} = require('./product-seed')
 const {usersNum} = require('./user-seed')
 
-const seedOrders = () => db.Promise.map([
+const seedArray = [
   {
     status: 'in cart',
   },
@@ -28,18 +28,11 @@ const seedOrders = () => db.Promise.map([
     shippingCost: 0.00,
     tax: 5.43,
   },
-], order => {
-  return db.model('orders').create(order)
-    .then(createdOrder => {
-      // TODO: populate with created addresses
-      // let addShipping = createdOrder.setShippingAddress()
-      // let addBilling = createdOrder.setBillingAddress()
-      // return Promise.all([addShipping, addBilling])
-      return createdOrder
-    })
-    .then(updatedOrder => {
+]
 
-    })
-});
+const seedOrders = () => db.Promise.map(seedArray, order => db.model('orders').create(order))
 
-module.exports = seedOrders
+module.exports = {
+  seedOrders,
+  ordersNum: seedArray.length
+}

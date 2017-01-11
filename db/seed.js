@@ -5,6 +5,7 @@ const {seedProducts} = require('./seeds/product-seed')
 const seedCategories = require('./seeds/category-seed')
 const seedReviews = require('./seeds/review-seed')
 const seedOrders = require('./seeds/order-seed')
+const seedAddresses = require('./seeds/address-seed')
 
 db.didSync
   .then(() => db.sync({force: true}))
@@ -20,6 +21,9 @@ db.didSync
 
   .then(seedReviews)
   .then(reviews => console.log(`Seeded ${reviews.length} reviews OK`))
+
+  .then(seedAddresses)
+  .then(addresses => console.log(`Seeded ${addresses.length} addresses OK`))
 
   .then(seedOrders)
   .then(orders => console.log(`Seeded ${orders.length} orders OK`))
