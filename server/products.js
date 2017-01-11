@@ -42,4 +42,17 @@ router.put('/:id', mustBeAdmin, (req, res, next) => {
   .catch(next)
 })
 
+router.delete('/:id', mustBeAdmin, (req, res, next) => {
+  Product.destroy({
+    where: {
+      id: req.params.id,
+    },
+    cascade: true,
+  })
+  .then(destroyedProduct => {
+    res.status(204)
+  })
+  .catch(next)
+})
+
 module.exports = router

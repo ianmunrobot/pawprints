@@ -2,14 +2,17 @@ const db = require('APP/db')
 const app = require('./start')
 const Product = require('APP/db/models/product')
 const User = require('APP/db/models/user')
+const mustBeAdmin = require()
 
 const request = require('supertest-as-promised')
 const chai = require('chai')
-const chaiProperties = require('chai-properties');
-const chaiThings = require('chai-things');
+const chaiProperties = require('chai-properties')
+const chaiThings = require('chai-things')
 chai.use(chaiProperties);
 chai.use(chaiThings);
 const expect = chai.expect;
+const sinon = require('sinon')
+
 
 describe('/api/products', () => {
   before('wait for the db', () => db.didSync)
@@ -101,6 +104,10 @@ describe('/api/products', () => {
   })
 
   xdescribe('when admin', () => {
+    beforeEach('set up mustBeAdmin spies', () => {
+      mustBeAdmin
+    })
+
     it('PUT /:id alters a product', () => {
       return request(app)
       .post('/api/auth/local/login')
