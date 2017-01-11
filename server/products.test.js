@@ -82,6 +82,9 @@ describe('/api/products', () => {
     it('PUT /:id alters a product', (req, res, next) => {
       return request(app)
         .put(`/api/products/1`)
+        .send({user: {
+          isAdmin: true
+        }})
         .then(response => {
           console.log(response)
           expect(response.body).to.be.an('object')

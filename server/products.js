@@ -20,14 +20,17 @@ router.get('/:id', (req, res, next) => {
 
 // update product
 router.put('/:id', (req, res, next) => {
-  if (req.user.isAdmin) {
+  console.log('~~~~~~~~~~~');
+  console.log(req.body);
+  console.log('~~~~~~~~~~~~');
+  if (req.body.user.isAdmin) {
     Product.update(req.body, {
       where: {
         id: req.params.id
       },
       returning: true,
     })
-    .then(response => response[1])
+    .then(response => response[1][0])
     .then(res.send.bind(res))
     .catch(next)
   } else {
