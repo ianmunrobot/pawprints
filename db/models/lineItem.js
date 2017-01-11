@@ -7,7 +7,7 @@ const Product = require('./product')
 const LineItem = db.define('lineItem', {
 
   price: Sequelize.FLOAT,
-  inventory: {
+  quantity: {
     type: Sequelize.INTEGER,
     allowNull: false,
   },
