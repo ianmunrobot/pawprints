@@ -22,14 +22,14 @@ router.post('/', mustBeAdmin, (req, res, next) => {
   .catch(next)
 })
 
-// get product by id
+// get one product by id
 router.get('/:id', (req, res, next) => {
   Product.findById(req.params.id)
   .then(res.send.bind(res))
   .catch(next)
 })
 
-// update product
+// update one product
 router.put('/:id', mustBeAdmin, (req, res, next) => {
   Product.update(req.body, {
     where: {
@@ -42,6 +42,7 @@ router.put('/:id', mustBeAdmin, (req, res, next) => {
   .catch(next)
 })
 
+// delete one product
 router.delete('/:id', mustBeAdmin, (req, res, next) => {
   Product.destroy({
     where: {
@@ -50,7 +51,7 @@ router.delete('/:id', mustBeAdmin, (req, res, next) => {
     cascade: true,
   })
   .then(destroyedProduct => {
-    res.status(204)
+    res.status(204).send(destroyedProduct)
   })
   .catch(next)
 })

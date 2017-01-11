@@ -2,7 +2,6 @@ const db = require('APP/db')
 const app = require('./start')
 const Product = require('APP/db/models/product')
 const User = require('APP/db/models/user')
-const mustBeAdmin = require()
 
 const request = require('supertest-as-promised')
 const chai = require('chai')
@@ -101,11 +100,19 @@ describe('/api/products', () => {
         .expect(401)
     })
 
+    it('DELETE /:id is not allowed to alter a product', () => {
+      return request(app)
+        .delete(`/api/products/1`)
+        .expect(401)
+    })
+
   })
 
+  // cannot really test auth in this manner, but leaving in codebase
+  // in case we can get it working in the future
   xdescribe('when admin', () => {
     beforeEach('set up mustBeAdmin spies', () => {
-      mustBeAdmin
+      const mustBeAdmin = sinon.spy()
     })
 
     it('PUT /:id alters a product', () => {
