@@ -10,6 +10,7 @@ const Order = db.define('orders', {
   user: {
     type: Sequelize.STRING
   },
+  // EI: line item model?
   products: {
     type: Sequelize.ARRAY(Sequelize.JSON),
     defaultValue: []
@@ -36,7 +37,7 @@ const Order = db.define('orders', {
     defaultValue: false
   }
 },
-{
+{ // EI: associating Order and Product (or Line Item) will give you a lot of these methods
   instanceMethods: {
     addToOrder: function(product, amount = 1) {
       if (this.status === 'in cart') {
@@ -73,6 +74,7 @@ const Order = db.define('orders', {
     placeOrder: function() {
       if (this.status === 'in cart') {
         // TODO: must process CC info, etc here
+        // EI: ^^ can wait until you integrate Stripe API to deal with payment info; see the "Checkout" bullet point in the workshop's section on Unauthenticated Users
         this.date = Date.now();
         this.status = 'placed';
       }
@@ -89,8 +91,6 @@ const Order = db.define('orders', {
   }
 })
 
-// associate with a shipping and building address from DB
-Order.belongsTo(Address, {as: 'shippingAddress'})
-Order.belongsTo(Address, {as: 'billingAddress'})
+
 
 module.exports = Order
