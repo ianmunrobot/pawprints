@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize')
 const db = require('APP/db')
 
-const Address = db.define('address', {
+const Address = db.define('addresses', {
   name: Sequelize.STRING,
   phone: {
     type: Sequelize.STRING,
