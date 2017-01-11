@@ -10,8 +10,8 @@ const Category = require('./categories')
 const Order = require('./order')
 const Address = require('./address')
 const Review = require('./review')
-const LineItem = require('./lineItem')
 
+const LineItem = require('./lineItem')
 
 Product.belongsToMany(Category, {
   through: 'productsCategories'
@@ -32,14 +32,13 @@ Order.belongsTo(Address, {
 Order.hasMany(LineItem);
 LineItem.belongsTo(Product);
 
+
 // associate multiple rows as size options for each product
 Product.belongsToMany(Product, {
   through: 'options',
   as: 'options'
 })
 
-
-// EI: associate Order and Product?
 Review.belongsTo(Product)
 Review.belongsTo(User)
 
@@ -52,4 +51,3 @@ module.exports = {
   Review,
   LineItem
 }
-
