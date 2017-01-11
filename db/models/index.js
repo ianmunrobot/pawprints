@@ -38,6 +38,7 @@ Product.belongsToMany(Product, {
   as: 'options'
 })
 
+
 // EI: associate Order and Product?
 Review.belongsTo(Product)
 Review.belongsTo(User)
@@ -51,3 +52,4 @@ module.exports = {
   Review,
   LineItem
 }
+
