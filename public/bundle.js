@@ -60,9 +60,9 @@
 	
 	var _store2 = _interopRequireDefault(_store);
 	
-	var _Jokes = __webpack_require__(296);
+	var _App = __webpack_require__(296);
 	
-	var _Jokes2 = _interopRequireDefault(_Jokes);
+	var _App2 = _interopRequireDefault(_App);
 	
 	var _Login = __webpack_require__(297);
 	
@@ -101,8 +101,8 @@
 	    _react2.default.createElement(
 	      _reactRouter.Route,
 	      { path: '/', component: ExampleApp },
-	      _react2.default.createElement(_reactRouter.IndexRedirect, { to: '/jokes' }),
-	      _react2.default.createElement(_reactRouter.Route, { path: '/jokes', component: _Jokes2.default })
+	      _react2.default.createElement(_reactRouter.IndexRedirect, { to: '/' }),
+	      _react2.default.createElement(_reactRouter.Route, { path: '/', component: _App2.default })
 	    )
 	  )
 	), document.getElementById('main'));
@@ -30577,100 +30577,409 @@
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
+		value: true
 	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	exports.default = app;
 	
 	var _react = __webpack_require__(1);
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _reactRedux = __webpack_require__(233);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var BonesJokes = function (_Component) {
-	  _inherits(BonesJokes, _Component);
-	
-	  function BonesJokes() {
-	    var _ref;
-	
-	    var _temp, _this, _ret;
-	
-	    _classCallCheck(this, BonesJokes);
-	
-	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-	      args[_key] = arguments[_key];
-	    }
-	
-	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = BonesJokes.__proto__ || Object.getPrototypeOf(BonesJokes)).call.apply(_ref, [this].concat(args))), _this), _this.nextJoke = function () {
-	      return _this.setState({
-	        joke: randomJoke(),
-	        answered: false
-	      });
-	    }, _this.answer = function () {
-	      return _this.setState({ answered: true });
-	    }, _temp), _possibleConstructorReturn(_this, _ret);
-	  }
-	
-	  _createClass(BonesJokes, [{
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {
-	      this.nextJoke();
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      if (!this.state) {
-	        return null;
-	      }
-	
-	      var _state = this.state,
-	          joke = _state.joke,
-	          answered = _state.answered;
-	
-	      return _react2.default.createElement(
-	        'div',
-	        { onClick: answered ? this.nextJoke : this.answer },
-	        _react2.default.createElement(
-	          'h1',
-	          null,
-	          joke.q
-	        ),
-	        answered && _react2.default.createElement(
-	          'h2',
-	          null,
-	          joke.a
-	        ),
-	        _react2.default.createElement(
-	          'cite',
-	          null,
-	          '~xoxo, bones'
-	        )
-	      );
-	    }
-	  }]);
-	
-	  return BonesJokes;
-	}(_react.Component);
-	
-	exports.default = BonesJokes;
-	
-	
-	function randomJoke() {
-	  return jokes[Math.floor(Math.random() * jokes.length)];
+	function app(props) {
+		return _react2.default.createElement(
+			'div',
+			{ id: 'main' },
+			_react2.default.createElement(
+				'div',
+				{ 'class': 'top_bg', id: 'home' },
+				_react2.default.createElement(
+					'div',
+					{ 'class': 'container' },
+					_react2.default.createElement(
+						'div',
+						{ 'class': 'header_top' },
+						_react2.default.createElement(
+							'div',
+							{ 'class': 'top_right' },
+							_react2.default.createElement(
+								'ul',
+								null,
+								_react2.default.createElement(
+									'li',
+									null,
+									_react2.default.createElement(
+										'a',
+										{ href: '#' },
+										'help'
+									)
+								),
+								_react2.default.createElement(
+									'li',
+									null,
+									_react2.default.createElement(
+										'a',
+										{ href: 'contact.html' },
+										'Contact'
+									)
+								),
+								_react2.default.createElement(
+									'li',
+									null,
+									_react2.default.createElement(
+										'a',
+										{ href: '#' },
+										'Delivery information'
+									)
+								)
+							)
+						),
+						_react2.default.createElement(
+							'div',
+							{ 'class': 'top_left' },
+							_react2.default.createElement(
+								'h6',
+								null,
+								_react2.default.createElement('span', null),
+								' Call us : 032 2352 782'
+							)
+						),
+						_react2.default.createElement(
+							'div',
+							{ 'class': 'clearfix' },
+							' '
+						)
+					)
+				)
+			),
+			_react2.default.createElement(
+				'div',
+				{ 'class': 'header_bg' },
+				_react2.default.createElement(
+					'div',
+					{ 'class': 'container' },
+					_react2.default.createElement(
+						'div',
+						{ 'class': 'header' },
+						_react2.default.createElement(
+							'div',
+							{ 'class': 'head-t' },
+							_react2.default.createElement(
+								'div',
+								{ 'class': 'logo' },
+								_react2.default.createElement(
+									'a',
+									{ href: 'index.html' },
+									_react2.default.createElement(
+										'h1',
+										null,
+										'Nuevo ',
+										_react2.default.createElement(
+											'span',
+											null,
+											'Shop'
+										)
+									),
+									' '
+								)
+							),
+							_react2.default.createElement(
+								'div',
+								{ 'class': 'header_right' },
+								_react2.default.createElement(
+									'div',
+									{ 'class': 'cart box_1' },
+									_react2.default.createElement(
+										'a',
+										{ href: 'checkout.html' },
+										_react2.default.createElement(
+											'div',
+											{ 'class': 'total' },
+											_react2.default.createElement('span', { 'class': 'simpleCart_total' }),
+											' (',
+											_react2.default.createElement('span', { id: 'simpleCart_quantity', 'class': 'simpleCart_quantity' }),
+											' items)'
+										),
+										_react2.default.createElement('i', { 'class': 'glyphicon glyphicon-shopping-cart' })
+									),
+									_react2.default.createElement(
+										'p',
+										null,
+										_react2.default.createElement(
+											'a',
+											{ href: 'javascript:;', 'class': 'simpleCart_empty' },
+											'Empty Cart'
+										)
+									),
+									_react2.default.createElement(
+										'div',
+										{ 'class': 'clearfix' },
+										' '
+									)
+								)
+							),
+							_react2.default.createElement('div', { 'class': 'clearfix' })
+						),
+						_react2.default.createElement(
+							'ul',
+							{ 'class': 'megamenu skyblue' },
+							_react2.default.createElement(
+								'li',
+								{ 'class': 'active grid' },
+								_react2.default.createElement(
+									'a',
+									{ 'class': 'color1', href: 'index.html' },
+									'Home'
+								)
+							),
+							_react2.default.createElement(
+								'li',
+								{ 'class': 'grid' },
+								_react2.default.createElement(
+									'a',
+									{ 'class': 'color2', href: '#' },
+									'new arrivals'
+								),
+								_react2.default.createElement(
+									'div',
+									{ 'class': 'megapanel' },
+									_react2.default.createElement(
+										'div',
+										{ 'class': 'row' },
+										_react2.default.createElement(
+											'div',
+											{ 'class': 'col1' },
+											_react2.default.createElement(
+												'div',
+												{ 'class': 'h_nav' },
+												_react2.default.createElement(
+													'h4',
+													null,
+													'Clothing'
+												),
+												_react2.default.createElement(
+													'ul',
+													null,
+													_react2.default.createElement(
+														'li',
+														null,
+														_react2.default.createElement(
+															'a',
+															{ href: 'product.html' },
+															'new arrivals'
+														)
+													),
+													_react2.default.createElement(
+														'li',
+														null,
+														_react2.default.createElement(
+															'a',
+															{ href: 'product.html' },
+															'men'
+														)
+													),
+													_react2.default.createElement(
+														'li',
+														null,
+														_react2.default.createElement(
+															'a',
+															{ href: 'product.html' },
+															'women'
+														)
+													),
+													_react2.default.createElement(
+														'li',
+														null,
+														_react2.default.createElement(
+															'a',
+															{ href: 'product.html' },
+															'accessories'
+														)
+													),
+													_react2.default.createElement(
+														'li',
+														null,
+														_react2.default.createElement(
+															'a',
+															{ href: 'product.html' },
+															'kids'
+														)
+													),
+													_react2.default.createElement(
+														'li',
+														null,
+														_react2.default.createElement(
+															'a',
+															{ href: 'product.html' },
+															'brands'
+														)
+													)
+												)
+											)
+										),
+										_react2.default.createElement(
+											'div',
+											{ 'class': 'col1' },
+											_react2.default.createElement(
+												'div',
+												{ 'class': 'h_nav' },
+												_react2.default.createElement(
+													'h4',
+													null,
+													'kids'
+												),
+												_react2.default.createElement(
+													'ul',
+													null,
+													_react2.default.createElement(
+														'li',
+														null,
+														_react2.default.createElement(
+															'a',
+															{ href: 'product.html' },
+															'Pools & Tees'
+														)
+													),
+													_react2.default.createElement(
+														'li',
+														null,
+														_react2.default.createElement(
+															'a',
+															{ href: 'product.html' },
+															'shirts'
+														)
+													),
+													_react2.default.createElement(
+														'li',
+														null,
+														_react2.default.createElement(
+															'a',
+															{ href: 'product.html' },
+															'shorts'
+														)
+													),
+													_react2.default.createElement(
+														'li',
+														null,
+														_react2.default.createElement(
+															'a',
+															{ href: 'product.html' },
+															'twinsets'
+														)
+													),
+													_react2.default.createElement(
+														'li',
+														null,
+														_react2.default.createElement(
+															'a',
+															{ href: 'product.html' },
+															'kurts'
+														)
+													),
+													_react2.default.createElement(
+														'li',
+														null,
+														_react2.default.createElement(
+															'a',
+															{ href: 'product.html' },
+															'jackets'
+														)
+													)
+												)
+											)
+										),
+										_react2.default.createElement(
+											'div',
+											{ 'class': 'col1' },
+											_react2.default.createElement(
+												'div',
+												{ 'class': 'h_nav' },
+												_react2.default.createElement(
+													'h4',
+													null,
+													'Bags'
+												),
+												_react2.default.createElement(
+													'ul',
+													null,
+													_react2.default.createElement(
+														'li',
+														null,
+														_react2.default.createElement(
+															'a',
+															{ href: 'product.html' },
+															'Handbag'
+														)
+													),
+													_react2.default.createElement(
+														'li',
+														null,
+														_react2.default.createElement(
+															'a',
+															{ href: 'product.html' },
+															'Slingbags'
+														)
+													),
+													_react2.default.createElement(
+														'li',
+														null,
+														_react2.default.createElement(
+															'a',
+															{ href: 'product.html' },
+															'Clutches'
+														)
+													),
+													_react2.default.createElement(
+														'li',
+														null,
+														_react2.default.createElement(
+															'a',
+															{ href: 'product.html' },
+															'Totes'
+														)
+													),
+													_react2.default.createElement(
+														'li',
+														null,
+														_react2.default.createElement(
+															'a',
+															{ href: 'product.html' },
+															'Wallets'
+														)
+													),
+													_react2.default.createElement(
+														'li',
+														null,
+														_react2.default.createElement(
+															'a',
+															{ href: 'product.html' },
+															'Laptopbags'
+														)
+													)
+												)
+											)
+										)
+									),
+									_react2.default.createElement(
+										'div',
+										{ 'class': 'row' },
+										_react2.default.createElement('div', { 'class': 'col2' }),
+										_react2.default.createElement('div', { 'class': 'col1' }),
+										_react2.default.createElement('div', { 'class': 'col1' }),
+										_react2.default.createElement('div', { 'class': 'col1' }),
+										_react2.default.createElement('div', { 'class': 'col1' })
+									)
+								)
+							)
+						)
+					)
+				)
+			)
+		);
 	}
-	
-	var jokes = 'Q: Who won the skeleton beauty contest? \nA: No body\nQ: What do skeletons say before they begin dining? \nA: Bone appetit !\nQ: When does a skeleton laugh? \nA: When something tickles his funny bone.\nQ: Why didn\'t the skeleton dance at the Halloween party? \nA: It had no body to dance with.\nQ: What type of art do skeletons like? \nA: Skull tures\nQ: What did the skeleton say when his brother told a lie? \nA: You can\'t fool me, I can see right through you.\nQ: What did the skeleton say while riding his Harley Davidson motorcycle? \nA: I\'m bone to be wild!\nQ: Why didn\'t the skeleton dance at the party? \nA: He had no body to dance with.\nQ: What do you give a skeleton for valentine\'s day? \nA: Bone-bones in a heart shaped box.\nQ: Who was the most famous skeleton detective? \nA: Sherlock Bones.\nQ: Who was the most famous French skeleton? \nA: Napoleon bone-apart\nQ: What instrument do skeletons play? \nA: Trom-BONE.\nQ: What does a skeleton orders at a restaurant? \nA: Spare ribs!!!\nQ: When does a skeleton laugh? \nA: When something tickles his funny bone.\nQ: Why didn\'t the skeleton eat the cafeteria food? \nA: Because he didn\'t have the stomach for it!\nQ: Why couldn\'t the skeleton cross the road? \nA: He didn\'t have the guts.\nQ: Why are skeletons usually so calm ? \nA: Nothing gets under their skin !\nQ: Why do skeletons hate winter? \nA: Beacuse the cold goes right through them !\nQ: Why are graveyards so noisy ? \nA: Beacause of all the coffin !\nQ: Why didn\'t the skeleton go to the party ? \nA: He had no body to go with !\nQ: What happened when the skeletons rode pogo sticks ? \nA: They had a rattling good time !\nQ: Why did the skeleton go to hospital ? \nA: To have his ghoul stones removed !\nQ: How did the skeleton know it was going to rain ? \nA: He could feel it in his bones !\nQ: What\'s a skeleton\'s favourite musical instrument ? \nA: A trom-bone !\nQ: How do skeletons call their friends ? \nA: On the telebone !\nQ: What do you call a skeleton who won\'t get up in the mornings ? \nA: Lazy bones !\nQ: What do boney people use to get into their homes ? \nA: Skeleton keys !\nQ: What do you call a skeleton who acts in Westerns ? \nA: Skint Eastwood !\nQ: What happened to the boat that sank in the sea full of piranha fish ? \nA: It came back with a skeleton crew !\nQ: What do you call a skeleton snake ? \nA: A rattler !\nQ: What is a skeletons like to drink milk ? \nA: Milk - it\'s so good for the bones !\nQ: Why did the skeleton stay out in the snow all night ? \nA: He was a numbskull !\nQ: What do you call a stupid skeleton ? \nA: Bonehead !\nQ: What happened to the skeleton who stayed by the fire too long ? \nA: He became bone dry !\nQ: What happened to the lazy skeleton ? \nA: He was bone idle !\nQ: Why did the skeleton pupil stay late at school ? \nA: He was boning up for his exams !\nQ: What sort of soup do skeletons like ? \nA: One with plenty of body in it !\nQ: Why did the skeleton run up a tree ? \nA: Because a dog was after his bones !\nQ: What did the skeleton say to his girlfriend ? \nA: I love every bone in your body !\nQ: Why wasn\'t the naughty skeleton afraid of the police ? \nA: Because he knew they couldn\'t pin anything on him !\nQ: How do skeletons get their mail ? \nA: By bony express !\nQ: Why don\'t skeletons play music in church ? \nA: They have no organs !\nQ: What kind of plate does a skeleton eat off ? \nA: Bone china !\nQ: Why do skeletons hate winter ? \nA: Because the wind just goes straight through them !\nQ: What\'s a skeleton\'s favourite pop group ? \nA: Boney M !\nQ: What do you do if you see a skeleton running across a road ? \nA: Jump out of your skin and join him !\nQ: What did the old skeleton complain of ? \nA: Aching bones !\nQ: What is a skeleton ? \nA: Somebody on a diet who forgot to say "when" !\nQ: What happened to the skeleton that was attacked by a dog ? \nA: He ran off with some bones and didn\'t leave him with a leg to stand on !\nQ: Why are skeletons so calm ? \nA: Because nothing gets under their skin !\nQ: What do you call a skeleton that is always telling lies ? \nA: A boney phoney !\nQ: Why didn\'t the skeleton want to play football ? \nA: Because his heart wasn\'t in it !\nQ: What happened to the skeleton who went to a party ? \nA: All the others used him as a coat rack !\nQ: What do you call a skeleton who presses the door bell ? \nA: A dead ringer !\nQ: When does a skeleton laugh? \nA: When something tickles his funny bone.\nQ: How did skeletons send their letters in the old days? \nA: By bony express!\nQ: How do you make a skeleton laugh? \nA: Tickle his funny bone!'.split('\n').reduce(function (all, row, i) {
-	  return i % 2 === 0 ? [].concat(_toConsumableArray(all), [{ q: row }]) : [].concat(_toConsumableArray(all.slice(0, all.length - 1)), [Object.assign({ a: row }, all[all.length - 1])]);
-	}, []);
 
 /***/ },
 /* 297 */
