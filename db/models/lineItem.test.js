@@ -17,8 +17,8 @@ describe('LineItem', () => {
       });
     });
 
-    it('rejects a null inventory count', () => {
-      lineItem.inventory = null;
+    it('rejects a null quantity count', () => {
+      lineItem.quantity = null;
       return lineItem.save()
         .then(result => {
           throw new Error('Accepted incorrect input')
