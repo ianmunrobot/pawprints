@@ -1,13 +1,20 @@
 const db = require('APP/db')
 
-const seedUsers = () => db.Promise.map([
-  {name: 'so many', email: 'god@example.com', password: '1234'},
-  {name: 'Barack Obama', email: 'barack@example.gov', password: '1234'},
-], user => db.model('users').create(user))
+const seedUsers = require('./seeds/user-seed')
+const seedProducts = require('./seeds/product-seed')
+const seedCategories = require('./seeds/category-seed')
 
 db.didSync
   .then(() => db.sync({force: true}))
+  // repeat these two lines to seed and log new rows
   .then(seedUsers)
   .then(users => console.log(`Seeded ${users.length} users OK`))
-  .catch(error => console.error(error))    
+  // categories must be seeded before products
+  .then(seedCategories)
+  .then(categories => console.log(`Seeded ${categories.length} categories OK`))
+
+  .then(seedProducts)
+  .then(products => console.log(`Seeded ${products.length} products OK`))
+
+  .catch(error => console.error(error))
   .finally(() => db.close())
