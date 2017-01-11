@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {connect} from 'react-redux';
+import Header from './Header';
 
 export default function app(props) {
 	return (
@@ -21,24 +21,7 @@ export default function app(props) {
 			</div>
 		</div>
 	</div>
-	<div className="header_bg">
-	   <div className="container">
-		<div className="header">
-		  <div className="head-t">
-			 <div className="logo">
-				  <a href="index.html"><h1>Nuevo <span>Shop</span></h1> </a>
-			  </div>
-			  <div className="header_right">
-				<div className="cart box_1">
-					<a href="checkout.html">
-					<div className="total">
-						<span className="simpleCart_total"></span> (<span id="simpleCart_quantity" className="simpleCart_quantity"></span> items)</div>
-						<i className="glyphicon glyphicon-shopping-cart"></i></a>
-					<div className="clearfix"> </div>
-				</div>				 
-			</div>
-			<div className="clearfix"></div>	
-		    </div>
+	<Header />
 			<ul className="megamenu skyblue">
 				<li className="active grid"><a className="color1" href="index.html">Home</a></li>
 				<li className="grid"><a className="color2" href="#">new arrivals</a>
@@ -94,8 +77,5 @@ export default function app(props) {
 	    				</div>
 					</li>
 			 </ul> 
-		</div>
-	</div>
-</div>
-</div>);
+		</div>);
 }
