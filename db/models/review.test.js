@@ -55,32 +55,4 @@ describe('Review', () => {
     })
 
   })
-
-  describe('belongsTo', () => {
-    var exampleProduct, exampleUser
-
-    it('a Product', () => {
-      exampleProduct = Product.build({
-        id: 100,
-        title: "Rover the test dog",
-        description: 'an imaginary friend',
-        price: 3.50,
-        inventory: 1,
-        category: ['dog', 'fake']
-      })
-      exampleProduct.save()
-    })
-
-    it('a User', () => {
-      exampleUser = User.build({
-        id: 100,
-        firstName: 'Fake',
-        lastName: 'McFakey',
-        email: 'person@realemail.com',
-        password: 'notfake'
-      })
-      exampleUser.save()
-    })
-  })
-
 })
