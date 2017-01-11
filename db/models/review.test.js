@@ -51,7 +51,30 @@ describe('Review', () => {
     })
   })
 
-  describe('rating system', () => {
+  describe('belongsTo', () => {
+    var exampleProduct, exampleUser
+
+    it('a Product', () => {
+      exampleProduct = Product.build({
+        title: "Rover the test dog",
+        description: 'an imaginary friend',
+        price: 3.50,
+        inventory: 1,
+        category: ['dog', 'fake']
+      })
+
+      Review.findById()
+    })
+
+    it('a User', () => {
+      exampleUser = User.build({
+        firstName: 'Fake',
+        lastName: 'McFakey',
+        email: 'person@realemail.com',
+        password: 'notfake'
+      })
+
+    })
   })
 
 })

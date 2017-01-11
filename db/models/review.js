@@ -1,6 +1,8 @@
 'use strict'
 const Sequelize = require('sequelize')
 const db = require('APP/db')
+const Product = require('./product')
+const User = require('./user')
 
 const Review = db.define('reviews', {
   title: {
@@ -34,5 +36,8 @@ const Review = db.define('reviews', {
     }
   }
 })
+
+Review.belongsTo(Product, {as: "for"})
+Review.belongsTo(User, {as: "author"})
 
 module.exports = Review
