@@ -8,28 +8,6 @@ const app = require('./start')
 import chai from 'chai'
 import supertest from 'supertest-as-promised'
 
-// describe('Review routes tests', () => {
-//   beforeEach('Synchronize and clear database', () => db.sync({force: true}));
-//
-//   after('Synchronize and clear database', () => db.sync({force: true}));
-//
-//   let agent;
-//   beforeEach('Set up agent for testing', () => {
-//       agent = supertest(app);
-//   });
-//
-//   let dogPhoto = {
-//     id = 99
-//     title: 'clifford',
-//     price: 3.50,
-//     description: 'big and red'
-//     inventory: 1,
-//   };
-//
-//
-//
-// })
-
 describe('/api/products/:productId/reviews', () => {
   describe('for a product', () => {
     it('GET all reviews', () => request(app)
