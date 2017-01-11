@@ -24,6 +24,9 @@ const seedArray = [
     isGift: false,
   },
   {
+    status: 'in cart',
+  },
+  {
     status: 'placed',
     shippingCost: 0.00,
     tax: 5.43,
