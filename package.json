@@ -18,9 +18,10 @@
   "keywords": [
     "react",
     "redux",
-    "skeleton"
+    "puppies",
+    "kittens"
   ],
-  "author": "Ashi Krishnan <me@ashi.works>",
+  "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/ianmunrobot/pawprints/issues"

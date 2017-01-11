@@ -2,6 +2,7 @@
 
 const db = require('APP/db')
 const Product = db.model('product')
+
 const Review = db.model('reviews')
 const {mustBeLoggedIn, forbidden, mustBeAdmin,} = require('./auth.filters')
 
@@ -29,6 +30,7 @@ router.get('/:id', (req, res, next) => {
   .then(res.send.bind(res))
   .catch(next)
 })
+
 
 // get all reviews of a product
 router.get('/:id/reviews', (req, res, next) => {
