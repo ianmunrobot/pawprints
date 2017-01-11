@@ -51,8 +51,5 @@ const Product = db.define('products', {
     },
 })
 
-// associate multiple rows as size options for each product
-Product.belongsToMany(Product, {through: 'options', as: 'options'})
-
 module.exports = Product
 
