@@ -1,8 +1,10 @@
+const db = require('APP/db')
+const app = require('./start')
+const Product = require('APP/db/models/product')
+const User = require('APP/db/models/user')
+
 const request = require('supertest-as-promised')
 const chai = require('chai')
-const db = require('APP/db')
-const Product = require('APP/db/models/product')
-const app = require('./start')
 const chaiProperties = require('chai-properties');
 const chaiThings = require('chai-things');
 chai.use(chaiProperties);
@@ -12,7 +14,7 @@ const expect = chai.expect;
 describe('/api/products', () => {
   before('wait for the db', () => db.didSync)
 
-  var option1, option2, option3
+  var option1, option2, option3, adminUser
   before(() => {
     return Product.destroy({
         truncate: true,
@@ -42,6 +44,20 @@ describe('/api/products', () => {
       return Promise.all([option1.save(), option2.save(), option3.save()])
       .then(values => {
         return values[0].setOptions([option2, option3])
+      })
+    })
+    .then(result => {
+      return User.create({
+        firstName: 'Admin',
+        lastName: 'McAdmin',
+        email: 'admin@admin.com',
+        isAdmin: true,
+        password: 'iamadmin',
+      })
+      .then(createdAdmin => {
+        adminUser = createdAdmin
+        // console.log(adminUser);
+        return adminUser
       })
     })
   })
@@ -76,19 +92,34 @@ describe('/api/products', () => {
           expect(response.body.description).to.be.equal('a very cool product')
         }))
 
-  })
-
-  describe('when admin', () => {
-    it('PUT /:id alters a product', (req, res, next) => {
+    it('PUT /:id is not allowed to alter a product', () => {
       return request(app)
         .put(`/api/products/1`)
-        .send({user: {
-          isAdmin: true
-        }})
-        .then(response => {
-          console.log(response)
-          expect(response.body).to.be.an('object')
-        })
+        .expect(401)
     })
+
+  })
+
+  xdescribe('when admin', () => {
+    it('PUT /:id alters a product', () => {
+      return request(app)
+      .post('/api/auth/local/login')
+      .send({
+        username: 'admin@admin.com',
+        password: 'iamadmin',
+      })
+      .expect(302)
+      .then(response => {
+        return request(app)
+          .put(`/api/products/1`)
+          .send({
+            description: 'an updated product'
+          })
+          .then(response => {
+            expect(response.body).to.be.an('object')
+          })
+        })
+      })
+
   })
 })
