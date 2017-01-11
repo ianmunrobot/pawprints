@@ -1,6 +1,6 @@
 const db = require('APP/db')
 
-const seedProducts = () => db.Promise.map([
+const seedArray = [
   [{
     title: 'Siberian Husky Print',
     imgUrl: 'http://cdn1-www.dogtime.com/assets/uploads/gallery/siberian-husky-dog-breed-pictures/siberian-husky-dog-breed-pictures-2.jpg',
@@ -46,7 +46,10 @@ const seedProducts = () => db.Promise.map([
     tags: ['super', 'hero', 'hedgehog', 'spiky'],
     inventory: 3,
   }, 'rodent'],
-], singleItem => {
+]
+
+
+const seedProducts = () => db.Promise.map(seedArray, singleItem => {
   return db.model('products').create(singleItem[0])
   .then(product => {
     return db.model('categories').findOne({
@@ -55,10 +58,12 @@ const seedProducts = () => db.Promise.map([
       }
     })
     .then(foundCategory => {
-      console.log(foundCategory.id);
       return product.addCategory(foundCategory.id)
     })
   })
 });
 
-  module.exports = seedProducts;
+  module.exports = {
+    seedProducts,
+    productsNum: seedArray.length
+  };
