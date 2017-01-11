@@ -2,11 +2,22 @@
 
 const db = require('APP/db')
 const Product = db.model('products')
+const {mustBeLoggedIn, forbidden, mustBeAdmin,} = require('./auth.filters')
+
 const router = require('express').Router()
 
 // get all products
 router.get('/', (req, res, next) => {
   Product.findAll()
+  .then(res.send.bind(res))
+  .catch(next)
+})
+
+// add a new product
+router.post('/', mustBeAdmin, (req, res, next) => {
+  Product.findOrCreate({
+    where: req.body
+  })
   .then(res.send.bind(res))
   .catch(next)
 })
@@ -19,25 +30,16 @@ router.get('/:id', (req, res, next) => {
 })
 
 // update product
-router.put('/:id', (req, res, next) => {
-  console.log('~~~~~~~~~~~');
-  console.log(req.body);
-  console.log('~~~~~~~~~~~~');
-  if (req.body.user.isAdmin) {
-    Product.update(req.body, {
-      where: {
-        id: req.params.id
-      },
-      returning: true,
-    })
-    .then(response => response[1][0])
-    .then(res.send.bind(res))
-    .catch(next)
-  } else {
-    res.sendStatus(403)
-  }
+router.put('/:id', mustBeAdmin, (req, res, next) => {
+  Product.update(req.body, {
+    where: {
+      id: req.params.id
+    },
+    returning: true,
+  })
+  .then(response => response[1][0])
+  .then(res.send.bind(res))
+  .catch(next)
 })
-
-
 
 module.exports = router
