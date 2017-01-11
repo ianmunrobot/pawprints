@@ -10,11 +10,6 @@ const Order = db.define('orders', {
   user: {
     type: Sequelize.STRING
   },
-  // EI: line item model?
-  products: {
-    type: Sequelize.ARRAY(Sequelize.JSON),
-    defaultValue: []
-  },
   status: {
     type: Sequelize.ENUM('in cart', 'placed', 'shipped', 'delivered', 'returned'),
     defaultValue: 'in cart'
@@ -37,40 +32,8 @@ const Order = db.define('orders', {
     defaultValue: false
   }
 },
-{ // EI: associating Order and Product (or Line Item) will give you a lot of these methods
+{
   instanceMethods: {
-    addToOrder: function(product, amount = 1) {
-      if (this.status === 'in cart') {
-        let newProduct = {
-          price: product.price,
-          amount: amount,
-          id: product.id
-        }
-        this.products.push(newProduct)
-      }
-      return this
-    },
-    changeProductAmount: function(product, amount = 0) {
-      if (this.status === 'in cart') {
-        this.products = this.products.map(singleProduct => {
-          if (singleProduct.id === product.id) {
-            singleProduct.amount += amount
-          }
-        })
-        .filter(singleProduct => {
-          return singleProduct.amount > 0
-        })
-      }
-      return this
-    },
-    removeProductFromOrder: function(product) {
-      if (this.status === 'in cart') {
-        this.products = this.products.filter(singleProduct => {
-          return this.product.id !== product.id
-        })
-      }
-      return this
-    },
     placeOrder: function() {
       if (this.status === 'in cart') {
         // TODO: must process CC info, etc here
