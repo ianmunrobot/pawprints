@@ -64,11 +64,11 @@
 	
 	var _App2 = _interopRequireDefault(_App);
 	
-	var _Login = __webpack_require__(299);
+	var _Login = __webpack_require__(300);
 	
 	var _Login2 = _interopRequireDefault(_Login);
 	
-	var _WhoAmI = __webpack_require__(300);
+	var _WhoAmI = __webpack_require__(301);
 	
 	var _WhoAmI2 = _interopRequireDefault(_WhoAmI);
 	
@@ -30593,6 +30593,10 @@
 	
 	var _NavBar2 = _interopRequireDefault(_NavBar);
 	
+	var _HomePageDisplay = __webpack_require__(299);
+	
+	var _HomePageDisplay2 = _interopRequireDefault(_HomePageDisplay);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function app(props) {
@@ -30662,7 +30666,8 @@
 				)
 			),
 			_react2.default.createElement(_Header2.default, null),
-			_react2.default.createElement(_NavBar2.default, null)
+			_react2.default.createElement(_NavBar2.default, null),
+			_react2.default.createElement(_HomePageDisplay2.default, null)
 		);
 	}
 
@@ -30705,11 +30710,11 @@
 								_react2.default.createElement(
 									"h1",
 									null,
-									"Nuevo ",
+									"Paw ",
 									_react2.default.createElement(
 										"span",
 										null,
-										"Shop"
+										"Prints"
 									)
 								),
 								" "
@@ -31027,6 +31032,125 @@
 	"use strict";
 	
 	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	exports.default = homeDisplay;
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function homeDisplay() {
+		return _react2.default.createElement(
+			"div",
+			{ "class": "fashion-section" },
+			_react2.default.createElement(
+				"div",
+				{ "class": "container" },
+				_react2.default.createElement(
+					"h3",
+					{ "class": "tittle" },
+					"Fashions"
+				),
+				_react2.default.createElement(
+					"div",
+					{ "class": "fashion-info" },
+					_react2.default.createElement(
+						"div",
+						{ "class": "col-md-4 fashion-grids" },
+						_react2.default.createElement(
+							"figure",
+							{ "class": "effect-bubba" },
+							_react2.default.createElement("img", { src: "images/f1.jpg", alt: "" }),
+							_react2.default.createElement(
+								"figcaption",
+								null,
+								_react2.default.createElement(
+									"h4",
+									null,
+									"Nuevo Shop"
+								),
+								_react2.default.createElement(
+									"p",
+									{ "class": "cart" },
+									_react2.default.createElement(
+										"a",
+										{ href: "single.html" },
+										"Shop"
+									)
+								)
+							)
+						)
+					),
+					_react2.default.createElement(
+						"div",
+						{ "class": "col-md-4 fashion-grids" },
+						_react2.default.createElement(
+							"figure",
+							{ "class": "effect-bubba" },
+							_react2.default.createElement("img", { src: "images/f2.jpg", alt: "" }),
+							_react2.default.createElement(
+								"figcaption",
+								null,
+								_react2.default.createElement(
+									"h4",
+									null,
+									"Nuevo Shop"
+								),
+								_react2.default.createElement(
+									"p",
+									{ "class": "cart" },
+									_react2.default.createElement(
+										"a",
+										{ href: "single.html" },
+										"Shop"
+									)
+								)
+							)
+						)
+					),
+					_react2.default.createElement(
+						"div",
+						{ "class": "col-md-4 fashion-grids" },
+						_react2.default.createElement(
+							"figure",
+							{ "class": "effect-bubba" },
+							_react2.default.createElement("img", { src: "images/f3.jpg", alt: "" }),
+							_react2.default.createElement(
+								"figcaption",
+								null,
+								_react2.default.createElement(
+									"h4",
+									null,
+									"Nuevo Shop"
+								),
+								_react2.default.createElement(
+									"p",
+									{ "class": "cart" },
+									_react2.default.createElement(
+										"a",
+										{ href: "single.html" },
+										"Shop"
+									)
+								)
+							)
+						)
+					),
+					_react2.default.createElement("div", { "class": "clearfix" })
+				)
+			)
+		);
+	}
+
+/***/ },
+/* 300 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
 	exports.Login = undefined;
@@ -31060,7 +31184,7 @@
 	}, { login: _auth.login })(Login);
 
 /***/ },
-/* 300 */
+/* 301 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
