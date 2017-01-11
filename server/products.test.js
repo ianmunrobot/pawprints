@@ -7,9 +7,9 @@ const request = require('supertest-as-promised')
 const chai = require('chai')
 const chaiProperties = require('chai-properties')
 const chaiThings = require('chai-things')
-chai.use(chaiProperties);
-chai.use(chaiThings);
-const expect = chai.expect;
+chai.use(chaiProperties)
+chai.use(chaiThings)
+const expect = chai.expect
 const sinon = require('sinon')
 
 
