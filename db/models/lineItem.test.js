@@ -23,7 +23,7 @@ describe('LineItem', () => {
         .then(result => {
           throw new Error('Accepted incorrect input')
         },
-          err => expect(err.message).to.be.equal('notNull Violation: phone cannot be null')
+          err => expect(err.message).to.be.equal('notNull Violation: quantity cannot be null')
       );
     });
 
