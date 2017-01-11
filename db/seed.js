@@ -4,7 +4,7 @@ const {seedUsers} = require('./seeds/user-seed')
 const {seedProducts} = require('./seeds/product-seed')
 const seedCategories = require('./seeds/category-seed')
 const seedReviews = require('./seeds/review-seed')
-const seedOrders = require('./seeds/order-seed')
+const {seedOrders} = require('./seeds/order-seed')
 const seedAddresses = require('./seeds/address-seed')
 
 db.didSync
