@@ -24,7 +24,7 @@ const ExampleApp = connect(
 render (
   <Provider store={store}>
     <Router history={browserHistory}>
-      <Route path="/" component={ExampleApp}>
+      <Route path="/jokes" component={ExampleApp}>
         <IndexRedirect to="/" />
         <Route path="/" component={App} />
       </Route>

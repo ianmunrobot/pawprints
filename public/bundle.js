@@ -100,7 +100,7 @@
 	    { history: _reactRouter.browserHistory },
 	    _react2.default.createElement(
 	      _reactRouter.Route,
-	      { path: '/', component: ExampleApp },
+	      { path: '/jokes', component: ExampleApp },
 	      _react2.default.createElement(_reactRouter.IndexRedirect, { to: '/' }),
 	      _react2.default.createElement(_reactRouter.Route, { path: '/', component: _App2.default })
 	    )
@@ -30595,16 +30595,16 @@
 			{ id: 'main' },
 			_react2.default.createElement(
 				'div',
-				{ 'class': 'top_bg', id: 'home' },
+				{ className: 'top_bg', id: 'home' },
 				_react2.default.createElement(
 					'div',
-					{ 'class': 'container' },
+					{ className: 'container' },
 					_react2.default.createElement(
 						'div',
-						{ 'class': 'header_top' },
+						{ className: 'header_top' },
 						_react2.default.createElement(
 							'div',
-							{ 'class': 'top_right' },
+							{ className: 'top_right' },
 							_react2.default.createElement(
 								'ul',
 								null,
@@ -30639,7 +30639,7 @@
 						),
 						_react2.default.createElement(
 							'div',
-							{ 'class': 'top_left' },
+							{ className: 'top_left' },
 							_react2.default.createElement(
 								'h6',
 								null,
@@ -30649,7 +30649,7 @@
 						),
 						_react2.default.createElement(
 							'div',
-							{ 'class': 'clearfix' },
+							{ className: 'clearfix' },
 							' '
 						)
 					)
@@ -30657,19 +30657,19 @@
 			),
 			_react2.default.createElement(
 				'div',
-				{ 'class': 'header_bg' },
+				{ className: 'header_bg' },
 				_react2.default.createElement(
 					'div',
-					{ 'class': 'container' },
+					{ className: 'container' },
 					_react2.default.createElement(
 						'div',
-						{ 'class': 'header' },
+						{ className: 'header' },
 						_react2.default.createElement(
 							'div',
-							{ 'class': 'head-t' },
+							{ className: 'head-t' },
 							_react2.default.createElement(
 								'div',
-								{ 'class': 'logo' },
+								{ className: 'logo' },
 								_react2.default.createElement(
 									'a',
 									{ href: 'index.html' },
@@ -30688,73 +30688,64 @@
 							),
 							_react2.default.createElement(
 								'div',
-								{ 'class': 'header_right' },
+								{ className: 'header_right' },
 								_react2.default.createElement(
 									'div',
-									{ 'class': 'cart box_1' },
+									{ className: 'cart box_1' },
 									_react2.default.createElement(
 										'a',
 										{ href: 'checkout.html' },
 										_react2.default.createElement(
 											'div',
-											{ 'class': 'total' },
-											_react2.default.createElement('span', { 'class': 'simpleCart_total' }),
+											{ className: 'total' },
+											_react2.default.createElement('span', { className: 'simpleCart_total' }),
 											' (',
-											_react2.default.createElement('span', { id: 'simpleCart_quantity', 'class': 'simpleCart_quantity' }),
+											_react2.default.createElement('span', { id: 'simpleCart_quantity', className: 'simpleCart_quantity' }),
 											' items)'
 										),
-										_react2.default.createElement('i', { 'class': 'glyphicon glyphicon-shopping-cart' })
-									),
-									_react2.default.createElement(
-										'p',
-										null,
-										_react2.default.createElement(
-											'a',
-											{ href: 'javascript:;', 'class': 'simpleCart_empty' },
-											'Empty Cart'
-										)
+										_react2.default.createElement('i', { className: 'glyphicon glyphicon-shopping-cart' })
 									),
 									_react2.default.createElement(
 										'div',
-										{ 'class': 'clearfix' },
+										{ className: 'clearfix' },
 										' '
 									)
 								)
 							),
-							_react2.default.createElement('div', { 'class': 'clearfix' })
+							_react2.default.createElement('div', { className: 'clearfix' })
 						),
 						_react2.default.createElement(
 							'ul',
-							{ 'class': 'megamenu skyblue' },
+							{ className: 'megamenu skyblue' },
 							_react2.default.createElement(
 								'li',
-								{ 'class': 'active grid' },
+								{ className: 'active grid' },
 								_react2.default.createElement(
 									'a',
-									{ 'class': 'color1', href: 'index.html' },
+									{ className: 'color1', href: 'index.html' },
 									'Home'
 								)
 							),
 							_react2.default.createElement(
 								'li',
-								{ 'class': 'grid' },
+								{ className: 'grid' },
 								_react2.default.createElement(
 									'a',
-									{ 'class': 'color2', href: '#' },
+									{ className: 'color2', href: '#' },
 									'new arrivals'
 								),
 								_react2.default.createElement(
 									'div',
-									{ 'class': 'megapanel' },
+									{ className: 'megapanel' },
 									_react2.default.createElement(
 										'div',
-										{ 'class': 'row' },
+										{ className: 'row' },
 										_react2.default.createElement(
 											'div',
-											{ 'class': 'col1' },
+											{ className: 'col1' },
 											_react2.default.createElement(
 												'div',
-												{ 'class': 'h_nav' },
+												{ className: 'h_nav' },
 												_react2.default.createElement(
 													'h4',
 													null,
@@ -30822,10 +30813,10 @@
 										),
 										_react2.default.createElement(
 											'div',
-											{ 'class': 'col1' },
+											{ className: 'col1' },
 											_react2.default.createElement(
 												'div',
-												{ 'class': 'h_nav' },
+												{ className: 'h_nav' },
 												_react2.default.createElement(
 													'h4',
 													null,
@@ -30893,10 +30884,10 @@
 										),
 										_react2.default.createElement(
 											'div',
-											{ 'class': 'col1' },
+											{ className: 'col1' },
 											_react2.default.createElement(
 												'div',
-												{ 'class': 'h_nav' },
+												{ className: 'h_nav' },
 												_react2.default.createElement(
 													'h4',
 													null,
@@ -30965,12 +30956,12 @@
 									),
 									_react2.default.createElement(
 										'div',
-										{ 'class': 'row' },
-										_react2.default.createElement('div', { 'class': 'col2' }),
-										_react2.default.createElement('div', { 'class': 'col1' }),
-										_react2.default.createElement('div', { 'class': 'col1' }),
-										_react2.default.createElement('div', { 'class': 'col1' }),
-										_react2.default.createElement('div', { 'class': 'col1' })
+										{ className: 'row' },
+										_react2.default.createElement('div', { className: 'col2' }),
+										_react2.default.createElement('div', { className: 'col1' }),
+										_react2.default.createElement('div', { className: 'col1' }),
+										_react2.default.createElement('div', { className: 'col1' }),
+										_react2.default.createElement('div', { className: 'col1' })
 									)
 								)
 							)
