@@ -9,6 +9,8 @@ api
   .use('/users', require('./users'))
   .use('/products', require('./products'))
 
+// EI: time for more routes!
+
 // Send along any errors
 api.use((err, req, res, next) => {
   res.status(500).send(err)
