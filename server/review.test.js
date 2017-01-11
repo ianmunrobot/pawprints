@@ -14,20 +14,22 @@ describe('/api/products/:productId/reviews', () => {
       .get('/api/products/1/reviews')
       .expect(200)
     );
+    xit('POST creates a new review', () => request(app)
+      .post('/api/products/1/reviews')
+      .expect(201)
+    );
+    xit('POST redirects to the review that was just made', () => request(app)
+      .post('/api/products/1/reviews/1')
+      .expect(201)
+    );
   })
+})
+
+describe('/api/users/:userId/reviews', () => {
   describe('for a user', () => {
     it ('GET all reviews', () => request(app)
       .get('/api/users/1/reviews')
       .expect(200)
     )
   })
-    // it('POST creates a new review', () => request(app)
-    //   .post('/api/products/1/reviews')
-    //   .expect(201)
-    // );
-    // it('POST redirects to the review that was just made', () => request(app)
-    //   .post('/api/products/1/reviews/1')
-    //   .expect(201)
-    // );
-  // })
 })
