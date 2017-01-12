@@ -8,6 +8,11 @@ import store from './store'
 import App from './components/App'
 import Login from './components/Login'
 import WhoAmI from './components/WhoAmI'
+import SignUp from './components/SignUp'
+import Header from './components/Header'
+import NavBar from './components/NavBar'
+import Display from './components/HomePageDisplay.jsx'
+import Footer from './components/Footer'
 
 const ExampleApp = connect(
   ({ auth }) => ({ user: auth })
@@ -16,6 +21,11 @@ const ExampleApp = connect(
     <div>
       <nav>
         {user ? <WhoAmI/> : <Login/>}
+        <App />
+        <Header />
+        <NavBar />
+        <Display />
+        <Footer />
       </nav> 
       {children}
     </div>
@@ -27,6 +37,7 @@ render (
       <Route path="/jokes" component={ExampleApp}>
         <IndexRedirect to="/" />
         <Route path="/" component={App} />
+        <Route path="/signup" component={SignUp} />
       </Route>
     </Router>
   </Provider>,

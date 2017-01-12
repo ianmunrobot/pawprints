@@ -24,9 +24,5 @@ export default function app(props) {
 			</div>
 		</div>
 	</div>
-	<Header />
-	<NavBar />
-	<Display />
-	<Footer />
 </div>);
 }

@@ -8,14 +8,15 @@ export const Login = ({ login }) => (
         login(evt.target.username.value, evt.target.password.value)
       } }>
         <input name="username" />
+        <br/>
         <input name="password" type="password" />
+        <br/>
         <input type="submit" value="Login" />
       </form>
     </div>
 
           <div>
-          <p> Hello, User </p>
-          <h4>Refresh to logout!</h4>
+          <h4> Hello, User </h4>
           </div>
   </div>
 )
