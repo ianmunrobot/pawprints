@@ -7,7 +7,6 @@ export default function homePage() {
 
 			<div>
 			<Display />
-			<Footer />
 			</div>
 		)
 }
