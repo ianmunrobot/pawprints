@@ -46,6 +46,11 @@ describe('/api/users', () => {
       .delete(`/api/users/1`)
       .expect(401)
     )
+
+    it('GET /:id/orders fails 401 (Unauthorized)', () => request(app)
+      .get(`/api/users/1/orders`)
+      .expect(401)
+    )
   })
 
   describe('when logged in as a user', () => {
@@ -53,6 +58,8 @@ describe('/api/users', () => {
   })
 
   describe('when logged in as an admin', () => {
+    beforeEach('set up admin spies', () => {
 
+    })
   })
 })
