@@ -8,7 +8,9 @@ export const Login = ({ login }) => (
         login(evt.target.username.value, evt.target.password.value)
       } }>
         <input name="username" />
+        <br/>
         <input name="password" type="password" />
+        <br/>
         <input type="submit" value="Login" />
       </form>
     </div>
@@ -19,7 +21,7 @@ export const Login = ({ login }) => (
   </div>
 )
 
-import {login} from 'APP/app/reducers/auth'
+import {login} from 'APP/app/action-creators/auth.jsx'
 import {connect} from 'react-redux'
 
 export default connect (
