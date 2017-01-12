@@ -13,22 +13,22 @@ module.exports = require('express').Router()
 
   // a user can look at a specific order
   .get('/:id', (req, res, next) => Order.findById(req.params.id)
-    .then(order => req.json(order))
+    .then(order => res.json(order))
     .catch(next))
 
   // a user can create a new order
   .post('/', (req, res, next) => Order.create(req.body)
-    .then(order => res.status(201).json(user))
+    .then(order => res.status(201).json(order))
     .catch(next))
 
   // a user can update an order
   .put('/:id', (req, res, next) => Order.findById(req.params.id)
     .then(order => order.update(req.body))
-    .then(updatedOrder => res.json(updatedOrder))
+    .then(updatedOrder => res.status(202).json(updatedOrder))
     .catch(next))
 
   // a user can remove an order
   .delete('/:id', (req, res, next) => Order.findById(req.params.id)
-    .then(user => order.destroy())
+    .then(order => order.destroy())
     .then(() => {res.sendStatus(204)})
     .catch(next))
