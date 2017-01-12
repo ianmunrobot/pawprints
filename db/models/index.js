@@ -30,6 +30,7 @@ Order.belongsTo(Address, {
 
 //associate products and orders through line items
 Order.hasMany(LineItem);
+LineItem.belongsTo(Order);
 LineItem.belongsTo(Product);
 
 

@@ -1,16 +1,17 @@
 const request = require('supertest-as-promised');
 const chai = require('chai');
 const expect = chai.expect
+
 const db = require('APP/db');
 const Review = require('APP/db/models/review');
 const Product = require('APP/db/models/product');
 const app = require('./start')
 
+
+import chai from 'chai'
 import supertest from 'supertest-as-promised'
 
 describe('/api/products/:productId/reviews', () => {
-  before('wait for the db', () => db.didSync)
-
   describe('for a product', () => {
     it('GET all reviews', () => request(app)
       .get('/api/products/1/reviews')

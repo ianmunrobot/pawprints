@@ -1,1 +1,5 @@
 node_modules/
+
+# transpiled Babel bundles
+public/bundle.js
+public/bundle.js.map
