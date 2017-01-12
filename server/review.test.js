@@ -1,9 +1,12 @@
 const request = require('supertest-as-promised');
-const {expect} = require('chai');
+const chai = require('chai');
+const expect = chai.expect
+
 const db = require('APP/db');
 const Review = require('APP/db/models/review');
 const Product = require('APP/db/models/product');
 const app = require('./start')
+
 
 import chai from 'chai'
 import supertest from 'supertest-as-promised'
