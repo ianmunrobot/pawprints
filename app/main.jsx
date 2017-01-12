@@ -13,6 +13,7 @@ import Header from './components/Header'
 import NavBar from './components/NavBar'
 import Footer from './components/Footer'
 import Homepage from './components/Homepage'
+import Checkout from './components/Checkout'
 
 const ExampleApp = connect(
   ({ auth }) => ({ user: auth })
@@ -40,6 +41,7 @@ render (
         <Route path="/" component={Homepage} />
         <Route path="/signup" component={SignUp} />
         <Route path="/" component={Footer} />
+        <Route path="/checkout" component={Checkout} />
       </Route>
     </Router>
   </Provider>,

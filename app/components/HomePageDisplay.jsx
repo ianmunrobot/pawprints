@@ -5,7 +5,7 @@ export default function homeDisplay() {
 
 <div className="fashion-section">
 		 <div className="container"> 
-		     <h3 className="title">Puppies</h3>
+		     <h3 className="title">Paw Prints</h3>
 
 		   <div className="fashion-info">
 				<div className="col-md-4 fashion-grids">
