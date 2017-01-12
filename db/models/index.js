@@ -10,6 +10,7 @@ const Category = require('./categories')
 const Order = require('./order')
 const Address = require('./address')
 const Review = require('./review')
+
 const LineItem = require('./lineItem')
 
 Product.belongsToMany(Category, {
@@ -29,6 +30,7 @@ Order.belongsTo(Address, {
 
 //associate products and orders through line items
 Order.hasMany(LineItem);
+LineItem.belongsTo(Order);
 LineItem.belongsTo(Product);
 
 
@@ -50,4 +52,3 @@ module.exports = {
   Review,
   LineItem
 }
-

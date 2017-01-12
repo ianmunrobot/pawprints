@@ -4,9 +4,9 @@ const Order = require('./order')
 const Product = require('./product')
 
 
-const LineItem = db.define('lineItem', {
+const LineItem = db.define('lineItems', {
 
-  price: Sequelize.FLOAT,
+  price: Sequelize.DECIMAL(10, 2),
   quantity: {
     type: Sequelize.INTEGER,
     allowNull: false,

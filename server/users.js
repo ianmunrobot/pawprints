@@ -2,6 +2,7 @@
 
 const db = require('APP/db')
 const User = db.model('users')
+const Review = db.model('reviews')
 
 const {mustBeLoggedIn, selfOnly, forbidden, mustBeAdmin, selfOrAdmin} = require('./auth.filters')
 
@@ -15,6 +16,16 @@ module.exports = require('express').Router()
   .post('/', (req, res, next) => User.create(req.body)
     .then(user => res.status(201).json(user))
     .catch(next))
+
+
+  //anyone can find reviews posted by the user
+  .get('/:id/reviews', (req, res, next) => Review.findAll({
+    where: {
+      user_id: req.params.id
+    }
+  })
+  .then(reviews => res.json(reviews))
+  .catch(next))
 
   //a user can get themself, admins can get a user
   .get('/:id', selfOrAdmin('get'), (req, res, next) => User.findById(req.params.id)
