@@ -27,7 +27,7 @@ describe('Products actions', () => {
   it('receives all products', () => {
     expect(receiveProducts(testProducts)).to.be.deep.equal({
       type: 'RECEIVE_PRODUCTS',
-      product: testProducts
+      products: testProducts
     })
   })
 })
