@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { Component } from 'react';
+import { Router, Route, Link } from 'react-router';
 
 
-
-export default function header() {
+export default function footer() {
 	return (
 
 		<div>
@@ -22,7 +22,7 @@ export default function header() {
 				<div className="col-md-2 footer-left">
 					<h3>Your Account</h3>
 					<ul>
-						<li><a href="account.html">Your Account</a></li>
+						<li><Link to="/signup">Your Account</Link></li>
 						<li><a href="#">Personal Information</a></li>
 						<li><a href="contact.html">Addresses</a></li>
 						<li><a href="#">Discount</a></li>
