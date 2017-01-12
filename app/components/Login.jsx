@@ -14,8 +14,7 @@ export const Login = ({ login }) => (
     </div>
 
           <div>
-          <p> Hello, User </p>
-          <h4>Refresh to logout!</h4>
+          <h4> Hello, User </h4>
           </div>
   </div>
 )
