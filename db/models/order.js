@@ -25,7 +25,7 @@ const Order = db.define('orders', {
   },
   date: {
     // will store # of milliseconds in js Date() style
-    type: Sequelize.INTEGER
+    type: Sequelize.BIGINT
   },
   isGift: {
     type: Sequelize.BOOLEAN,

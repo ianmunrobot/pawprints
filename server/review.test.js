@@ -7,8 +7,6 @@ const Review = require('APP/db/models/review');
 const Product = require('APP/db/models/product');
 const app = require('./start')
 
-import supertest from 'supertest-as-promised'
-
 describe('/api/products/:productId/reviews', () => {
   describe('for a product', () => {
     it('GET all reviews', () => request(app)
