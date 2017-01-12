@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Router, Route, Link } from 'react-router';
 
 export default function header() {
 	return (
@@ -11,10 +12,10 @@ export default function header() {
 			  </div>
 			  <div className="header_right">
 				<div className="cart box_1">
-					<a href="checkout.html">
+					<Link to="/checkout">
 					<div className="total">
 						<span className="simpleCart_total"></span> (<span id="simpleCart_quantity" className="simpleCart_quantity"></span> items)</div>
-						<i className="glyphicon glyphicon-shopping-cart"></i></a>
+						<i className="glyphicon glyphicon-shopping-cart"></i></Link> 
 					<div className="clearfix"> </div>
 				</div>				 
 			</div>
