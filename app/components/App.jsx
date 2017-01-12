@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Header from './Header';
 import NavBar from './NavBar';
 import Display from './HomePageDisplay';
+import Footer from './Footer';
 
 export default function app(props) {
 	return (
@@ -26,5 +27,6 @@ export default function app(props) {
 	<Header />
 	<NavBar />
 	<Display />
+	<Footer />
 </div>);
 }
