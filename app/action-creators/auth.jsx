@@ -2,11 +2,13 @@ import axios from 'axios'
 
 import { AUTHENTICATED } from 'APP/app/constants'
 
+// sync
 export const authenticated = user => ({
   type: AUTHENTICATED,
   user,
 })
 
+// thunks
 export const login = (username, password) =>
   dispatch =>
     axios.post('/api/auth/local/login',
