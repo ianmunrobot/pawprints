@@ -28100,7 +28100,7 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var store = (0, _redux.createStore)(_reducers2.default, (0, _redux.applyMiddleware)((0, _reduxLogger2.default)(), _reduxThunk2.default));
+	var store = (0, _redux.createStore)(_reducers2.default, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(), (0, _redux.applyMiddleware)((0, _reduxLogger2.default)(), _reduxThunk2.default));
 	
 	exports.default = store;
 	
@@ -31045,24 +31045,24 @@
 	function homeDisplay() {
 		return _react2.default.createElement(
 			"div",
-			{ "class": "fashion-section" },
+			{ className: "fashion-section" },
 			_react2.default.createElement(
 				"div",
-				{ "class": "container" },
+				{ className: "container" },
 				_react2.default.createElement(
 					"h3",
-					{ "class": "tittle" },
+					{ className: "tittle" },
 					"Fashions"
 				),
 				_react2.default.createElement(
 					"div",
-					{ "class": "fashion-info" },
+					{ className: "fashion-info" },
 					_react2.default.createElement(
 						"div",
-						{ "class": "col-md-4 fashion-grids" },
+						{ className: "col-md-4 fashion-grids" },
 						_react2.default.createElement(
 							"figure",
-							{ "class": "effect-bubba" },
+							{ className: "effect-bubba" },
 							_react2.default.createElement("img", { src: "images/f1.jpg", alt: "" }),
 							_react2.default.createElement(
 								"figcaption",
@@ -31074,7 +31074,7 @@
 								),
 								_react2.default.createElement(
 									"p",
-									{ "class": "cart" },
+									{ className: "cart" },
 									_react2.default.createElement(
 										"a",
 										{ href: "single.html" },
@@ -31086,10 +31086,10 @@
 					),
 					_react2.default.createElement(
 						"div",
-						{ "class": "col-md-4 fashion-grids" },
+						{ className: "col-md-4 fashion-grids" },
 						_react2.default.createElement(
 							"figure",
-							{ "class": "effect-bubba" },
+							{ className: "effect-bubba" },
 							_react2.default.createElement("img", { src: "images/f2.jpg", alt: "" }),
 							_react2.default.createElement(
 								"figcaption",
@@ -31101,7 +31101,7 @@
 								),
 								_react2.default.createElement(
 									"p",
-									{ "class": "cart" },
+									{ className: "cart" },
 									_react2.default.createElement(
 										"a",
 										{ href: "single.html" },
@@ -31113,10 +31113,10 @@
 					),
 					_react2.default.createElement(
 						"div",
-						{ "class": "col-md-4 fashion-grids" },
+						{ className: "col-md-4 fashion-grids" },
 						_react2.default.createElement(
 							"figure",
-							{ "class": "effect-bubba" },
+							{ className: "effect-bubba" },
 							_react2.default.createElement("img", { src: "images/f3.jpg", alt: "" }),
 							_react2.default.createElement(
 								"figcaption",
@@ -31128,7 +31128,7 @@
 								),
 								_react2.default.createElement(
 									"p",
-									{ "class": "cart" },
+									{ className: "cart" },
 									_react2.default.createElement(
 										"a",
 										{ href: "single.html" },
@@ -31138,7 +31138,7 @@
 							)
 						)
 					),
-					_react2.default.createElement("div", { "class": "clearfix" })
+					_react2.default.createElement("div", { className: "clearfix" })
 				)
 			)
 		);
