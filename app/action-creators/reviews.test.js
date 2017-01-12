@@ -1,5 +1,5 @@
-import { export } from 'chai'
-import { receiveReviews, receiveReview } form './reviews'
+import { expect } from 'chai'
+import { receiveReviews, receiveReview } from './reviews'
 
 describe('Review actions', () => {
   const testReviews = [
