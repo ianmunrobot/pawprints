@@ -1,7 +1,8 @@
 'use strict'
 
 const db = require('APP/db')
-const Product = db.model('product')
+const Product = db.model('products')
+const Review = db.model('reviews')
 const {mustBeLoggedIn, forbidden, mustBeAdmin,} = require('./auth.filters')
 
 const router = require('express').Router()
@@ -26,6 +27,18 @@ router.post('/', mustBeAdmin, (req, res, next) => {
 router.get('/:id', (req, res, next) => {
   Product.findById(req.params.id)
   .then(res.send.bind(res))
+  .catch(next)
+})
+
+
+// get all reviews of a product
+router.get('/:id/reviews', (req, res, next) => {
+  Review.findAll({
+    where: {
+      product_id: req.params.id
+    }
+  })
+  .then(reviews => res.json(reviews))
   .catch(next)
 })
 
