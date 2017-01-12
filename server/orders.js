@@ -3,20 +3,26 @@
 const db = require('APP/db')
 const Order = db.model('orders')
 
-// const {mustBeLoggedIn, selfOnly, forbidden, mustBeAdmin, selfOrAdmin} = require('./auth.filters')
+const {mustBeLoggedIn, selfOnly, forbidden, mustBeAdmin, selfOrAdmin} = require('./auth.filters')
 
 module.exports = require('express').Router()
-  // a user can look at all their orders
-  .get('/', (req, res, next) => Order.findAll()
+  // an admin can retrieve all orders
+  .get('/', mustBeAdmin, (req, res, next) =>
+    Order.findAll({
+      include: [{ all: true }]
+    })
     .then(orders => res.json(orders))
     .catch(next))
 
-  // a user can look at a specific order
-  .get('/:id', (req, res, next) => Order.findById(req.params.id)
+  // a logged-in user can look at a specific order
+  .get('/:id', (req, res, next) =>
+    Order.findById(req.params.id, {
+      include: [{ all: true }]
+    })
     .then(order => res.json(order))
     .catch(next))
 
-  // a user can create a new order
+  // any user can create a new order
   .post('/', (req, res, next) => Order.create(req.body)
     .then(order => res.status(201).json(order))
     .catch(next))
