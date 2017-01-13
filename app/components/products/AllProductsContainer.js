@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { receiveProducts } from '../../action-creators/products'
+import { fetchProducts } from '../../action-creators/products'
 import AllProducts from './AllProducts'
 
 const mapStateToProps = function(state) {
