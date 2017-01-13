@@ -20,9 +20,9 @@ describe('Review actions', () => {
     })
   })
 
-  it('recieves all reviews', () => {
+  it('recieves all reviews for a product', () => {
     expect(receiveReviews(testReviews)).to.be.deep.equal({
-      type: 'RECEIVE_REVIEWS',
+      type: 'RECEIVE_SINGLE_PRODUCT_REVIEWS',
       reviews: testReviews
     })
   })
