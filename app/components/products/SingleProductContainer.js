@@ -4,7 +4,7 @@ import { fetchProduct } from '../../action-creators';
 
 const mapStateToProps = function (state) {
   return {
-
+    product: state.productsReducer
   }
 }
 
