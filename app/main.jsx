@@ -12,7 +12,7 @@ import SignUp from './components/SignUp'
 import Header from './components/Header'
 import NavBar from './components/NavBar'
 import Footer from './components/Footer'
-import Homepage from './components/Homepage'
+import Homepage from './components/HomePage'
 import Checkout from './components/Checkout'
 
 const ExampleApp = connect(
