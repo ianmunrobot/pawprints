@@ -9,7 +9,7 @@ export default function homePageDisplay() {
         <div className="fashion-info">
           <div className="col-md-4 fashion-grids">
             <figure className="effect-bubba">
-              <img src="images/f1.jpg" alt="" />
+              <img src="images/image1.jpg" alt="" />
               <figcaption>
                 <h4>Puppies</h4>
                 <p className="cart"><a href="single.html">Shop</a></p>
@@ -18,7 +18,7 @@ export default function homePageDisplay() {
           </div>
           <div className="col-md-4 fashion-grids">
             <figure className="effect-bubba">
-              <img src="images/f2.jpg" alt="" />
+              <img src="images/image2.jpg" alt="" />
               <figcaption>
                 <h4>Kittens</h4>
                 <p className="cart"><a href="single.html">Shop</a></p>
@@ -27,7 +27,7 @@ export default function homePageDisplay() {
           </div>
           <div className="col-md-4 fashion-grids">
             <figure className="effect-bubba">
-              <img src="images/f3.jpg" alt="" />
+              <img src="images/image3.jpg" alt="" />
               <figcaption>
                 <h4>Other House Pets</h4>
                 <p className="cart"><a href="single.html">Shop</a></p>
