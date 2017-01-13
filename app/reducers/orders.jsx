@@ -5,6 +5,7 @@ const DEFAULT_STATE = {
   selectedOrder: {}
 }
 
+
 const ordersReducer = (state = DEFAULT_STATE, action) => {
 
   const newState = Object.assign({}, state)
