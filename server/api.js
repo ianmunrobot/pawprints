@@ -11,6 +11,7 @@ api
   .use('/users', require('./users'))
   .use('/products', require('./products'))
   .use('/orders', require('./orders'))
+  .use('/addresses', require('./addresses'))
 
 // Send along any errors
 api.use((err, req, res, next) => {
