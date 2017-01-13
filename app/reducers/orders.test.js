@@ -1,7 +1,7 @@
 import chai, {expect} from 'chai'
 import ordersReducer from './orders.jsx'
 import { createStore } from 'redux'
-import { RECEIVE_ORDER, RECEIVE_ORDERS } from '../constants.jsx'
+import { RECEIVE_SINGLE_ORDER, RECEIVE_ORDERS } from '../constants.jsx'
 
 describe('orders reducer', () => {
   let testingStore;
@@ -30,7 +30,7 @@ describe('orders reducer', () => {
   })
   it('receives a single order', () => {
     testingStore.dispatch({
-      type: 'RECEIVE_ORDER',
+      type: 'RECEIVE_SINGLE_ORDER',
       order: testOrders[0]
     });
     let newState = testOrders[0].getState();

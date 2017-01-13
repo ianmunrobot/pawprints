@@ -1,4 +1,4 @@
-import { RECEIVE_ORDERS, RECEIVE_ORDER } from '../action-creators/orders.jsx'
+import { RECEIVE_ORDERS, RECEIVE_SINGLE_ORDER } from '../action-creators/orders.jsx'
 
 const DEFAULT_STATE = []
 
@@ -9,7 +9,7 @@ const ordersReducer = (state = DEFAULT_STATE, action) => {
     case RECEIVE_ORDERS:
       return action.orders
       break
-    case RECEIVE_ORDER:
+    case RECEIVE_SINGLE_ORDER:
       return action.order
       break;
     default:
