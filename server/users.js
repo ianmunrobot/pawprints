@@ -3,6 +3,7 @@
 const db = require('APP/db')
 const User = db.model('users')
 const Review = db.model('reviews')
+const Order = db.model('orders')
 
 const {mustBeLoggedIn, selfOnly, forbidden, mustBeAdmin, selfOrAdmin} = require('./auth.filters')
 
@@ -18,14 +19,6 @@ module.exports = require('express').Router()
     .catch(next))
 
 
-  //anyone can find reviews posted by the user
-  .get('/:id/reviews', (req, res, next) => Review.findAll({
-    where: {
-      user_id: req.params.id
-    }
-  })
-  .then(reviews => res.json(reviews))
-  .catch(next))
 
   //a user can get themself, admins can get a user
   .get('/:id', selfOrAdmin('get'), (req, res, next) => User.findById(req.params.id)
@@ -43,3 +36,25 @@ module.exports = require('express').Router()
     .then(user => user.destroy())
     .then(() => res.send(202))
     .catch(next))
+
+  //anyone can find reviews posted by the user
+  .get('/:id/reviews', (req, res, next) => Review.findAll({
+    where: {
+      user_id: req.params.id
+    }
+  })
+  .then(reviews => res.json(reviews))
+  .catch(next))
+
+  // a logged in user or admin can retrieve all their orders
+  .get('/:id/orders', selfOrAdmin('get'),
+    (req, res, next) => {
+      Order.findAll({
+      where: {
+        user: null,
+      },
+      include: [{ all: true }]
+    })
+    .then(req.send.bind(req))
+    .catch(next)
+    })
