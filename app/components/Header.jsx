@@ -8,7 +8,7 @@ export default function header() {
 		<div className="header">
 		  <div className="head-t">
 			 <div className="logo">
-				  <a href="index.html"><h1>Paw <span>Prints</span></h1> </a>
+				  <Link to="/"><h1>Paw <span>Prints</span></h1> </Link>
 			  </div>
 			  <div className="header_right">
 				<div className="cart box_1">
