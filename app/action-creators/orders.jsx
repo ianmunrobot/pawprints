@@ -1,5 +1,5 @@
 import {
-  RECEIVE_ORDER,
+  RECEIVE_SINGLE_ORDER,
   RECEIVE_ORDERS
 } from 'APP/app/constants'
 
@@ -13,9 +13,9 @@ export const receiveOrders = orders => (
   }
 )
 
-export const receiveOrder = order => (
+export const receiveSingleOrder = order => (
   {
-    type: RECEIVE_ORDER,
+    type: RECEIVE_SINGLE_ORDER,
     order
   }
 )
@@ -30,7 +30,7 @@ export const fetchOrders = () => {
   }
 }
 
-export const fetchOrder = orderId => {
+export const fetchSingleOrder = orderId => {
   return dispatch => {
     axios.get(`/api/orders/${orderId}`)
     .then(response => {
