@@ -1,5 +1,3 @@
-import axios from 'axios'
-
 import { AUTHENTICATED } from 'APP/app/constants'
 
 const reducer = (state=null, action) => {

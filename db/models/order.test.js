@@ -12,6 +12,14 @@ const expect = chai.expect
 describe('Order', () => {
   before('wait for the db', () => db.didSync)
 
+  afterEach(() => {
+      return Order.destroy({
+        truncate: true,
+        cascade: true,
+        restartIdentity: true,
+      })
+    })
+
   describe('validations', () => {
 
     var order;
