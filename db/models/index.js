@@ -13,6 +13,7 @@ const Review = require('./review')
 
 const LineItem = require('./lineItem')
 
+// M-M relationship between categories and Products
 Product.belongsToMany(Category, {
   through: 'productsCategories'
 })
@@ -40,8 +41,13 @@ Product.belongsToMany(Product, {
   as: 'options'
 })
 
+// reviews must belong to product and user
 Review.belongsTo(Product)
 Review.belongsTo(User)
+
+// Address can/should be associated with user when logged in
+Address.belongsTo(User)
+User.hasMany(Address)
 
 module.exports = {
   User,
