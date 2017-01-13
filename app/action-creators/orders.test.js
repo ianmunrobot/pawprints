@@ -19,6 +19,7 @@ describe('Orders actions', () => {
   ]
 
   it('receives a single order', () => {
+    console.log(testOrders[0]);
     expect(receiveOrder(testOrders[0])).to.be.deep.equal({
       type: 'RECEIVE_ORDER',
       order: testOrders[0],
