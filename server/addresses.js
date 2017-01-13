@@ -27,7 +27,7 @@ module.exports = require('express').Router()
 
   // logged in or admin can get their own addresses
   .get(`/:id`, mustBeLoggedIn, (req, res, next) => {
-    if (req.body.isAdmin) {
+    if (req.user.isAdmin) {
       Address.findById(req.params.id, {
         where: {
           user_id: req.body.id
@@ -44,7 +44,7 @@ module.exports = require('express').Router()
 
   // logged in or admin can edit an address
   .put(`/:id`, mustBeLoggedIn, (req, res, next) => {
-    if (req.body.isAdmin) {
+    if (req.user.isAdmin) {
       Address.update(req.body, {
         where: {
           id: req.params.id,
@@ -70,7 +70,7 @@ module.exports = require('express').Router()
 
   // logged in or admin can delete an address that belongs to them
   .delete(`/:id`, mustBeLoggedIn, (req, res, next) => {
-    if (req.body.isAdmin) {
+    if (req.user.isAdmin) {
       Address.destroy({
         where: {
           id: req.params.id,
