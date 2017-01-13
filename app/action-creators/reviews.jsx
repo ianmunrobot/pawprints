@@ -1,6 +1,6 @@
 import {
   RECEIVE_REVIEW,
-  RECEIVE_REVIEWS
+  RECEIVE_SINGLE_PRODUCT_REVIEWS
 } from 'APP/app/constants'
 
 import axios from 'axios'
@@ -8,7 +8,7 @@ import axios from 'axios'
 // sync
 export const receiveReviews = reviews => (
   {
-    type: RECEIVE_REVIEWS,
+    type: RECEIVE_SINGLE_PRODUCT_REVIEWS,
     reviews
   }
 )
