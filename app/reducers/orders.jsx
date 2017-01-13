@@ -1,16 +1,19 @@
-import { RECEIVE_ORDERS, RECEIVE_SINGLE_ORDER } from '../action-creators/orders.jsx'
+import { RECEIVE_ORDERS, RECEIVE_SINGLE_ORDER } from 'APP/app/constants'
 
-const DEFAULT_STATE = []
+const DEFAULT_STATE = {
+  allOrders: [],
+  selectedOrder: {}
+}
 
 const ordersReducer = (state = DEFAULT_STATE, action) => {
 
-  const newState = Object.assign([], state)
+  const newState = Object.assign({}, state)
   switch(action.type) {
     case RECEIVE_ORDERS:
-      return action.orders
+      newState.allOrders = action.orders
       break
     case RECEIVE_SINGLE_ORDER:
-      return action.order
+      newState.selectedOrder = action.order
       break;
     default:
       return state

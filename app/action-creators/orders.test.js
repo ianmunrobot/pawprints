@@ -3,6 +3,7 @@ import { expect } from 'chai'
 import { receiveOrders, receiveSingleOrder } from './orders'
 
 describe('Orders actions', () => {
+
   const testOrders = [
     {
       status: 'shipped',
@@ -19,7 +20,6 @@ describe('Orders actions', () => {
   ]
 
   it('receives a single order', () => {
-    console.log(testOrders[0]);
     expect(receiveSingleOrder(testOrders[0])).to.be.deep.equal({
       type: 'RECEIVE_SINGLE_ORDER',
       order: testOrders[0],
