@@ -12,5 +12,5 @@ import {connect} from 'react-redux'
 
 export default connect (
   ({ auth }) => ({ user: auth }),
-  {logout},
+  {logout}
 ) (WhoAmI)
