@@ -15,7 +15,7 @@ import Footer from './components/Footer'
 import Homepage from './components/HomePage'
 import Checkout from './components/Checkout'
 
-const ExampleApp = connect(
+const Frame = connect(
   ({auth}) => ({
     user: auth
   })
@@ -37,8 +37,7 @@ const ExampleApp = connect(
 render(
   <Provider store={ store }>
     <Router history={ browserHistory }>
-      <Route path="/jokes" component={ ExampleApp }>
-        <IndexRedirect to="/" />
+      <Route path="/" component={ Frame }>
         <Route path="/" component={ Homepage } />
         <Route path="/signup" component={ SignUp } />
         <Route path="/" component={ Footer } />
