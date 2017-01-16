@@ -16,23 +16,23 @@ export const Login = ({login, loginWithGoogle, loginWithFacebook, loginWithGithu
     <button onClick={ evt => {
                         evt.preventDefault()
                         loginWithGoogle()
-                      } } id="google-oauth-button-login-modal" class="button oauth-button google-oauth-button">
-      <i class="icon sprite-icon"></i>
-      <span class="button-text">Log in with Google</span>
+                      } } id="google-oauth-button-login-modal" className="button oauth-button google-oauth-button">
+      <i className="icon sprite-icon"></i>
+      <span className="button-text">Log in with Google</span>
     </button>
     <button onClick={ evt => {
                         evt.preventDefault()
                         loginWithFacebook()
-                      } } id="facebook-oauth-button-login-modal" class="button oauth-button facebook-oauth-button">
-      <i class="icon sprite-icon"></i>
-      <span class="button-text">Log in with Facebook</span>
+                      } } id="facebook-oauth-button-login-modal" className="button oauth-button facebook-oauth-button">
+      <i className="icon sprite-icon"></i>
+      <span className="button-text">Log in with Facebook</span>
     </button>
     <button onClick={ evt => {
                         evt.preventDefault()
                         loginWithGithub()
-                      } } id="github-oauth-button-login-modal" class="button oauth-button github-oauth-button">
-      <i class="icon sprite-icon"></i>
-      <span class="button-text">Log in with Github</span>
+                      } } id="github-oauth-button-login-modal" className="button oauth-button github-oauth-button">
+      <i className="icon sprite-icon"></i>
+      <span className="button-text">Log in with Github</span>
     </button>
   </div>
 </div>
