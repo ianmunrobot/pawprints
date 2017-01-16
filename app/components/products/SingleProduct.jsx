@@ -11,6 +11,19 @@ const SingleProduct = (props) => {
       }) :
       (<option></option>)
 
+  const reviews = product.reviews
+    ? product.reviews.map((review, index) => {
+      return (
+        <li key={index}>
+          <h3>{review.title}</h3>
+          <p className="lead">Rating: {review.rating} / 5 </p>
+          <p>
+            {review.message}
+          </p>
+        </li>
+      )
+    })
+    : (<li></li>)
 
   return (
     <div className="products">
@@ -18,10 +31,9 @@ const SingleProduct = (props) => {
         <div className="products-grids">
           <div className="col-md-12 products-single">
             <div className="col-md-5 col-sm-12 col-xs-12 grid-single">
-
-                <div className="thumb-image"> <img src={product.imgUrl} data-imagezoom="true" className="img-responsive" alt=""/>
-                </div>
-
+              <div className="thumb-image">
+                <img src={product.imgUrl} data-imagezoom="true" className="img-responsive" alt=""/>
+              </div>
             </div>
             <div className="col-md-7 col-sm-12 col-xs-12 single-text">
               <div className="details-left-info simpleCart_shelfItem">
@@ -50,6 +62,10 @@ const SingleProduct = (props) => {
               <input type="submit" value="add to cart"/>
             </div>
           </div>
+          <h2>Reviews</h2>
+            <ul className="list-unstyled">
+              {reviews}
+            </ul>
           </div>
         </div>
       </div>
