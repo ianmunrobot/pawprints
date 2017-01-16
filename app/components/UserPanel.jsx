@@ -24,6 +24,17 @@ export function UserPanel({user}) {
                   <span>Email Address: {user.email}</span>
                 </div>
               </form>
+              <div className="account-top heading">
+              <br/>
+              <br/>
+              <br/>
+              <h3>Delete Profile</h3>
+                </div>
+                <button onClick={ evt => {
+                        evt.preventDefault()
+                      } } className="button oauth-button google-oauth-button">
+      <span className="button-text">Delete Account</span>
+    </button>
               </div>
               <div className="col-md-6 account-left">
               <form id="userInfo" onSubmit={ function(evt){
@@ -61,11 +72,12 @@ export function UserPanel({user}) {
                 <div className="address new">
                   <input type="submit" value="update" />
                 </div>
-              </form>
+                </form>
               </div> 
               </div>
               </div>
               </div>
+
 		</div>
 		)
 }
