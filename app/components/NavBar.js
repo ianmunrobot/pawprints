@@ -10,7 +10,7 @@ export function NavBar({user}) {
 				<li className="grid"><a className="color2" href="#">Other Pets</a></li>
 				{ user ? 
 
-				<li><Link to={`users/${user.id}`}>Your Account</Link></li> :
+				<li><Link to='/profile'>Your Account</Link></li> :
 				<li><Link to="/signup">Sign Up</Link></li>
 
 				}
