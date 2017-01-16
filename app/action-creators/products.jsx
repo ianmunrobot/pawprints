@@ -13,6 +13,7 @@ export const receiveProducts = products => (
 )
 
 export const fetchProducts = function() {
+  console.log('products reducer has been called!!!!');
   return dispatch => {
     axios.get('/api/products')
     .then(response => {

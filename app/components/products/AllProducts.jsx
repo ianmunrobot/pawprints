@@ -3,28 +3,48 @@ import {connect} from 'react-redux';
 import { Link } from 'react-router';
 
 const Products = (props) => {
+
+  // split products array into rows of 3 products each
+  const splitProducts = []
+  let count = 0
+  let rowCount = -1
+  props.products.forEach(product => {
+    if (count % 3 === 0) {
+      splitProducts.push([])
+      rowCount++;
+    }
+    splitProducts[rowCount].push(product)
+    count++
+  })
+
   return (
-    <div class="products">
-      <div class="container">
-        <div class="products-grids">
-          <div class="col-md-8 products-grid-left">
-            <div class="products-grid-lft">
+    <div className="products">
+      <div className="container">
+        <div className="products-grids">
+          <div className="col-md-12 products-grid-left">
               {
-                this.props.products.map(product => {
+                splitProducts.map((row, index) => {
                   return (
-                    <div class="products-grd" key={product.id}>
-                      <div class="p-one simpleCart_shelfItem prd">
-                        <Link to={`/products/${product.id}`}>
-                          <img src="product.imgUrl" alt="" class="img-responsive" />
-                          <h4>{product.name}</h4>
-                          <p><a class="item_add" href="#"><i class="glyphicon glyphicon-shopping-cart"></i> <span class=" item_price valsa">${product.price}</span></a></p>
-                        </Link>
-                      </div>
+                    <div className="products-grid-lft" key={index}>
+                      {
+                        row.map(product => {
+                          return (
+                            <div className="products-grd" key={product.id}>
+                              <div className="p-one simpleCart_shelfItem prd">
+                                <Link to={`/products/${product.id}`}>
+                                  <img src={product.imgUrl} alt="" className="img-responsive" />
+                                  <h4>{product.title}</h4>
+                                  <p><i className="glyphicon glyphicon-shopping-cart"></i> <span className=" item_price valsa">${product.price}</span></p>
+                                </Link>
+                              </div>
+                            </div>
+                          )
+                        })
+                      }
                     </div>
                   )
                 })
               }
-            </div>
           </div>
         </div>
       </div>
