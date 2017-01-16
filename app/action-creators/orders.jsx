@@ -30,32 +30,32 @@ export const receiveSingleOrder = order => (
   }
 )
 
-export const addProductToOrder = (productId, quantity = 1) => {
+export const addProductToOrder = (productId, quantity = 1) => ({
   type: ADD_PRODUCT_TO_ORDER,
   quantity,
   productId
-}
+})
 
-export const changeQuantityOfProduct = (productId, quantity) => {
+export const changeQuantityOfProduct = (productId, quantity) => ({
   type: CHANGE_QUANTITY_OF_PRODUCT,
   quantity,
   productId
-}
+})
 
-export const changeShippingAddress = (shippingAddress) => {
+export const changeShippingAddress = (shippingAddress) => ({
   type: CHANGE_SHIPPING_ADDRESS,
   shippingAddress
-}
+})
 
-export const changeBillingAddress = (billingAddress) => {
+export const changeBillingAddress = (billingAddress) => ({
   type: CHANGE_BILLING_ADDRESS,
   billingAddress
-}
+})
 
-export const checkout = (complete) => {
+export const checkout = (complete) => ({
   type: CHECKOUT,
   complete
-}
+})
 
 
 // thunks
@@ -77,7 +77,7 @@ export const fetchSingleOrder = orderId => {
   }
 }
 
-export const addProductToOrder = (orderId, productId, quantity) => {
+export const addProductToOrderThunk = (orderId, productId, quantity) => {
   return dispatch => {
     const userId = store.getState().authReducer.id
 
