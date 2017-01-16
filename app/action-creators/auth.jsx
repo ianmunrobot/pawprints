@@ -17,6 +17,20 @@ export const login = (username, password) => dispatch => axios.post('/api/auth/l
   .then(() => dispatch(whoami()))
   .catch(() => dispatch(whoami()))
 
+export const signUp = (firstName, lastName, email, password) => dispatch => {
+  console.log('INSIDE SIGNUP THUNK');
+  return axios.post('/api/users/',
+    {
+      firstName,
+      lastName,
+      email,
+      password
+    })
+    .then((res) => {
+      dispatch(login(res.data.email, res.data.password))
+    })
+}
+
 export const loginWithGoogle = () => dispatch => axios.post('/api/auth/google-oauth/login', {
   scope: 'email'
 })
