@@ -14,6 +14,7 @@ import Homepage from './components/HomePage'
 import Checkout from './components/Checkout'
 import AllProducts from './components/products/AllProducts'
 
+
 import { fetchProducts } from './action-creators/products'
 
 const onAppEnter = function() {
