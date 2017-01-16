@@ -23,7 +23,10 @@ module.exports = require('express').Router()
     LineItem.create({
       quantity: val,
       product_id: +req.params.productId,
-      user_id: req.user.id,
+      user_id: req.body.user_id,
+    },
+    {
+      include: ['product']
     })
     .then(res.send.bind(res))
     .catch(next)
