@@ -10,4 +10,4 @@ I was built by Charity, Eric, Ian, and Jimmy during Fullstack Academy's 1610 Sof
 <a href="https://drive.google.com/file/d/0B3ApY822SoU9QkdJd3VPR1FOTEU/view?usp=sharing">Draw.io link</a>
 
 **Wireframe/React components inheritance**
-<a href ="https://drive.google.com/file/d/0B3ApY822SoU9RkpUSkFGd1JvRGc/view?usp=sharing"></a>
+<a href ="https://drive.google.com/file/d/0B3ApY822SoU9RkpUSkFGd1JvRGc/view?usp=sharing">Draw.io link</a>
