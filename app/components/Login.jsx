@@ -1,28 +1,51 @@
 import React from 'react'
 
-export const Login = ({ login }) => (
+export const Login = ({login, loginWithGoogle, loginWithFacebook, loginWithGithub}) => (
+<div>
   <div>
-    <div>
-      <form onSubmit={evt => {
-        evt.preventDefault()
-        login(evt.target.username.value, evt.target.password.value)
-      } }>
-        <input name="username" />
-        <br/>
-        <input name="password" type="password" />
-        <br/>
-        <input type="submit" value="Login" />
-      </form>
-    </div>
-    <div>
-    <h4> Hello, User </h4>
-    </div>
+    <form onSubmit={ evt => {
+                       evt.preventDefault()
+                       login(evt.target.username.value, evt.target.password.value)
+                     } }>
+      <input name="username" />
+      <br/>
+      <input name="password" type="password" />
+      <br/>
+      <input type="submit" value="Login" />
+    </form>
+    <button onClick={ evt => {
+                        evt.preventDefault()
+                        loginWithGoogle()
+                      } } id="google-oauth-button-login-modal" class="button oauth-button google-oauth-button">
+      <i class="icon sprite-icon"></i>
+      <span class="button-text">Log in with Google</span>
+    </button>
+    <button onClick={ evt => {
+                        evt.preventDefault()
+                        loginWithFacebook()
+                      } } id="facebook-oauth-button-login-modal" class="button oauth-button facebook-oauth-button">
+      <i class="icon sprite-icon"></i>
+      <span class="button-text">Log in with Facebook</span>
+    </button>
+    <button onClick={ evt => {
+                        evt.preventDefault()
+                        loginWithGithub()
+                      } } id="github-oauth-button-login-modal" class="button oauth-button github-oauth-button">
+      <i class="icon sprite-icon"></i>
+      <span class="button-text">Log in with Github</span>
+    </button>
   </div>
+</div>
 )
 
-import {login} from 'APP/app/action-creators/auth'
-import {connect} from 'react-redux'
+import { login, loginWithGoogle, loginWithFacebook, loginWithGithub } from 'APP/app/action-creators/auth'
+import { connect } from 'react-redux'
 
-export default connect (
+export default connect(
   state => ({}),
-  {login})(Login)
+  {
+    login,
+    loginWithGoogle,
+    loginWithFacebook,
+    loginWithGithub
+  })(Login)
