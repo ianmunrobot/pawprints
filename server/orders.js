@@ -6,8 +6,12 @@ const Order = db.model('orders')
 const {mustBeLoggedIn, selfOnly, forbidden, mustBeAdmin, selfOrAdmin} = require('./auth.filters')
 
 module.exports = require('express').Router()
-  .param('orderId', (req, res, next, id) => {
-    if (true)
+
+  // if admin, add order to req object.
+  // if logged in and order belongs to logged in user,
+  // add order to req object
+  .param('orderId', mustBeLoggedIn, (req, res, next, id) => {
+    if (req.user.isAdmin)
       Order.findById(id, {
         include: [{ all: true }]
       })
@@ -32,7 +36,7 @@ module.exports = require('express').Router()
   })
 
   // an admin can retrieve all orders
-  .get('/', mustBeAdmin, (req, res, next) =>
+  .get('/', (req, res, next) =>
     Order.findAll({
       include: [{ all: true }]
     })
@@ -61,3 +65,6 @@ module.exports = require('express').Router()
     req.order.destroy()
     .then(() => {res.sendStatus(204)})
     .catch(next)})
+
+  // line item subrouter
+  .use('/:orderId/items', require('./lineItem'))
