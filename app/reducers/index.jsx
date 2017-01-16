@@ -10,9 +10,10 @@ import usersReducer from './users'
 const rootReducer = combineReducers({
   auth: authReducer
 // reviewsReducer,
-// ordersReducer,
-// productsReducer,
+ordersReducer,
+productsReducer,
 // usersReducer,
+
 })
 
 export default rootReducer

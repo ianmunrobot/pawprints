@@ -33,4 +33,12 @@ describe('Orders actions', () => {
     })
   })
 
+  it('adds a product to order')
+  it('changes the Quantity of a product in an order')
+  it('adds a shipping address')
+  it('allows for a change of a shipping address')
+  it('adds a billing address')
+  it('allows for a change of a billing address')
+  it('removes all products from cart at checkout')
+
 })
