@@ -1,8 +1,9 @@
 'use strict'
 import React from 'react'
-import { Router, Route, IndexRedirect, browserHistory } from 'react-router'
+import { Router, Route, IndexRedirect, IndexRoute, browserHistory } from 'react-router'
 import { render } from 'react-dom'
 import { connect, Provider } from 'react-redux'
+import axios from 'axios'
 
 import store from './store'
 import App from './components/App'
@@ -13,26 +14,40 @@ import Footer from './components/Footer'
 import Homepage from './components/HomePage'
 import Checkout from './components/Checkout'
 import AllProducts from './components/products/AllProducts'
+import SingleProduct from './components/products/SingleProduct'
 
 
-import { fetchProducts } from './action-creators/products'
+import { fetchProducts, receiveProduct } from './action-creators/products'
+
 
 const onAppEnter = function() {
   store.dispatch(fetchProducts())
 }
 
-export const FrameComponent = ({user, children}) => (<div>
-                                                       <nav>
-                                                         <App />
-                                                         <Header />
-                                                         <NavBar />
-                                                       </nav>
-                                                       { children }
-                                                       <div>
-                                                         <Footer />
-                                                       </div>
-                                                     </div>
-)
+const onProductEnter = function(nextRouterState) {
+  const productId = nextRouterState.params.productId;
+  axios.get(`/api/products/${productId}`)
+  .then(response => response.data)
+  .then(product => {
+    store.dispatch(receiveProduct(product))
+  })
+}
+
+export const FrameComponent = ({user, children}) => {
+  return (
+    <div>
+      <nav>
+        <App />
+        <Header />
+        <NavBar />
+      </nav>
+      { children }
+      <div>
+        <Footer />
+      </div>
+    </div>
+  )
+}
 
 export const Frame = connect(({auth}) => ({
   user: auth
@@ -42,10 +57,12 @@ render(
   <Provider store={ store }>
     <Router history={ browserHistory }>
       <Route path="/" component={ Frame } onEnter = { onAppEnter } >
-        <IndexRedirect to="/home" />
-        <Route path="/home" component={ AllProducts } />
+        <IndexRoute component={ AllProducts } />
+        <Route path="/products" component={ AllProducts } />
+        <Route path="/products/:productId" component={ SingleProduct } onEnter = { onProductEnter } />
         <Route path="/signup" component={ SignUp } />
         <Route path="/checkout" component={ Checkout } />
+        <IndexRedirect to="/products" />
       </Route>
     </Router>
   </Provider>,
