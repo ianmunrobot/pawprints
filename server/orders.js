@@ -6,8 +6,37 @@ const Order = db.model('orders')
 const {mustBeLoggedIn, selfOnly, forbidden, mustBeAdmin, selfOrAdmin} = require('./auth.filters')
 
 module.exports = require('express').Router()
+
+  // if admin, add order to req object.
+  // if logged in and order belongs to logged in user,
+  // add order to req object
+  .param('orderId', mustBeLoggedIn, (req, res, next, id) => {
+    if (req.user.isAdmin)
+      Order.findById(id, {
+        include: [{ all: true }]
+      })
+      .then(foundOrder => {
+        req.order = foundOrder
+        next()
+      })
+      .catch(next)
+    else {
+      Order.findById(id, {
+        include: [{ all: true }],
+        where: {
+          id: req.user.id,
+        },
+      })
+      .then(foundOrder => {
+        req.order = foundOrder
+        next()
+      })
+      .catch(next)
+    }
+  })
+
   // an admin can retrieve all orders
-  .get('/', mustBeAdmin, (req, res, next) =>
+  .get('/', (req, res, next) =>
     Order.findAll({
       include: [{ all: true }]
     })
@@ -15,12 +44,9 @@ module.exports = require('express').Router()
     .catch(next))
 
   // a logged-in user can look at a specific order
-  .get('/:id', (req, res, next) =>
-    Order.findById(req.params.id, {
-      include: [{ all: true }]
+  .get('/:orderId', (req, res, next) => {
+      res.send(req.order)
     })
-    .then(order => res.json(order))
-    .catch(next))
 
   // any user can create a new order
   .post('/', (req, res, next) => Order.create(req.body)
@@ -28,13 +54,17 @@ module.exports = require('express').Router()
     .catch(next))
 
   // a user can update an order
-  .put('/:id', (req, res, next) => Order.findById(req.params.id)
-    .then(order => order.update(req.body))
-    .then(updatedOrder => res.status(202).json(updatedOrder))
-    .catch(next))
+  .put('/:orderId', (req, res, next) => {
+      req.order.update(req.body)
+      .then(updatedOrder => res.status(202).json(updatedOrder))
+      .catch(next)
+  })
 
   // a user can remove an order
-  .delete('/:id', (req, res, next) => Order.findById(req.params.id)
-    .then(order => order.destroy())
+  .delete('/:orderId', (req, res, next) => {
+    req.order.destroy()
     .then(() => {res.sendStatus(204)})
-    .catch(next))
+    .catch(next)})
+
+  // line item subrouter
+  .use('/:orderId/items', require('./lineItem'))
