@@ -66,8 +66,8 @@ describe('api/orders', () => {
   })
 
 
-
-  describe('for not logged in users', () => {
+  // pending logged in / admin
+  xdescribe('for not logged in users', () => {
 
     it('GET / does not returns all orders', () => request(app)
       .get('/api/orders')
