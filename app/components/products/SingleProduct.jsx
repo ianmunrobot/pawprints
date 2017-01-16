@@ -2,11 +2,9 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux';
 
 import { addProductToOrder } from 'APP/app/action-creators/orders'
-import store from 'APP/app/store'
 
 class SingleProduct extends React.Component {
   constructor(props) {
-    console.log(props);
     super(props)
     this.state = {
       quantity: 1,
