@@ -43,6 +43,7 @@ Product.belongsToMany(Product, {
 
 // reviews must belong to product and user
 Review.belongsTo(Product)
+Product.hasMany(Review)
 Review.belongsTo(User)
 
 // Address can/should be associated with user when logged in
