@@ -17,27 +17,15 @@ export const login = (username, password) => dispatch => axios.post('/api/auth/l
   .then(() => dispatch(whoami()))
   .catch(() => dispatch(whoami()))
 
-export const loginWithGoogle = () => dispatch => axios.post('/api/auth/local/login',
-  {
-    username,
-    password
-  })
+export const loginWithGoogle = () => dispatch => axios.post('/api/auth/google/login', {})
   .then(() => dispatch(whoami()))
   .catch(() => dispatch(whoami()))
 
-export const loginWithFacebook = () => dispatch => axios.post('/api/auth/local/login',
-  {
-    username,
-    password
-  })
+export const loginWithFacebook = () => dispatch => axios.post('/api/auth/facebook/login', {})
   .then(() => dispatch(whoami()))
   .catch(() => dispatch(whoami()))
 
-export const loginWithGithub = () => dispatch => axios.post('/api/auth/local/login',
-  {
-    username,
-    password
-  })
+export const loginWithGithub = () => dispatch => axios.post('/api/auth/github/login', {})
   .then(() => dispatch(whoami()))
   .catch(() => dispatch(whoami()))
 
