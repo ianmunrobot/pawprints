@@ -8,11 +8,11 @@ import usersReducer from './users'
 
 
 const rootReducer = combineReducers({
-  authReducer
-  // reviewsReducer,
-  // ordersReducer,
-  // productsReducer,
-  // usersReducer,
+  auth: authReducer
+// reviewsReducer,
+// ordersReducer,
+// productsReducer,
+// usersReducer,
 })
 
 export default rootReducer
