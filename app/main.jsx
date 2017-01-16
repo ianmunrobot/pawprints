@@ -12,6 +12,14 @@ import NavBar from './components/NavBar'
 import Footer from './components/Footer'
 import Homepage from './components/HomePage'
 import Checkout from './components/Checkout'
+import AllProducts from './components/products/AllProducts'
+
+
+import { fetchProducts } from './action-creators/products'
+
+const onAppEnter = function() {
+  store.dispatch(fetchProducts())
+}
 
 export const FrameComponent = ({user, children}) => (<div>
                                                        <nav>
@@ -33,9 +41,9 @@ export const Frame = connect(({auth}) => ({
 render(
   <Provider store={ store }>
     <Router history={ browserHistory }>
-      <Route path="/" component={ Frame }>
+      <Route path="/" component={ Frame } onEnter = { onAppEnter } >
         <IndexRedirect to="/home" />
-        <Route path="/home" component={ Homepage } />
+        <Route path="/home" component={ AllProducts } />
         <Route path="/signup" component={ SignUp } />
         <Route path="/checkout" component={ Checkout } />
       </Route>

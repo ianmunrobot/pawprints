@@ -10,8 +10,8 @@ import usersReducer from './users'
 const rootReducer = combineReducers({
   authReducer,
   // reviewsReducer,
+  productsReducer,
   ordersReducer,
-  // productsReducer,
   // usersReducer,
 })
 
