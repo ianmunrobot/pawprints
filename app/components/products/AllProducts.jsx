@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } form 'react-router';
+import { Link } from 'react-router';
 
 export default class AllProducts extends Component {
   componentDidMount () {
