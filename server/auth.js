@@ -15,7 +15,7 @@ OAuth.setupStrategy({
   config: {
     clientID: env.FACEBOOK_CLIENT_ID,
     clientSecret: env.FACEBOOK_CLIENT_SECRET,
-    callbackURL: `${app.rootUrl}/api/auth/login/facebook`,
+    callbackURL: `${app.baseUrl}/api/auth/login/facebook`,
   },
   passport
 })
@@ -28,7 +28,7 @@ OAuth.setupStrategy({
   config: {
     consumerKey: env.GOOGLE_CONSUMER_KEY,
     consumerSecret: env.GOOGLE_CONSUMER_SECRET,
-    callbackURL: `${app.rootUrl}/api/auth/login/google`,
+    callbackURL: `${app.baseUrl}/api/auth/login/google`,
   },
   passport
 })
@@ -41,7 +41,7 @@ OAuth.setupStrategy({
   config: {
     clientID: env.GITHUB_CLIENT_ID,
     clientSecrets: env.GITHUB_CLIENT_SECRET,
-    callbackURL: `${app.rootUrl}/api/auth/login/github`,
+    callbackURL: `${app.baseUrl}/api/auth/login/github`,
   },
   passport
 })
