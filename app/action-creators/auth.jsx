@@ -18,7 +18,6 @@ export const login = (username, password) => dispatch => axios.post('/api/auth/l
   .catch(() => dispatch(whoami()))
 
 export const signUp = (firstName, lastName, email, password) => dispatch => {
-  console.log('INSIDE SIGNUP THUNK');
   return axios.post('/api/users/',
     {
       firstName,
