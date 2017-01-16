@@ -12,6 +12,3 @@ I was built by Charity, Eric, Ian, and Jimmy during Fullstack Academy's 1610 Sof
 **Wireframe/React components inheritance**
 
 <a href ="https://drive.google.com/file/d/0B3ApY822SoU9RkpUSkFGd1JvRGc/view?usp=sharing" target="_blank">Draw.io link</a>
-
-<a href ="https://drive.google.com/file/d/0B3ApY822SoU9RkpUSkFGd1JvRGc/view?usp=sharing">Draw.io link</a>
-
