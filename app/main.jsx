@@ -27,10 +27,10 @@ const onAppEnter = function() {
 const onProductEnter = function(nextRouterState) {
   const productId = nextRouterState.params.productId;
   axios.get(`/api/products/${productId}`)
-  .then(response => response.data)
-  .then(product => {
-    store.dispatch(receiveProduct(product))
-  })
+    .then(response => response.data)
+    .then(product => {
+      store.dispatch(receiveProduct(product))
+    })
 }
 
 export const FrameComponent = ({user, children}) => {
@@ -56,10 +56,10 @@ export const Frame = connect(({auth}) => ({
 render(
   <Provider store={ store }>
     <Router history={ browserHistory }>
-      <Route path="/" component={ Frame } onEnter = { onAppEnter } >
+      <Route path="/" component={ Frame } onEnter={ onAppEnter }>
         <IndexRoute component={ AllProducts } />
         <Route path="/products" component={ AllProducts } />
-        <Route path="/products/:productId" component={ SingleProduct } onEnter = { onProductEnter } />
+        <Route path="/products/:productId" component={ SingleProduct } onEnter={ onProductEnter } />
         <Route path="/signup" component={ SignUp } />
         <Route path="/checkout" component={ Checkout } />
         <IndexRedirect to="/products" />
