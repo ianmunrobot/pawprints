@@ -7,14 +7,15 @@ export function signUpComponent({signUp}) {
         <div className="container">
           <div className="account-bottom">
             <div className="col-md-6 account-left">
-              <form onSubmit={ function(evt){
-                                     						evt.preventDefault()
-                                     						let firstName= evt.target.firstName.value;
-                                     						let lastName= evt.target.lastName.value;
-                                     						let email= evt.target.email.value;
-                                     						let password= evt.target.password.value;
-                                     						console.log('SUBMIT BUTTON PRESSED')
-                                     						signUp(firstName, lastName, email , password)} }>
+              <form id="userInfo" onSubmit={ function(evt){
+					evt.preventDefault()
+					let firstName= evt.target.firstName.value;
+					let lastName= evt.target.lastName.value;
+					let email= evt.target.email.value;
+					let password= evt.target.password.value;
+					console.log('SUBMIT BUTTON PRESSED')
+					signUp(firstName, lastName, email , password)
+							document.getElementById("userInfo").reset()}}>
                 <div className="account-top heading">
                   <h3>NEW CUSTOMERS</h3>
                 </div>
