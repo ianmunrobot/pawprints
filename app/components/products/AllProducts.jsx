@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import { Link } from 'react-router';
+import { addProductToOrder } from 'APP/app/action-creators/orders'
 
 class AllProducts extends React.Component {
   constructor(props) {
@@ -15,6 +16,8 @@ class AllProducts extends React.Component {
 
   handleClick(evt) {
     const value = evt.target.value
+    evt.preventDefault();
+    this.props.addProductToOrder(this.state.productId, this.state.quantity)
     this.setState({
       setState: value
     })
@@ -78,7 +81,11 @@ const mapStateToProps = (state, ownProps) => {
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-  return {}
+  return {
+    addProductToOrder: (productId, quantity) => {
+      dispatch(addProductToOrder(productId, quantity))
+    }
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Products)
