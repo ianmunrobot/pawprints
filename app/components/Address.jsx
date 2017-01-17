@@ -60,13 +60,13 @@ export function AddressComponent({user, updateBillingAddress, updateShippingAddr
                   <span>Street Name: { user.billingAddress.streetName }</span>
                 </div>
                 <div className="address">
-                  <span>Apartment (optional): { user.billingAddress.apartment }</span>
+                  <span>Apartment: { user.billingAddress.apartment }</span>
                 </div>
                 <div className="address">
                   <span>City: { user.billingAddress.city }</span>
                 </div>
                 <div className="address">
-                  <span>State (use abbrev.): { user.billingAddress.state }</span>
+                  <span>State: { user.billingAddress.state }</span>
                 </div>
                 <div className="address">
                   <span>Zip Code: { user.billingAddress.zip }</span>
@@ -90,13 +90,13 @@ export function AddressComponent({user, updateBillingAddress, updateShippingAddr
                   <span>Street Name: { user.shippingAddress.streetName }</span>
                 </div>
                 <div className="address">
-                  <span>Apartment (optional): { user.shippingAddress.apartment }</span>
+                  <span>Apartment: { user.shippingAddress.apartment }</span>
                 </div>
                 <div className="address">
                   <span>City: { user.shippingAddress.city }</span>
                 </div>
                 <div className="address">
-                  <span>State (use abbrev.): { user.shippingAddress.state }</span>
+                  <span>State: { user.shippingAddress.state }</span>
                 </div>
                 <div className="address">
                   <span>Zip Code: { user.shippingAddress.zip }</span>
@@ -161,13 +161,20 @@ export function AddressComponent({user, updateBillingAddress, updateShippingAddr
 }
 
 //---------------Login Container --------------------//
-import { updateBillingAddress, updateShippingAddress } from 'APP/app/action-creators/auth'
+import { updateBillingAddress as billingThunk, updateShippingAddress as shippingThunk } from 'APP/app/action-creators/address'
 import { connect } from 'react-redux'
 
-export default connect(
-  state => ({}),
-  {
-    signUp
-  })(signUpComponent)
+const mapDispatchToProps = dispatch => {
+  return {
+    updateBillingAddress: function(addressObj) {
+      dispatch(billingThunk(addressObj))
+    },
+    updateShippingAddress: function(addressObj) {
+      dispatch(shippingThunk(addressObj))
+    }
+  }
+}
 
-
+export default connect(({auth}) => ({
+  user: auth
+}), mapDispatchToProps)(AddressComponent)
