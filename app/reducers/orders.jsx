@@ -59,6 +59,7 @@ const ordersReducer = (state = DEFAULT_STATE, action) => {
         {
           productId: action.productId,
           quantity: action.quantity,
+          product: action.product
         })
       break
     case CHANGE_QUANTITY_OF_PRODUCT:

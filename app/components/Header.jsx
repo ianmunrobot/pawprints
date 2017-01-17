@@ -3,7 +3,7 @@ import { Router, Route, Link } from 'react-router';
 import Login from './Login';
 import WhoAmI from './WhoAmI';
 
-export const Header = ({user}) => {
+export const Header = ({user, count, subtotal}) => {
   return (
     <div className="header_bg">
       <div className="container">
@@ -11,14 +11,15 @@ export const Header = ({user}) => {
           <div className="head-t">
             <div className="logo">
               <Link to="/">
-              <h1>Paw <span>Prints</span></h1> </Link>
+              <h1>Paw<span>Prints</span></h1> </Link>
             </div>
             <div className="header_right">
               { user ? <WhoAmI/> : <Login/> }
               <div className="cart box_1">
-                <Link to="/checkout">
+                <Link to="/cart">
                 <div className="total">
-                  <span className="simpleCart_total"></span> (<span id="simpleCart_quantity" className="simpleCart_quantity"></span> items)</div>
+                  <span className="simpleCart_total">{'$' + subtotal.toFixed(2)}</span><span className="simpleCart_quantity"></span> | {count} items
+                </div>
                 <i className="glyphicon glyphicon-shopping-cart"></i></Link>
                 <div className="clearfix"> </div>
               </div>
@@ -33,6 +34,10 @@ export const Header = ({user}) => {
 
 import { connect } from 'react-redux'
 
-export default connect(({auth}) => ({
-  user: auth
+export default connect(({auth, ordersReducer}) => ({
+  user: auth,
+  subtotal: ordersReducer.currentOrder.products.reduce((accum, curr) => {
+    return accum + curr.quantity * curr.product.price
+  }, 0.00),
+  count: ordersReducer.currentOrder.products.length
 }))(Header)
