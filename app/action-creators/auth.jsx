@@ -45,8 +45,14 @@ export const loginWithGithub = () => dispatch => axios.post('/api/auth/github2/l
   .catch(() => dispatch(whoami()))
 
 export const logout = () => dispatch => axios.post('/api/auth/logout')
-  .then(() => dispatch(whoami()))
-  .catch(() => dispatch(whoami()))
+  .then(res => {
+    dispatch(whoami());
+    res.redirect('/');
+  })
+  .catch(res => {
+    dispatch(whoami());
+    res.redirect('/');
+  })
 
 export const whoami = () => dispatch => axios.get('/api/auth/whoami')
   .then(response => {
