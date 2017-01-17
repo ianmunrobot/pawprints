@@ -68,7 +68,6 @@ export const checkout = (complete) => ({
   complete
 })
 
-
 // thunks
 export const fetchOrders = () => {
  return dispatch => {
@@ -103,3 +102,4 @@ export const addProductToOrderThunk = (orderId, productId, quantity) => {
     })
   }
 }
+
