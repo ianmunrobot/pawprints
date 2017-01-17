@@ -11,7 +11,6 @@ export class NavBar extends Component {
 	handleClick(evt) {
 		evt.preventDefault()
 		let event = Object.assign({}, evt)
-		// console.log('HANDLE CLICK',evt.target.dataset.value)
 		this.props.setCategory(evt.target.dataset.value)
 	}
 
@@ -24,10 +23,8 @@ export class NavBar extends Component {
 				<li className="grid" onClick={this.handleClick}><a className="color2" data-value="cat"  href="#">Kittens</a></li>
 				<li className="grid"  onClick={this.handleClick}><a className="color2" data-value="rodent" href="#">Other Pets</a></li>
 					{ user ?
-
-					<li><Link to={`users/${user.id}`}>Your Account</Link></li> :
-					<li><Link to="/signup">Sign Up</Link></li>
-
+            <li><Link to={`users/${user.id}`}>Your Account</Link></li> :
+            <li><Link to="/signup">Sign Up</Link></li>
 					}
 				<li><a href="#">Track your order</a></li>
 			</ul>
