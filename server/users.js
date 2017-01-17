@@ -28,10 +28,13 @@ module.exports = require('express').Router()
     .catch(next))
 
   //a user can update themself, admins can update a user
-  .put('/:id', selfOrAdmin('update'), (req, res, next) => User.findById(req.params.id)
-    .then(user => user.update(req.body))
-    .then(updatedUser => res.json(updatedUser))
-    .catch(next))
+  .put('/:id', selfOrAdmin('update'), (req, res, next) => {
+    console.log(req.params.id, req.user.id)
+    return User.findById(req.params.id)
+      .then(user => user.update(req.body))
+      .then(updatedUser => res.json(updatedUser))
+      .catch(next)
+  })
 
   //a user can delete themself, admins can delete a user
   .delete('/:id', selfOrAdmin('delete'), (req, res, next) => User.findById(req.params.id)
@@ -45,8 +48,8 @@ module.exports = require('express').Router()
       user_id: req.params.id
     }
   })
-  .then(reviews => res.json(reviews))
-  .catch(next))
+    .then(reviews => res.json(reviews))
+    .catch(next))
 
   // a logged in user or admin can retrieve all their orders
   .get('/:id/orders', selfOrAdmin('get'),
@@ -70,4 +73,5 @@ module.exports = require('express').Router()
     })
     .then(res.send.bind(res))
     .catch(next)
+
     })
