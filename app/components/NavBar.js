@@ -6,27 +6,41 @@ export class NavBar extends Component {
 	constructor(props) {
 		super(props)
 		this.handleClick = this.handleClick.bind(this)
+		this.setFilter = this.setFilter.bind(this)
+		this.state = {
+      selected: ''
+    }
 	}
 
 	handleClick(evt) {
-		evt.preventDefault()
 		let event = Object.assign({}, evt)
+		this.setState({
+      selected: evt.target.dataset.value
+    })
 		this.props.setCategory(evt.target.dataset.value)
 	}
+
+	setFilter (filter) {
+
+  }
+
+	isActive (value) {
+    return 'color1 '+((value===this.state.selected) ?'active':'');
+  }
 
 	render () {
 		const user = this.props.user
 		return (
 			<ul className="megamenu skyblue">
-				<li className="active grid"><Link to="/" onClick={this.handleClick} data-value = "" className="color1">Home</Link></li>
-				<li className="grid" ><a className="color2" data-value="dog" href="#" onClick={this.handleClick}>Puppies</a></li>
-				<li className="grid" onClick={this.handleClick}><a className="color2" data-value="cat"  href="#">Kittens</a></li>
-				<li className="grid"  onClick={this.handleClick}><a className="color2" data-value="rodent" href="#">Other Pets</a></li>
+				<li className="grid"><Link to="/" onClick={this.handleClick} data-value = "" className={this.isActive('')}>Home</Link></li>
+				<li className="grid" ><Link to="/" className={this.isActive('dog')} data-value="dog" onClick={this.handleClick}>Puppies</Link></li>
+				<li className="grid" onClick={this.handleClick}><Link to="/" className={this.isActive('cat')} data-value="cat" >Kittens</Link></li>
+				<li className="grid"  onClick={this.handleClick}><Link to="/"  className={this.isActive('rodent')} data-value="rodent">Other Pets</Link></li>
 					{ user ?
-            <li><Link to={`users/${user.id}`}>Your Account</Link></li> :
-            <li><Link to="/signup">Sign Up</Link></li>
+						<li onClick={this.handleClick}><Link to={`users/${user.id}`} className={this.isActive('account')} data-value="account">Your Account</Link></li> :
+						<li onClick={this.handleClick}><Link to="/signup" className={this.isActive('register')} data-value="register">Sign Up</Link></li>
 					}
-				<li><a href="#">Track your order</a></li>
+				{/*<li><a>Track your order</a></li>*/}
 			</ul>
 		);
 	}
