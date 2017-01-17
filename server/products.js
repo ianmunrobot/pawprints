@@ -9,7 +9,9 @@ const router = require('express').Router()
 
 // get all products
 router.get('/', (req, res, next) => {
-  Product.findAll()
+  Product.findAll({
+    include: [{all: true}]
+  })
   .then(res.send.bind(res))
   .catch(next)
 })
@@ -25,7 +27,9 @@ router.post('/', mustBeAdmin, (req, res, next) => {
 
 // get one product by id
 router.get('/:id', (req, res, next) => {
-  Product.findById(req.params.id)
+  Product.findById(req.params.id, {
+    include: [{all: true}]
+  })
   .then(res.send.bind(res))
   .catch(next)
 })

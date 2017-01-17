@@ -1,6 +1,7 @@
 import {
   RECEIVE_SINGLE_ORDER,
   RECEIVE_ORDERS,
+  RECEIVE_CURRENT_ORDER,
   ADD_PRODUCT_TO_ORDER,
   CHANGE_QUANTITY_OF_PRODUCT,
   ADD_SHIPPING_ADDRESS,
@@ -9,6 +10,8 @@ import {
   CHANGE_BILLING_ADDRESS,
   CHECKOUT
 } from 'APP/app/constants'
+
+import store from 'APP/app/store'
 
 import axios from 'axios'
 
@@ -27,55 +30,33 @@ export const receiveSingleOrder = order => (
   }
 )
 
-export const addProductToOrder = product => (
-  {
-    type: ADD_PRODUCT_TO_ORDER,
-    addedProduct: product
-  }
-)
 
-export const changeQuantityOfProduct = quantity => (
-  {
-    type: CHANGE_QUANTITY_OF_PRODUCT,
-    quantity
-  }
-)
+export const addProductToOrder = (productId, quantity = 1) => ({
+  type: ADD_PRODUCT_TO_ORDER,
+  quantity,
+  productId
+})
 
-export const addShippingAddress = address => (
-  {
-    type: ADD_SHIPPING_ADDRESS,
-    address
-  }
-)
+export const changeQuantityOfProduct = (productId, quantity) => ({
+  type: CHANGE_QUANTITY_OF_PRODUCT,
+  quantity,
+  productId
+})
 
-export const changeShippingAddress = (address) => (
-  {
-    type: CHANGE_SHIPPING_ADDRESS,
-    address
-  }
-)
+export const changeShippingAddress = (shippingAddress) => ({
+  type: CHANGE_SHIPPING_ADDRESS,
+  shippingAddress
+})
 
-export const addBillingAddress = (address) => (
-  {
-    type: ADD_BILLING_ADDRESS,
-    address
-  }
-)
+export const changeBillingAddress = (billingAddress) => ({
+  type: CHANGE_BILLING_ADDRESS,
+  billingAddress
+})
 
-export const changeBillingAddress = (address) => (
-  {
-    type: CHANGE_BILLING_ADDRESS,
-    address
-  }
-)
-
-export const checkout = () => (
-  {
-    type: CHECKOUT,
-    complete
-  }
-)
-
+export const checkout = (complete) => ({
+  type: CHECKOUT,
+  complete
+})
 
 // thunks
 export const fetchOrders = () => {
@@ -96,16 +77,19 @@ export const fetchSingleOrder = orderId => {
   }
 }
 
-// export const addProductToOrder = product =
+export const addProductToOrderThunk = (orderId, productId, quantity) => {
+  return dispatch => {
+    const userId = store.getState().authReducer.id
 
-// export const changeQuantityOfProduct = quantity => (
+    axios.post(`/api/orders/${orderId}/items/${productId}`,{
+      quantity,
+      product_id: productId,
+      user_id: userId
+    })
+    .then(response => response.data)
+    .then(newProduct => {
+      dispatch()
+    })
+  }
+}
 
-// export const addShippingAddress = address => (
-
-// export const changeShippingAddress = (address) => (
-
-// export const addBillingAddress = (address) => (
-
-// export const changeBillingAddress = (address) => (
-
-// export const checkout = () => ()

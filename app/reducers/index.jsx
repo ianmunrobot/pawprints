@@ -5,14 +5,16 @@ import reviewsReducer from './reviews'
 import ordersReducer from './orders'
 import productsReducer from './products'
 import usersReducer from './users'
+import categoriesReducer from './categories'
 
 
 const rootReducer = combineReducers({
-  authReducer
+  auth: authReducer,
   // reviewsReducer,
-  // ordersReducer,
-  // productsReducer,
+  ordersReducer,
+  productsReducer,
   // usersReducer,
+  selectedCategory: categoriesReducer
 })
 
 export default rootReducer
