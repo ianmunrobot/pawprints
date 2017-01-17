@@ -8,7 +8,19 @@ const Products = (props) => {
   const splitProducts = []
   let count = 0
   let rowCount = -1
-  props.products.forEach(product => {
+  let products = props.selectedCategory !== '' ?
+    props.products.filter(product => {
+      return product.categories.some(individualCategory => {
+        return individualCategory.name === props.selectedCategory
+      })
+    }) :
+    props.products
+
+
+  // TODO: this is hacky and should be refactored/dealth with
+  // with proper styling we can avoid this division into subarrays
+  // return value of the component will also need to be refactored
+  products.forEach(product => {
     if (count % 3 === 0) {
       splitProducts.push([])
       rowCount++;
@@ -54,7 +66,8 @@ const Products = (props) => {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    products: state.productsReducer.allProducts
+    products: state.productsReducer.allProducts,
+    selectedCategory: state.selectedCategory
   }
 }
 

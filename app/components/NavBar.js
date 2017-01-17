@@ -5,23 +5,24 @@ export class NavBar extends Component {
 
 	constructor(props) {
 		super(props)
-		console.log(props);
 		this.handleClick = this.handleClick.bind(this)
 	}
 
 	handleClick(evt) {
-		console.log('HANDLE CLICK',evt.target);
-		this.props.setCategory(evt.target.value)
+		evt.preventDefault()
+		let event = Object.assign({}, evt)
+		// console.log('HANDLE CLICK',evt.target.dataset.value)
+		this.props.setCategory(evt.target.dataset.value)
 	}
 
 	render () {
 		const user = this.props.user
 		return (
 			<ul className="megamenu skyblue">
-				<li className="active grid"><Link to="/" className="color1">Home</Link></li>
-				<li className="grid" ><a className="color2" value="dog" href="#" onClick={(e) => this.handleClick(e)}>Puppies</a></li>
-				<li className="grid" value="cat" onClick={(e) => this.handleClick(e)}><a className="color2" href="#">Kittens</a></li>
-				<li className="grid" value="rodent" onClick={this.handleClick}><a className="color2" href="#">Other Pets</a></li>
+				<li className="active grid"><Link to="/" onClick={this.handleClick} data-value = "" className="color1">Home</Link></li>
+				<li className="grid" ><a className="color2" data-value="dog" href="#" onClick={this.handleClick}>Puppies</a></li>
+				<li className="grid" onClick={this.handleClick}><a className="color2" data-value="cat"  href="#">Kittens</a></li>
+				<li className="grid"  onClick={this.handleClick}><a className="color2" data-value="rodent" href="#">Other Pets</a></li>
 					{ user ?
 
 					<li><Link to={`users/${user.id}`}>Your Account</Link></li> :
@@ -40,7 +41,6 @@ import { setCategory } from 'APP/app/action-creators/categories'
 const mapDispatchToProps = function (dispatch, ownProps) {
 	return {
 		setCategory: (category) => {
-			console.log('MAP DISPATCH', category);
 			dispatch(setCategory(category))
 		}
 	}
