@@ -37,8 +37,12 @@ export class NavBar extends Component {
 				<li className="grid" onClick={this.handleClick}><Link to="/" className={this.isActive('cat')} data-value="cat" >Kittens</Link></li>
 				<li className="grid"  onClick={this.handleClick}><Link to="/"  className={this.isActive('rodent')} data-value="rodent">Other Pets</Link></li>
 					{ user ?
-						<li onClick={this.handleClick}><Link to={`users/${user.id}`} className={this.isActive('account')} data-value="account">Your Account</Link></li> :
+						<li onClick={this.handleClick}><Link to={`/profile`} className={this.isActive('account')} data-value="account">Your Account</Link></li>
+						 :
 						<li onClick={this.handleClick}><Link to="/signup" className={this.isActive('register')} data-value="register">Sign Up</Link></li>
+					}
+					{
+						user && <li onClick={this.handleClick}><Link to={`/orders`} className={this.isActive('orders')} data-value="orders">My Orders</Link></li>
 					}
 				{/*<li><a>Track your order</a></li>*/}
 			</ul>

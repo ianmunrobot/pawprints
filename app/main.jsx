@@ -37,14 +37,14 @@ const onProductEnter = function(nextRouterState) {
     })
 }
 
-const onOrdersEnter = function(nextRouterState) {
-  const userId = 4
-  axios.get(`/api/users/${userId}/orders`)
-    .then(response => response.data)
-    .then(orders => {
-      store.dispatch(receiveOrders(orders))
-    })
-}
+// const onOrdersEnter = function(nextRouterState) {
+//   const userId = 4
+//   axios.get(`/api/users/${userId}/orders`)
+//     .then(response => response.data)
+//     .then(orders => {
+//       store.dispatch(receiveOrders(orders))
+//     })
+// }
 
 export const FrameComponent = ({user, children}) => {
   return (
@@ -76,7 +76,7 @@ render(
         <Route path="/signup" component={ SignUp } />
         <Route path="/cart" component={ Cart } />
         <Route path="/profile" component={UserPanel} />
-        <Route path="/orders" component={Orders} onEnter={ onOrdersEnter }/>
+        <Route path="/orders" component={ Orders } />
         <IndexRedirect to="/products" />
       </Route>
     </Router>

@@ -4,6 +4,8 @@ const db = require('APP/db')
 const User = db.model('users')
 const Review = db.model('reviews')
 const Order = db.model('orders')
+const LineItem = db.model('lineItems')
+const Product = db.model('products')
 
 const {mustBeLoggedIn, selfOnly, forbidden, mustBeAdmin, selfOrAdmin} = require('./auth.filters')
 
@@ -51,10 +53,21 @@ module.exports = require('express').Router()
     (req, res, next) => {
       Order.findAll({
       where: {
-        user: null,
+        user_id: +req.params.id
       },
-      include: [{ all: true }]
+      include: [
+        {
+          model: LineItem, include: [
+            {
+              model: Product
+            },
+          ]
+        },
+        {
+          model: User
+        }
+      ]
     })
-    .then(req.send.bind(req))
+    .then(res.send.bind(res))
     .catch(next)
     })

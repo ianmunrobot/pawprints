@@ -37,6 +37,7 @@ User.hasMany(Order)
 Order.hasMany(LineItem);
 LineItem.belongsTo(Order);
 LineItem.belongsTo(Product);
+Product.hasMany(LineItem)
 
 
 // associate multiple rows as size options for each product

@@ -2,51 +2,24 @@ import React, { Component } from 'react';
 import { Router, Route, Link } from 'react-router';
 import { connect } from 'react-redux'
 
+import Order from './Order'
 
 export const Orders = (props) => {
-  const cartItems = props.orders.map((lineItem, index) => {
-    const product = lineItem.product
+  const orders = props.orders.map(order => {
     return (
-      <div className="cart-header" key={product.id} >
-        <div className="close1" >
-        </div>
-        <div className="cart-sec simpleCart_shelfItem">
-          <div className="cart-item cyc">
-            <img src={product.imgUrl} className="img-responsive" alt="" />
-          </div>
-          <div className="cart-item-info">
-            <h3><a href="#"> {product.title} </a><span>Pickup time:</span></h3>
-              <ul className="qty">
-                <li><h4>Quantity : {product.quantity} </h4>
-                  <div className="input-group">
-                    <input type="number" className="form-control input-number" min="1" max="100" />
-                </div>
-                </li>
-              </ul>
-            <div className="delivery">
-              <p>Price per unit : ${product.price}</p>
-              <span>Total: ${lineItem.quantity * product.price}</span>
-              <div className="clearfix">
-              </div>
-            </div> {/*delivery*/}
-          </div> {/*cart-item-info*/}
-          <div className="clearfix">
-          </div>
-        </div>{/*cart-sec*/}
-      </div>
+      <Order key={order.id} order={order} />
     )
   })
 
 	return (
-		<div>
+    <div>
 			<div className="cart-items">
 				<div className="container">
-					<h3 className="tittle">My shopping cart({ cartItems.length })</h3>
-
-					<div className="clearfix">
-					</div>
-				</div>{/*container*/}
-			</div>{/*cart=items*/}
+					<h3 className="tittle">My orders</h3>
+            { orders }
+					<div className="clearfix"></div>
+				</div>
+			</div>
 		</div>
 	)
 }
