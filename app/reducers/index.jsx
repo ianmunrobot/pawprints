@@ -5,6 +5,7 @@ import reviewsReducer from './reviews'
 import ordersReducer from './orders'
 import productsReducer from './products'
 import usersReducer from './users'
+import categoriesReducer from './categories'
 
 
 const rootReducer = combineReducers({
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
   ordersReducer,
   productsReducer,
   // usersReducer,
+  selectedCategory: categoriesReducer
 })
 
 export default rootReducer
