@@ -4,6 +4,7 @@ import {
   RECEIVE_CURRENT_ORDER,
   ADD_PRODUCT_TO_ORDER,
   CHANGE_QUANTITY_OF_PRODUCT,
+  REMOVE_PRODUCT_FROM_ORDER,
   ADD_SHIPPING_ADDRESS,
   CHANGE_SHIPPING_ADDRESS,
   ADD_BILLING_ADDRESS,
@@ -42,6 +43,13 @@ export const addProductToOrder = (productId, quantity = 1) => {
     quantity,
     productId,
     product: newProduct
+  }
+}
+
+export const removeProductFromOrder = (productId) => {
+  return {
+    type: REMOVE_PRODUCT_FROM_ORDER,
+    productId
   }
 }
 

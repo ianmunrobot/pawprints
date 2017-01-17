@@ -4,6 +4,7 @@ import {
   RECEIVE_CURRENT_ORDER,
   ADD_PRODUCT_TO_ORDER,
   CHANGE_QUANTITY_OF_PRODUCT,
+  REMOVE_PRODUCT_FROM_ORDER,
   CHANGE_BILLING_ADDRESS,
   CHANGE_SHIPPING_ADDRESS,
   CHECKOUT,
@@ -55,18 +56,35 @@ const ordersReducer = (state = DEFAULT_STATE, action) => {
       newState.currentOrder = action.currentOrder
       break
     case ADD_PRODUCT_TO_ORDER:
-      newState.currentOrder.products.push(
-        {
-          productId: action.productId,
-          quantity: action.quantity,
-          product: action.product
-        })
+
+      let inCart = false
+      newState.currentOrder.products = newState.currentOrder.products.map(product => {
+        if (product.productId === action.productId) {
+          product.quantity += +action.quantity
+          inCart = true
+        }
+        return product
+      })
+      if (!inCart) {
+        newState.currentOrder.products.push(
+          {
+            productId: action.productId,
+            quantity: action.quantity,
+            product: action.product
+          })
+      }
       break
     case CHANGE_QUANTITY_OF_PRODUCT:
       newState.currentOrder.products = newState.currentOrder.products.map(product => {
-        if (product.id === action.productId) {
-          product.quantity = action.quantity
+        if (product.productId === action.productId) {
+          product.quantity = +action.quantity
         }
+        return product
+      })
+      break
+    case REMOVE_PRODUCT_FROM_ORDER:
+      newState.currentOrder.products = newState.currentOrder.products.filter(product => {
+        return (product.productId !== action.productId)
       })
       break
     case CHANGE_BILLING_ADDRESS:
