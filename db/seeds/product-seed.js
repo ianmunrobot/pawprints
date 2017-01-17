@@ -2,8 +2,8 @@ const db = require('APP/db')
 
 const seedArray = [
   [{
-    title: 'Siberian Husky Print',
-    imgUrl: 'http://cdn1-www.dogtime.com/assets/uploads/gallery/siberian-husky-dog-breed-pictures/siberian-husky-dog-breed-pictures-2.jpg',
+    title: 'Puppy Print',
+    imgUrl: '/images/dogs/dog-1.jpg',
     price: 12.99,
     description: 'A majestic and interesting pup',
     size: '12" x 16"',
@@ -11,8 +11,8 @@ const seedArray = [
     inventory: 10,
   }, 'dog'],
   [{
-    title: 'Pug Puppy Print',
-    imgUrl: 'https://snowyswan.com/wp-content/uploads/pug-puppy-life.jpg',
+    title: 'Puppy Print',
+    imgUrl: '/images/dogs/dog-2.jpg',
     price: 24.99,
     description: 'Cute pug puppy with a beanie',
     size: '12" x 12"',
@@ -20,8 +20,8 @@ const seedArray = [
     inventory: 4,
   }, 'dog'],
   [{
-    title: 'Siberian Husky Print',
-    imgUrl: 'http://cdn1-www.dogtime.com/assets/uploads/gallery/siberian-husky-dog-breed-pictures/siberian-husky-dog-breed-pictures-2.jpg',
+    title: 'Pup Print',
+    imgUrl: '/images/dogs/dog-3.jpg',
     price: 30.99,
     description: 'A majestic and interesting pup',
     size: '24" x 32"',
@@ -29,8 +29,17 @@ const seedArray = [
     inventory: 6,
   }, 'dog'],
   [{
+    title: 'PupPY Print',
+    imgUrl: '/images/dogs/dog-4.jpg',
+    price: 13.99,
+    description: 'THIS IS A DOG',
+    size: '12" x 16"',
+    tags: ['cute', 'dog', 'puppy'],
+    inventory: 2,
+  }, 'dog'],
+  [{
     title: 'Sassy Kitten Print',
-    imgUrl: 'https://s-media-cache-ak0.pinimg.com/originals/10/9e/e6/109ee6cb5a669a3152180b754e203c69.jpg',
+    imgUrl: '/images/cats/cat-1.jpg',
     price: 20.99,
     description: 'An upset persian kitten stares into infinity',
     size: '14" x 12"',
@@ -38,13 +47,31 @@ const seedArray = [
     inventory: 25,
   }, 'cat'],
   [{
-    title: 'Sonic the Hedgehog',
-    imgUrl: 'http://comicsalliance.com/files/2010/11/hedgehogwithboots.jpg',
-    price: 14.56,
+    title: 'Little Kitten Print',
+    imgUrl: '/images/cats/cat-2.jpg',
+    price: 4.25,
     description: 'An upset persian kitten stares into infinity',
+    size: '6" x 8"',
+    tags: ['funny', 'cute', 'kitten', 'furball'],
+    inventory: 7,
+  }, 'cat'],
+  [{
+    title: 'Hungry Hamster',
+    imgUrl: '/images/rodents/rodent-2.jpg',
+    price: 14.56,
+    description: 'A fearsome beast',
     size: '9" x 6"',
     tags: ['super', 'hero', 'hedgehog', 'spiky'],
     inventory: 3,
+  }, 'rodent'],
+  [{
+    title: 'Henry Hedgehog',
+    imgUrl: '/images/rodents/rodent-4.jpg',
+    price: 25.56,
+    description: 'Do not cross him',
+    size: '12" x 16"',
+    tags: ['super', 'hero', 'hedgehog', 'spiky'],
+    inventory: 15,
   }, 'rodent'],
 ]
 
