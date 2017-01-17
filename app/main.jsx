@@ -16,6 +16,7 @@ import Checkout from './components/Checkout'
 import AllProducts from './components/products/AllProducts'
 import SingleProduct from './components/products/SingleProduct'
 import UserPanel from './components/UserPanel'
+import Cart from './components/Cart'
 
 
 import { fetchProducts, receiveProduct } from './action-creators/products'
@@ -62,7 +63,7 @@ render(
         <Route path="/products" component={ AllProducts } />
         <Route path="/products/:productId" component={ SingleProduct } onEnter={ onProductEnter } />
         <Route path="/signup" component={ SignUp } />
-        <Route path="/checkout" component={ Checkout } />
+        <Route path="/cart" component={ Cart } />
         <Route path="/profile" component={UserPanel} />
         <IndexRedirect to="/products" />
       </Route>

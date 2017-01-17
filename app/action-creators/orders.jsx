@@ -30,18 +30,28 @@ export const receiveSingleOrder = order => (
   }
 )
 
+export const addProductToOrder = (productId, quantity = 1) => {
+  let newProduct = {}
+  store.getState()
+    .productsReducer
+    .allProducts.forEach(product => {
+    if (product.id === productId) newProduct = product
+  })
+  return {
+    type: ADD_PRODUCT_TO_ORDER,
+    quantity,
+    productId,
+    product: newProduct
+  }
+}
 
-export const addProductToOrder = (productId, quantity = 1) => ({
-  type: ADD_PRODUCT_TO_ORDER,
-  quantity,
-  productId
-})
-
-export const changeQuantityOfProduct = (productId, quantity) => ({
-  type: CHANGE_QUANTITY_OF_PRODUCT,
-  quantity,
-  productId
-})
+export const changeQuantityOfProduct = (productId, quantity) => {
+  return {
+    type: CHANGE_QUANTITY_OF_PRODUCT,
+    quantity,
+    productId,
+  }
+}
 
 export const changeShippingAddress = (shippingAddress) => ({
   type: CHANGE_SHIPPING_ADDRESS,
