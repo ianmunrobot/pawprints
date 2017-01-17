@@ -41,7 +41,7 @@
 .megamenu>li.showhide span.icon2:after{position:absolute;content:"";right:25px;top:27px;height:3px;width:25px;font-size:50px;border-top:3px solid #18C9D2;border-bottom:3px solid #18C9D2;z-index:1}
 .skyblue,.skyblue>li.showhide{
 }
-	
+
 .skyblue li>a,.skyblue>li.showhide span{color:#3f3d3d}
 .skyblue>li:hover>a,.skyblue .dropdown li:hover>a{color:#555; background:#ffffff;}.
 skyblue .megapanel img:hover,.skyblue form.contact input[type="text"]:focus,.skyblue form.contact textarea:focus{}
@@ -92,6 +92,10 @@ skyblue .megapanel img:hover,.skyblue form.contact input[type="text"]:focus,.sky
 	background:#18C9D2;
 	color: #ffffff;
 }
+.skyblue li a.color1.active{
+	background:#18C9D2;
+	color: #ffffff;
+}
 .skyblue li a.color2:hover{
 	background:#18C9D2;
 	color: #ffffff;
@@ -127,6 +131,6 @@ skyblue .megapanel img:hover,.skyblue form.contact input[type="text"]:focus,.sky
 .skyblue li a.color10:hover{
 	background:#18C9D2;
 	color: #ffffff;
-}	
+}
 
 

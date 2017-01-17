@@ -39,7 +39,7 @@ export const FrameComponent = ({user, children}) => {
   return (
     <div>
       <nav>
-        <App />
+        {/*<App />*/}
         <Header />
         <NavBar />
       </nav>
