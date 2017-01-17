@@ -53,6 +53,27 @@ export class NavBar extends Component {
       </ul>
       );
   }
+
+	render () {
+		const user = this.props.user
+		return (
+			<ul className="megamenu skyblue">
+				<li className="grid"><Link to="/" onClick={this.handleClick} data-value = "" className={this.isActive('')}>Home</Link></li>
+				<li className="grid" ><Link to="/" className={this.isActive('dog')} data-value="dog" onClick={this.handleClick}>Puppies</Link></li>
+				<li className="grid" onClick={this.handleClick}><Link to="/" className={this.isActive('cat')} data-value="cat" >Kittens</Link></li>
+				<li className="grid"  onClick={this.handleClick}><Link to="/"  className={this.isActive('rodent')} data-value="rodent">Other Pets</Link></li>
+					{ user ?
+						<li onClick={this.handleClick}><Link to={`/profile`} className={this.isActive('account')} data-value="account">Your Account</Link></li>
+						 :
+						<li onClick={this.handleClick}><Link to="/signup" className={this.isActive('register')} data-value="register">Sign Up</Link></li>
+					}
+					{
+						user && <li onClick={this.handleClick}><Link to={`/orders`} className={this.isActive('orders')} data-value="orders">My Orders</Link></li>
+					}
+				{/*<li><a>Track your order</a></li>*/}
+			</ul>
+		);
+	}
 }
 
 import { connect } from 'react-redux'

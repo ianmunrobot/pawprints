@@ -17,9 +17,11 @@ import AllProducts from './components/products/AllProducts'
 import SingleProduct from './components/products/SingleProduct'
 import UserPanel from './components/UserPanel'
 import Cart from './components/Cart'
+import Orders from './components/orders/Orders'
 
 
 import { fetchProducts, receiveProduct } from './action-creators/products'
+import { receiveOrders } from './action-creators/orders'
 
 
 const onAppEnter = function() {
@@ -34,6 +36,15 @@ const onProductEnter = function(nextRouterState) {
       store.dispatch(receiveProduct(product))
     })
 }
+
+// const onOrdersEnter = function(nextRouterState) {
+//   const userId = 4
+//   axios.get(`/api/users/${userId}/orders`)
+//     .then(response => response.data)
+//     .then(orders => {
+//       store.dispatch(receiveOrders(orders))
+//     })
+// }
 
 export const FrameComponent = ({user, children}) => {
   return (
@@ -65,6 +76,7 @@ render(
         <Route path="/signup" component={ SignUp } />
         <Route path="/cart" component={ Cart } />
         <Route path="/profile" component={UserPanel} />
+        <Route path="/orders" component={ Orders } />
         <IndexRedirect to="/products" />
       </Route>
     </Router>
