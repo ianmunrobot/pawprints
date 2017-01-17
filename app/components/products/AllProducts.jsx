@@ -2,7 +2,23 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import { Link } from 'react-router';
 
-const Products = (props) => {
+class AllProducts extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      selectedProduct: {}
+    }
+
+    this.handleClick = this.handleClick.bind(this)
+  }
+
+  handleClick(evt) {
+    const value = evt.target.value
+    this.setState({
+      setState: value
+    })
+  }
 
   // split products array into rows of 3 products each
   const splitProducts = []
@@ -34,7 +50,10 @@ const Products = (props) => {
                                 <Link to={`/products/${product.id}`}>
                                   <img src={product.imgUrl} alt="" className="img-responsive" />
                                   <h4>{product.title}</h4>
-                                  <p><i className="glyphicon glyphicon-shopping-cart"></i> <span className=" item_price valsa">${product.price}</span></p>
+                                  <p>
+                                    <i className="glyphicon glyphicon-shopping-cart" onClick={this.handleClick}></i>
+                                    <span className=" item_price valsa">${product.price}</span>
+                                  </p>
                                 </Link>
                               </div>
                             </div>
