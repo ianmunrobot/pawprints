@@ -19,7 +19,7 @@ describe('/api/auth', () => {
   )
   )
 
-  describe('POST /local/login (username, password)', () => {
+  xdescribe('POST /local/login (username, password)', () => {
     it('succeeds with a valid username and password', () => request(app)
       .post('/api/auth/local/login')
       .send(alice)

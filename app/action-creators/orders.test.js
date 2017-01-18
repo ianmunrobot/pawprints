@@ -1,8 +1,19 @@
 import { expect } from 'chai'
 
-import { receiveOrders, receiveSingleOrder } from './orders'
+import {
+  receiveOrders,
+  receiveSingleOrder,
+  addProductToOrder,
+  changeQuantityOfProduct,
+  addShippingAddress,
+  changeShippingAddress,
+  addBillingAddress,
+  changeBillingAddress,
+  checkout
+} from './orders'
 
-describe('Orders actions', () => {
+
+xdescribe('Orders actions', () => {
 
   const testOrders = [
     {
