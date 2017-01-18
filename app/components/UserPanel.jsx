@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Address from './Address'
 
 export function UserPanel({user, updateUser, deleteMe}) {
 
@@ -83,6 +84,7 @@ export function UserPanel({user, updateUser, deleteMe}) {
             </div>
           </div>
         </div>
+        <Address/>
       </div>
   )
 }

@@ -55,7 +55,7 @@ export const FrameComponent = ({user, children}) => {
   return (
     <div>
       <nav>
-        {/*<App />*/}
+        { /*<App />*/ }
         <Header />
         <NavBar />
       </nav>
@@ -80,7 +80,8 @@ render(
         <Route path="/products/:productId" component={ SingleProduct } onEnter={ onProductEnter } />
         <Route path="/signup" component={ SignUp } />
         <Route path="/cart" component={ Cart } />
-        <Route path="/profile" component={UserPanel} />
+        <Route path="/profile" component={ UserPanel } />
+        <Route path="/checkout" component={ Checkout } />
         <Route path="/orders" component={ Orders } />
         <IndexRedirect to="/products" />
       </Route>

@@ -51,9 +51,13 @@ Review.belongsTo(Product)
 Product.hasMany(Review)
 Review.belongsTo(User)
 
-// Address can/should be associated with user when logged in
-Address.belongsTo(User)
-User.hasMany(Address)
+// associate with a shipping and building address from DB
+User.belongsTo(Address, {
+  as: 'shippingAddress'
+})
+User.belongsTo(Address, {
+  as: 'billingAddress'
+})
 
 module.exports = {
   User,

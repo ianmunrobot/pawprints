@@ -59,7 +59,7 @@ passport.deserializeUser(
     debug('will deserialize user.id=%d', id)
     User.findById(id)
       .then(user => {
-        if (user) debug('deserialize did ok user.id=%d', user.id);
+        if (user && user.id) debug('deserialize did ok user.id=%d', user.id);
         done(null, user)
       })
       .catch(err => {
@@ -100,7 +100,14 @@ passport.use(new (require('passport-local').Strategy)(
 }
 ))
 
-auth.get('/whoami', (req, res) => res.send(req.user))
+auth.get('/whoami', (req, res) => User.findOne({
+  where: {
+    id: req.user.id
+  },
+  include: [{
+    all: true
+  }]
+}).then(user => res.send(user)))
 
 auth.post('/:strategy/login', (req, res, next) => passport.authenticate(req.params.strategy, {
   successRedirect: '/',
