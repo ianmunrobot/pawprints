@@ -13,7 +13,6 @@ export const receiveProducts = products => (
 )
 
 export const fetchProducts = function() {
-  console.log('products reducer has been called!!!!');
   return dispatch => {
     axios.get('/api/products')
     .then(response => {
@@ -34,6 +33,19 @@ export const fetchProduct = function(productId) {
     axios.get(`/api/products/${productId}`)
     .then(response => {
       dispatch(receiveProduct(response.data))
+    })
+  }
+}
+
+export const addReviewToProduct = function(productId, body) {
+  return dispatch => {
+    return axios.post(`/api/products/${productId}/reviews`, body)
+    .then(res => res.data)
+    .then(() => {
+      return axios.get(`/api/products/${productId}`)
+        .then(response => {
+          dispatch(receiveProduct(response.data))
+        })
     })
   }
 }
