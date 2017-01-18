@@ -36,6 +36,7 @@ module.exports = app
 
   // Serve our api
   .use('/api', require('./api'))
+  .get('/github', (req, res, next) => res.redirect('https://github.com/ianmunrobot/pawprints'))
 
   // Send index.html for anything else.
   .get('/*', (_, res) => res.sendFile(resolve(__dirname, '..', 'public', 'index.html')))
