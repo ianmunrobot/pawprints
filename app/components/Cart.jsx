@@ -21,9 +21,11 @@ class Cart extends Component{
 	}
 
 	render() {
+		let orderTotal = 0
 		// map and create cart items
 		const cartItems = this.props.currentCart.products.map((lineItem, index) => {
 			const product = lineItem.product
+			orderTotal += +product.price * lineItem.quantity
 			return (
 				<div className="cart-header" key={product.id} >
 					<div className="close1" data-id={product.id} onClick={(e) => this.handleClick(e)}>
@@ -43,7 +45,7 @@ class Cart extends Component{
 								</ul>
 							<div className="delivery">
 								<p>Price per unit : ${product.price}</p>
-								<span>Total: ${lineItem.quantity * product.price}</span>
+								<span>subtotal: ${(lineItem.quantity * product.price).toFixed(2)}</span>
 								<div className="clearfix">
 								</div>
 							</div> {/*delivery*/}
@@ -59,10 +61,31 @@ class Cart extends Component{
 		<div>
 			<div className="cart-items">
 				<div className="container">
-					<h3 className="tittle">My shopping cart({ cartItems.length })</h3>
-						{ cartItems }
-					<div className="clearfix">
+					<h3 className="tittle"></h3>
+					<div className="cart-header" >
+						<div className="panel panel-default">
+							<div className="panel-heading">
+								My shopping cart({ cartItems.length })
+								{
+									this.props.user ?
+									<Link to="/checkout">
+										<button className="btn text-right" style={{marginRight: '10px'}}type="button">
+											Checkout
+											<span className="badge">${orderTotal.toFixed(2)}</span>
+										</button>
+									</Link>
+									: <Link to="/signup">
+										<button className="btn text-right" type="button">
+											Sign Up or Log in to Check Out
+										</button>
+									</Link>
+
+								}
+							</div>
+						</div>
 					</div>
+						{ cartItems }
+					<div className="clearfix"></div>
 				</div>{/*container*/}
 			</div>{/*cart=items*/}
 		</div>
@@ -82,6 +105,7 @@ const mapStateToProps = function (state, ownProps) {
 		// should be refactored into another React LineItem element which
 		// could be passed additional props
 		currentProducts: state.ordersReducer.currentOrder.products,
+		user: state.auth
   }
 }
 
