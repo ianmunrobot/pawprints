@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux';
 
+import AddReview from '../reviews/AddReview'
+
 import { addProductToOrder } from 'APP/app/action-creators/orders'
 
 class SingleProduct extends React.Component {
@@ -92,6 +94,10 @@ class SingleProduct extends React.Component {
               </div>
             </div>
             <h2>Reviews</h2>
+              {
+                this.props.user &&
+                <AddReview productId={product.id}/>
+              }
               <ul className="list-unstyled">
                 {reviews}
               </ul>
@@ -105,7 +111,9 @@ class SingleProduct extends React.Component {
 
 const mapStateToProps = function (state, ownProps) {
   return {
-    product: state.productsReducer.selectedProduct
+    product: state.productsReducer.selectedProduct,
+    user: state.auth,
+    reviews: state.productsReducer.selectedProduct.reviews,
   }
 }
 

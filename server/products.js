@@ -46,6 +46,13 @@ router.get('/:id/reviews', (req, res, next) => {
   .catch(next)
 })
 
+// post a review for a product
+router.post('/:id/reviews', (req, res, next) => {
+  Review.create(req.body)
+  .then(res.send.bind(res))
+  .catch(next)
+})
+
 // update one product
 router.put('/:id', mustBeAdmin, (req, res, next) => {
   Product.update(req.body, {
