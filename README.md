@@ -12,14 +12,11 @@ Click here to check out our site!
 
 ## Planning Docs
 
-**Schema Design**
-<a href="https://drive.google.com/file/d/0B3ApY822SoU9QkdJd3VPR1FOTEU/view?usp=sharing" target="_blank">Draw.io link</a>
+**Schema Design** <a href="https://drive.google.com/file/d/0B3ApY822SoU9QkdJd3VPR1FOTEU/view?usp=sharing" target="_blank">Draw.io link</a>
 
-**Wireframe/React components inheritance**
+**Wireframe/React components inheritance**<a href ="https://drive.google.com/file/d/0B3ApY822SoU9RkpUSkFGd1JvRGc/view?usp=sharing" target="_blank">Draw.io link</a>
 
-<a href ="https://drive.google.com/file/d/0B3ApY822SoU9RkpUSkFGd1JvRGc/view?usp=sharing" target="_blank">Draw.io link</a>
-
-**Instructions**
+## Instructions
 
 To run a PawPrints server:
 1. Clone from the GitHub repository
