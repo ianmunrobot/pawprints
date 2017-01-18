@@ -69,7 +69,8 @@ module.exports = require('express').Router()
         {
           model: User
         }
-      ]
+      ],
+      order: 'id DESC'
     })
     .then(res.send.bind(res))
     .catch(next)

@@ -8,6 +8,7 @@ import {
   CHANGE_BILLING_ADDRESS,
   CHANGE_SHIPPING_ADDRESS,
   CHECKOUT,
+  RESET_CART,
 } from 'APP/app/constants'
 
 const DEFAULT_STATE = {
@@ -92,6 +93,10 @@ const ordersReducer = (state = DEFAULT_STATE, action) => {
       break
     case CHANGE_SHIPPING_ADDRESS:
       newState.currentOrder.shippingAddress = action.shippingAddress
+      break
+
+    case RESET_CART:
+      newState.currentOrder = DEFAULT_STATE.currentOrder
       break
 
     default:
