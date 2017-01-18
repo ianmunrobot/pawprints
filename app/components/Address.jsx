@@ -5,6 +5,7 @@ export function AddressComponent({user, updateBillingAddress, updateShippingAddr
   const onBillingAddressSubmit = function(evt) {
     evt.preventDefault()
     let newAddress = {
+      userId: user.id,
       name: evt.target.name.value,
       phone: evt.target.phone.value,
       apartment: evt.target.apartment.value,
@@ -22,6 +23,7 @@ export function AddressComponent({user, updateBillingAddress, updateShippingAddr
   const onShippingAddressSubmit = function(evt) {
     evt.preventDefault()
     let newAddress = {
+      userId: user.id,
       name: evt.target.name.value,
       phone: evt.target.phone.value,
       apartment: evt.target.apartment.value,
@@ -35,7 +37,30 @@ export function AddressComponent({user, updateBillingAddress, updateShippingAddr
 
     updateShippingAddress(newAddress); document.getElementById("addressInfo").reset();
   }
-
+  if (!user.billingAddress)
+    user.billingAddress = {
+      name: '',
+      phone: '',
+      apartment: '',
+      streetNum: '',
+      streetName: '',
+      apartment: '',
+      city: '',
+      state: '',
+      zip: ''
+  }
+  if (!user.shippingAddress)
+    user.shippingAddress = {
+      name: '',
+      phone: '',
+      apartment: '',
+      streetNum: '',
+      streetName: '',
+      apartment: '',
+      city: '',
+      state: '',
+      zip: ''
+  }
   return (
     <div>
       <div className="account account-left">

@@ -6,18 +6,18 @@ const Address = db.define('addresses', {
   phone: {
     type: Sequelize.STRING,
     allowNull: false,
-    validate: {
-      isValidPhoneNumber: function(value) {
-        if (!value) {
-          return value
-        }
-        const regex = /^[2-9]\d{2}-\d{3}-\d{4}$/;
-        if (!regex.test(value)) {
-          throw new Error('Invalid Phone Number');
-        }
-        return value;
-      }
-    }
+  // validate: {
+  //   isValidPhoneNumber: function(value) {
+  //     if (!value) {
+  //       return value
+  //     }
+  //     const regex = /^[2-9]\d{2}-\d{3}-\d{4}$/;
+  //     if (!regex.test(value)) {
+  //       throw new Error('Invalid Phone Number');
+  //     }
+  //     return value;
+  //   }
+  // }
   },
   businessName: Sequelize.STRING,
   streetNum: {
@@ -40,21 +40,21 @@ const Address = db.define('addresses', {
   zip: {
     type: Sequelize.STRING,
     allowNull: false,
-    validate: {
-      isValidZip: function(value) {
-        if (!value || value.length === 5) return value;
-        throw new Error('Invalid Zip');
-      }
-    }
+  // validate: {
+  //   isValidZip: function(value) {
+  //     if (!value || value.length === 5) return value;
+  //     throw new Error('Invalid Zip');
+  //   }
+  // }
   },
-}, {
-  validate: {
-    nameOrBusinessName: function() {
-      if ((this.name === null) && (this.businessName === null)) {
-        throw new Error('Require either name or businessName')
-      }
-    }
-  }
+//}, {
+// validate: {
+//   nameOrBusinessName: function() {
+//     if ((!this.name) && (!this.businessName)) {
+//       throw new Error('Require either name or businessName')
+//     }
+//   }
+//}
 });
 
 module.exports = Address;

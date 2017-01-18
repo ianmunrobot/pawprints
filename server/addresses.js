@@ -15,10 +15,24 @@ module.exports = require('express').Router()
 
   // all users can add an address
   .post(`/`, (req, res, next) => {
+    console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA', req.body)
     Address.findOrCreate({
-      where: req.body
+      where: {
+        name: req.body.name,
+        phone: req.body.phone,
+        businessName: req.body.businessName,
+        streetNum: req.body.streetNum,
+        streetName: req.body.streetName,
+        apartment: req.body.apartment,
+        city: req.body.city,
+        state: req.body.state,
+        zip: req.body.zip
+      }
     })
-      .then(created => created[0])
+      .then(created => {
+        console.log('BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB', created)
+        return created[0]
+      })
       .then(createdAddress => {
         res.status(201).send(createdAddress)
       })
@@ -51,9 +65,9 @@ module.exports = require('express').Router()
         },
         returning: true,
       })
-      .then(result => result[1][0])
-      .then(res.send.bind(res))
-      .catch(next)
+        .then(result => result[1][0])
+        .then(res.send.bind(res))
+        .catch(next)
     } else {
       Address.update(req.body, {
         where: {
@@ -62,9 +76,9 @@ module.exports = require('express').Router()
         },
         returning: true,
       })
-      .then(result => result[1][0])
-      .then(res.send.bind(res))
-      .catch(next)
+        .then(result => result[1][0])
+        .then(res.send.bind(res))
+        .catch(next)
     }
   })
 
@@ -76,8 +90,8 @@ module.exports = require('express').Router()
           id: req.params.id,
         },
       })
-      .then(result => res.sendStatus(200))
-      .catch(next)
+        .then(result => res.sendStatus(200))
+        .catch(next)
     } else {
       Address.destroy({
         where: {
@@ -85,7 +99,7 @@ module.exports = require('express').Router()
           user_id: req.user.id
         },
       })
-      .then(result => res.sendStatus(200))
-      .catch(next)
+        .then(result => res.sendStatus(200))
+        .catch(next)
     }
   })
