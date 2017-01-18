@@ -42,7 +42,7 @@ class SingleProduct extends React.Component {
         }) :
         (<option></option>)
 
-    const reviews = product.reviews
+    const reviews = product.reviews && product.reviews.length
       ? product.reviews.map((review, index) => {
         return (
           <tr key={index}>
@@ -56,7 +56,7 @@ class SingleProduct extends React.Component {
           </tr>
         )
       })
-      : (<tr></tr>)
+      : (<tr><td>No reviews yet for this product</td></tr>)
 
     return (
       <div className="products">
@@ -105,22 +105,19 @@ class SingleProduct extends React.Component {
                   </td>
                 </tr>
               </thead>
+                <tbody>
+                    {reviews}
+                </tbody>
+              </table>
               {
                 this.props.user &&
 
-                  (<tr>
+                  (<div>
                     Add a new review
                     <AddReview productId={product.id}/>
-                  </tr>)
+                  </div>)
 
               }
-
-                <tbody>
-
-                    {reviews}
-
-                </tbody>
-              </table>
             </div>
           </div>
         </div>
