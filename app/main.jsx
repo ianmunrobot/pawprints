@@ -21,10 +21,15 @@ import Orders from './components/orders/Orders'
 
 
 import { fetchProducts, receiveProduct } from './action-creators/products'
-import { receiveOrders } from './action-creators/orders'
+import { receiveOrders, receiveCurrentOrder } from './action-creators/orders'
 
 
 const onAppEnter = function() {
+  // add cart from session if it exists
+  let cart = JSON.parse(sessionStorage.getItem('cart'))
+  if (cart.products.length > 0) {
+    store.dispatch(receiveCurrentOrder(cart))
+  }
   store.dispatch(fetchProducts())
 }
 

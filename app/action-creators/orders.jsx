@@ -31,6 +31,13 @@ export const receiveSingleOrder = order => (
   }
 )
 
+export const receiveCurrentOrder = order => (
+  {
+    type: RECEIVE_CURRENT_ORDER,
+    order
+  }
+)
+
 export const addProductToOrder = (productId, quantity = 1) => {
   let newProduct = {}
   store.getState()
