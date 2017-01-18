@@ -31,11 +31,15 @@ class Cart extends Component{
 					<div className="close1" data-id={product.id} onClick={(e) => this.handleClick(e)}>
 					</div>
 					<div className="cart-sec simpleCart_shelfItem">
-						<div className="cart-item cyc">
-							<img src={product.imgUrl} className="img-responsive" alt="" />
-						</div>
+						<Link to={`/products/${product.id}`}>
+							<div className="cart-item cyc">
+								<img src={product.imgUrl} className="img-responsive" alt="" />
+							</div>
+						</Link>
 						<div className="cart-item-info">
-							<h3><a href="#"> {product.title} </a><span>Pickup time:</span></h3>
+							<Link to={`/products/${product.id}`}>
+								<h3>{product.title}<span></span></h3>
+							</Link>
 								<ul className="qty">
 									<li><h4>Quantity : {product.quantity} </h4>
 										<div className="input-group">
