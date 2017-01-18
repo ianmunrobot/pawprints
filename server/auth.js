@@ -100,14 +100,17 @@ passport.use(new (require('passport-local').Strategy)(
 }
 ))
 
-auth.get('/whoami', (req, res) => User.findOne({
-  where: {
-    id: req.user.id
-  },
-  include: [{
-    all: true
-  }]
-}).then(user => res.send(user)))
+auth.get('/whoami', (req, res) => {
+  if (!req.user) res.send(req.user)
+  else return User.findOne({
+      where: {
+        id: req.user.id
+      },
+      include: [{
+        all: true
+      }]
+    }).then(user => res.send(user))
+})
 
 auth.post('/:strategy/login', (req, res, next) => passport.authenticate(req.params.strategy, {
   successRedirect: '/',

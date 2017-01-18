@@ -27,7 +27,7 @@ import { receiveOrders, receiveCurrentOrder } from './action-creators/orders'
 const onAppEnter = function() {
   // add cart from session if it exists
   let cart = JSON.parse(sessionStorage.getItem('cart'))
-  if (cart.products.length > 0) {
+  if (cart && cart.products && cart.products.length > 0) {
     store.dispatch(receiveCurrentOrder(cart))
   }
   store.dispatch(fetchProducts())
