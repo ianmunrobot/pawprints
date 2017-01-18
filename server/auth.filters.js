@@ -20,7 +20,6 @@ const selfOnly = action => (req, res, next) => {
 }
 
 const selfOrAdmin = action => (req, res, next) => {
-  console.log('i am inside the selfOrAdmin');
   if (!req.user || ((req.params.id != req.user.id) && !req.user.isAdmin)) {
     return res.status(401).send(`You can only ${action} yourself, unless you are an admin.`)
   }
