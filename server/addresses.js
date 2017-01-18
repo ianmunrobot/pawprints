@@ -15,7 +15,6 @@ module.exports = require('express').Router()
 
   // all users can add an address
   .post(`/`, (req, res, next) => {
-    console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA', req.body)
     Address.findOrCreate({
       where: {
         name: req.body.name,
@@ -30,7 +29,6 @@ module.exports = require('express').Router()
       }
     })
       .then(created => {
-        console.log('BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB', created)
         return created[0]
       })
       .then(createdAddress => {
