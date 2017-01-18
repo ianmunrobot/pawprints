@@ -19,9 +19,14 @@ Click here to check out our site!
 ## Instructions
 
 To run a PawPrints server:
+
 1. Clone from the GitHub repository
+
 2. In Node, run 'npm install --dev'
+
 3. Then, run 'npm run setup' 
+
 4. Finally, run 'npm start'
+
 
 PawPrints will then be available at <a href ="http://localhost:1337/" target="_blank">http://localhost:1337/</a> as long as the 'npm start' process is running on your machine. (Optionally, if you run 'npm run build-watch' in a separate terminal at the same time, the server will live-update with any file changes as they are saved.)
