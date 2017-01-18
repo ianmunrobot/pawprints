@@ -57,19 +57,17 @@ class AddReview extends React.Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <label>
-          Title:
-          <input type="text" value={this.state.title} onChange={this.titleChange} />
-        </label>
-        <label>
-          Stars:
-          <input type="number" name="rating" onChange={this.ratingChange} className="form-control input-number" min="1" max="5" value={this.state.rating}/>
-        </label>
-        <label>
-          Review:
-          <input type="textarea" value={this.state.message} onChange={this.textChange} />
-        </label>
-        <input type="submit" value="Submit Review" />
+        <div className="form-inline">
+          <label htmlFor="reviewTitle">Title </label>
+          <input type="text" className="form-control" id="reviewTitle" value={this.state.title} onChange={this.titleChange} />
+          <label htmlFor="stars"> Stars</label>
+          <input type="number" name="rating" onChange={this.ratingChange} className="form-control input-number" min="1" max="5" value={this.state.rating} />
+        </div>
+        <div className="form-group">
+          <label htmlFor="reviewText">Text</label>
+          <textarea className="form-control" id="reviewText" value={this.state.message} onChange={this.textChange} />
+        </div>
+        <button type="submit" className="btn btn-submit">Submit Review</button>
       </form>
     )
 

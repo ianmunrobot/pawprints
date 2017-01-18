@@ -45,28 +45,31 @@ class SingleProduct extends React.Component {
     const reviews = product.reviews
       ? product.reviews.map((review, index) => {
         return (
-          <li key={index}>
-            <h3>{review.title}</h3>
-            <p className="lead">Rating: {review.rating} / 5 </p>
-            <p>
-              {review.message}
-            </p>
-          </li>
+          <tr key={index}>
+            <td>
+              <h3>{review.title}</h3>
+              <p className="lead">Rating: {review.rating} / 5 </p>
+              <p>
+                {review.message}
+              </p>
+            </td>
+          </tr>
         )
       })
-      : (<li></li>)
+      : (<tr></tr>)
 
     return (
       <div className="products">
         <div className="container">
           <div className="products-grids">
             <div className="col-md-12 products-single">
-              <div className="col-md-5 col-sm-12 col-xs-12 grid-single">
+            <div className="row">
+              <div className="col-md-5 col-sm-6 col-xs-12 grid-single">
                 <div className="thumb-image">
                   <img src={product.imgUrl} data-imagezoom="true" className="img-responsive" alt=""/>
                 </div>
               </div>
-              <div className="col-md-7 col-sm-12 col-xs-12 single-text">
+              <div className="col-md-7 col-sm-6 col-xs-12 single-text">
                 <div className="details-left-info simpleCart_shelfItem">
                   <h3>{product.title}</h3>
                   <p className="availability">Availability: <span className="color">
@@ -92,15 +95,32 @@ class SingleProduct extends React.Component {
               <div className="single-but item_add" onClick={this.handleSubmit}>
                 <input type="submit" value="add to cart"/>
               </div>
-            </div>
-            <h2>Reviews</h2>
+              </div>
+            </div>{/*single*/}
+            <table className="table table-striped">
+              <thead>
+                <tr>
+                  <td>
+                    <h3>Reviews</h3>
+                  </td>
+                </tr>
+              </thead>
               {
                 this.props.user &&
-                <AddReview productId={product.id}/>
+
+                  (<tr>
+                    Add a new review
+                    <AddReview productId={product.id}/>
+                  </tr>)
+
               }
-              <ul className="list-unstyled">
-                {reviews}
-              </ul>
+
+                <tbody>
+
+                    {reviews}
+
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
