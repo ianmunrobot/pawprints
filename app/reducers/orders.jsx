@@ -53,7 +53,7 @@ const ordersReducer = (state = DEFAULT_STATE, action) => {
       newState.selectedOrder = action.order
       break
     case RECEIVE_CURRENT_ORDER:
-      newState.currentOrder = action.currentOrder
+      newState.currentOrder = action.order
       break
     case ADD_PRODUCT_TO_ORDER:
 
@@ -97,6 +97,11 @@ const ordersReducer = (state = DEFAULT_STATE, action) => {
     default:
       return state
   }
+
+  // save current order in cart
+  let cart = JSON.stringify(newState.currentOrder)
+  sessionStorage.setItem('cart', cart)
+
   return newState
 }
 
