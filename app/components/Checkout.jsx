@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import { Router, Route, Link } from 'react-router';
 import Address from './Address';
 
-
-
-
 export function Checkout({user, placeOrder}) {
   const orderSubmit = function(evt) {
     evt.preventDefault();
@@ -14,10 +11,10 @@ export function Checkout({user, placeOrder}) {
       alert('Please fill in an address')
     }
   }
-
+  if (!user) return (<div>Please sign in!</div>)
   return (
     <div>
-      <OrderDetails/>
+      { /**<OrderDetails/>**/ }
       <Address/>
       { /**shipping options**/ }
       { /**<Stripe/>**/ }
