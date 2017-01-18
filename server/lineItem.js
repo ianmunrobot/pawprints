@@ -10,6 +10,7 @@ module.exports = require('express').Router()
   // router has already verified user and added order to
   // req object
   .use('/', (req, res, next) => {
+    console.log('I HIT THE LINEITEM ROUTE');
     if (req.order) {
       next()
     } else {
@@ -19,14 +20,12 @@ module.exports = require('express').Router()
 
   // add an item to an order
   .post('/:productId', (req, res, next) => {
-    let val = +req.body.quantity
+    console.log('I AM POSTING A LINEITEM');
     LineItem.create({
-      quantity: val,
+      quantity: req.body.quantity,
       product_id: +req.params.productId,
-      user_id: req.body.user_id,
-    },
-    {
-      include: ['product']
+      order_id: req.body.order_id,
+      price: req.body.price,
     })
     .then(res.send.bind(res))
     .catch(next)

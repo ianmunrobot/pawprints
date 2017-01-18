@@ -10,7 +10,8 @@ module.exports = require('express').Router()
   // if admin, add order to req object.
   // if logged in and order belongs to logged in user,
   // add order to req object
-  .param('orderId', mustBeLoggedIn, (req, res, next, id) => {
+  .param('orderId', (req, res, next, id) => {
+    console.log('~~~~~~~~~');console.log(`at the order id`, req.body);
     if (req.user.isAdmin)
       Order.findById(id, {
         include: [{ all: true }]

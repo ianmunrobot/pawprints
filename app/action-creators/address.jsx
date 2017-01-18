@@ -5,7 +5,6 @@ import { whoami } from './auth'
 export const updateBillingAddress = (addressObj) => dispatch => axios.post('/api/addresses/',
   addressObj)
   .then((res) => {
-    console.log('RRRRRRRRRREEEEEEEEEEEESSSSSSSSSSS', res)
     return axios.put(`/api/users/${addressObj.userId}`, {
       billing_address_id: res.data.id
     })
