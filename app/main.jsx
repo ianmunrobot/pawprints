@@ -17,12 +17,19 @@ import AllProducts from './components/products/AllProducts'
 import SingleProduct from './components/products/SingleProduct'
 import UserPanel from './components/UserPanel'
 import Cart from './components/Cart'
+import Orders from './components/orders/Orders'
 
 
 import { fetchProducts, receiveProduct } from './action-creators/products'
+import { receiveOrders, receiveCurrentOrder } from './action-creators/orders'
 
 
 const onAppEnter = function() {
+  // add cart from session if it exists
+  let cart = JSON.parse(sessionStorage.getItem('cart'))
+  if (cart.products.length > 0) {
+    store.dispatch(receiveCurrentOrder(cart))
+  }
   store.dispatch(fetchProducts())
 }
 
@@ -34,6 +41,15 @@ const onProductEnter = function(nextRouterState) {
       store.dispatch(receiveProduct(product))
     })
 }
+
+// const onOrdersEnter = function(nextRouterState) {
+//   const userId = 4
+//   axios.get(`/api/users/${userId}/orders`)
+//     .then(response => response.data)
+//     .then(orders => {
+//       store.dispatch(receiveOrders(orders))
+//     })
+// }
 
 export const FrameComponent = ({user, children}) => {
   return (
@@ -66,6 +82,7 @@ render(
         <Route path="/cart" component={ Cart } />
         <Route path="/profile" component={ UserPanel } />
         <Route path="/checkout" component={ Checkout } />
+        <Route path="/orders" component={ Orders } />
         <IndexRedirect to="/products" />
       </Route>
     </Router>

@@ -2,6 +2,8 @@ import axios from 'axios'
 
 import { AUTHENTICATED } from 'APP/app/constants'
 
+import { receiveOrders } from './orders'
+
 // sync
 export const authenticated = user => ({
   type: AUTHENTICATED,
@@ -58,5 +60,10 @@ export const whoami = () => dispatch => axios.get('/api/auth/whoami')
   .then(response => {
     const user = response.data
     dispatch(authenticated(user))
+    return axios.get(`/api/users/${user.id}/orders`)
+  })
+  .then(response => response.data)
+  .then(orders => {
+    dispatch(receiveOrders(orders))
   })
   .catch(failed => dispatch(authenticated(null)))

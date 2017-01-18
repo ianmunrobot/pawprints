@@ -29,10 +29,15 @@ Order.belongsTo(Address, {
   as: 'billingAddress'
 })
 
+// associate Order and User
+Order.belongsTo(User)
+User.hasMany(Order)
+
 //associate products and orders through line items
 Order.hasMany(LineItem);
 LineItem.belongsTo(Order);
 LineItem.belongsTo(Product);
+Product.hasMany(LineItem)
 
 
 // associate multiple rows as size options for each product

@@ -7,9 +7,6 @@ const Address = require('./address')
 const TAX_RATE = 0.0875
 
 const Order = db.define('orders', {
-  user: {
-    type: Sequelize.STRING
-  },
   status: {
     type: Sequelize.ENUM('in cart', 'placed', 'shipped', 'delivered', 'returned'),
     defaultValue: 'in cart'
