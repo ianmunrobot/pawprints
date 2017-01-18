@@ -4,9 +4,11 @@ I'm a happy little site selling adorable prints!
 
 I was built by Charity, Eric, Ian, and Jimmy during Fullstack Academy's 1610 Software Engineering Immersive.
 
-### Live Site (Deployed with Heroku)
+## Live Site (Deployed with Heroku)
 
+Click here to check out our site!
 <a href ="https://pawprintsstackstore.herokuapp.com/" target="_blank">Heroku link</a>
+
 
 ## Planning Docs
 
